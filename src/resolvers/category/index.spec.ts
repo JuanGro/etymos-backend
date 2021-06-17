@@ -12,8 +12,8 @@ test("Get all categories", async () => {
 
 test("Get category", async () => {
   const categories = await categoryResolver.getCategories();
-  const firstCategory = categories[0];
-  expect(await categoryResolver.getCategory(firstCategory.id)).toBeInstanceOf(
+  const { id } = categories[0];
+  expect(categoryResolver.getCategory(id)).resolves.toBeInstanceOf(
     Category
   );
 });
@@ -25,27 +25,27 @@ test("Get error if category does not exist", async () => {
 });
 
 test("Create category", async () => {
-  expect((await categoryResolver.getCategories()).length).toEqual(10);
+  expect(categoryResolver.getCategories()).resolves.toHaveLength(10);
   const categoryCreated = await categoryResolver.createCategory({
     name: "animal",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     active: true,
   });
-  expect(await categoryResolver.getCategory(categoryCreated.id)).toBeInstanceOf(
+  expect(categoryResolver.getCategory(categoryCreated.id)).resolves.toBeInstanceOf(
     Category
   );
-  expect((await categoryResolver.getCategories()).length).toEqual(11);
+  expect(categoryResolver.getCategories()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a category with incorrect name length", async () => {
-  expect(async () => {
-    await categoryResolver.createCategory({
+  expect(
+    categoryResolver.createCategory({
       name:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      active: false,
-    });
-  }).rejects.toThrowError();
+      active: false
+    })
+  ).rejects.toThrowError();
 });
 
 test("Update category", async () => {
@@ -54,11 +54,11 @@ test("Update category", async () => {
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     active: false,
   });
-  expect(await categoryResolver.getCategory(categoryUpdated.id)).toBeInstanceOf(
+  expect(categoryResolver.getCategory(categoryUpdated.id)).resolves.toBeInstanceOf(
     Category
   );
-  expect((await categoryResolver.getCategory(categoryUpdated.id)).active).toBeFalsy();
-  expect((await categoryResolver.getCategory(categoryUpdated.id)).name).toBe("automobile");
+  expect(categoryResolver.getCategory(categoryUpdated.id)).resolves.toHaveProperty("active", false);
+  expect(categoryResolver.getCategory(categoryUpdated.id)).resolves.toHaveProperty("name", "automobile");
 });
 
 test("Delete category", async () => {
@@ -73,7 +73,7 @@ test("Delete category", async () => {
 });
 
 test("Get error if tries to delete a category inexistent", async () => {
-  expect(async () => {
-    await categoryResolver.deleteCategory(10000);
-  }).rejects.toThrowError();
+  expect(
+    categoryResolver.deleteCategory(10000)
+  ).rejects.toThrowError();
 });
