@@ -6,44 +6,38 @@ dbConnection();
 
 const optionResolver = new OptionResolver();
 
-test("Get all options", async () => {
-  expect((await optionResolver.getOptions()).length).toEqual(10);
+test("Get all options", () => {
+  expect(optionResolver.getOptions()).resolves.toHaveLength(10);
 });
 
 test("Get option", async () => {
   const options = await optionResolver.getOptions();
   const firstOption = options[0];
-  expect(await optionResolver.getOption(firstOption.id)).toBeInstanceOf(Option);
+  expect(optionResolver.getOption(firstOption.id)).resolves.toBeInstanceOf(Option);
 });
 
-test("Get error if option does not exist", async () => {
-  expect(async () => {
-    await optionResolver.getOption(10000);
-  }).rejects.toThrowError();
+test("Get error if option does not exist", () => {
+  expect(optionResolver.getOption(10000)).rejects.toThrowError();
 });
 
 test("Create option", async () => {
-  expect((await optionResolver.getOptions()).length).toEqual(10);
+  expect(optionResolver.getOptions()).resolves.toHaveLength(10);
   const optionCreated = await optionResolver.createOption({
     option: "lorem",
     correct: true,
     active: true
   });
-  expect(await optionResolver.getOption(optionCreated.id)).toBeInstanceOf(
-    Option
-  );
-  expect((await optionResolver.getOptions()).length).toEqual(11);
+  expect(optionResolver.getOption(optionCreated.id)).resolves.toBeInstanceOf(Option);
+  expect(optionResolver.getOptions()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create an option with incorrect name length", async () => {
-  expect(async () => {
-    await optionResolver.createOption({
-      option:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-      correct: false,
-      active: true
-    });
-  }).rejects.toThrowError();
+test("Get error if tries to create an option with incorrect name length", () => {
+  expect(optionResolver.createOption({
+    option:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
+    correct: false,
+    active: true
+  })).rejects.toThrowError();
 });
 
 test("Update option", async () => {
@@ -52,24 +46,20 @@ test("Update option", async () => {
     correct: true,
     active: false
   });
-  expect(await optionResolver.getOption(optionUpdated.id)).toBeInstanceOf(
-    Option
-  );
-  expect((await optionResolver.getOption(optionUpdated.id)).active).toBeFalsy();
-  expect((await optionResolver.getOption(optionUpdated.id)).option).toBe("lorem ipsum");
+  expect(optionResolver.getOption(optionUpdated.id)).resolves.toBeInstanceOf(Option);
+  expect(optionResolver.getOption(optionUpdated.id)).resolves.toHaveProperty("active", false);
+  expect(optionResolver.getOption(optionUpdated.id)).resolves.toHaveProperty("correct", true);
+  expect(optionResolver.getOption(optionUpdated.id)).resolves.toHaveProperty("option", "lorem ipsum");
 });
 
 test("Delete option", async () => {
-  expect((await optionResolver.getOptions()).length).toEqual(11);
+  expect(optionResolver.getOptions()).resolves.toHaveLength(11);
   const options = await optionResolver.getOptions();
   const lastOption: Option = options[options.length - 1];
-  const optionDeleted = await optionResolver.deleteOption(lastOption.id);
-  expect(optionDeleted).toEqual(true);
-  expect((await optionResolver.getOptions()).length).toEqual(10);
+  expect(optionResolver.deleteOption(lastOption.id)).resolves.toEqual(true);
+  expect(optionResolver.getOptions()).resolves.toHaveLength(10);
 });
 
 test("Get error if tries to delete an option inexistent", async () => {
-  expect(async () => {
-    await optionResolver.deleteOption(10000);
-  }).rejects.toThrowError();
+  expect(optionResolver.deleteOption(10000)).rejects.toThrowError();
 });

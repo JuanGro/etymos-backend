@@ -6,26 +6,22 @@ dbConnection();
 
 const referenceResolver = new ReferenceResolver();
 
-test("Get all references", async () => {
-  expect((await referenceResolver.getReferences()).length).toEqual(10);
+test("Get all references", () => {
+  expect(referenceResolver.getReferences()).resolves.toHaveLength(10);
 });
 
 test("Get reference", async () => {
   const references = await referenceResolver.getReferences();
   const firstReference = references[0];
-  expect(
-    await referenceResolver.getReference(firstReference.id)
-  ).toBeInstanceOf(Reference);
+  expect(referenceResolver.getReference(firstReference.id)).resolves.toBeInstanceOf(Reference);
 });
 
-test("Get error if reference does not exist", async () => {
-  expect(async () => {
-    await referenceResolver.getReference(10000);
-  }).rejects.toThrowError();
+test("Get error if reference does not exist", () => {
+  expect(referenceResolver.getReference(10000)).rejects.toThrowError();
 });
 
 test("Create reference", async () => {
-  expect((await referenceResolver.getReferences()).length).toEqual(10);
+  expect(referenceResolver.getReferences()).resolves.toHaveLength(10);
   const referenceCreated = await referenceResolver.createReference({
     author: "Miguel de Cervantes Saavedra",
     title: "Don Quijote de la Mancha",
@@ -34,15 +30,12 @@ test("Create reference", async () => {
     publishingCompany: "Trillas Editorial",
     active: true
   });
-  expect(
-    await referenceResolver.getReference(referenceCreated.id)
-  ).toBeInstanceOf(Reference);
-  expect((await referenceResolver.getReferences()).length).toEqual(11);
+  expect(referenceResolver.getReference(referenceCreated.id)).resolves.toBeInstanceOf(Reference);
+  expect(referenceResolver.getReferences()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a reference with incorrect name length", async () => {
-  expect(async () => {
-    await referenceResolver.createReference({
+test("Get error if tries to create a reference with incorrect name length", () => {
+  expect(referenceResolver.createReference({
       author:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       title: "Don Quijote de la Mancha",
@@ -50,8 +43,7 @@ test("Get error if tries to create a reference with incorrect name length", asyn
       publicationPlace: "Barcelona, España",
       publishingCompany: "Trillas Editorial",
       active: true
-    });
-  }).rejects.toThrowError();
+    })).rejects.toThrowError();
 });
 
 test("Update reference", async () => {
@@ -63,30 +55,23 @@ test("Update reference", async () => {
     publishingCompany: "Trillas Editorial",
     active: false
   });
-  expect(
-    await referenceResolver.getReference(referenceUpdated.id)
-  ).toBeInstanceOf(Reference);
-  expect(
-    (await referenceResolver.getReference(referenceUpdated.id)).active
-  ).toBeFalsy();
-  expect(
-    (await referenceResolver.getReference(referenceUpdated.id)).title
-  ).toBe("Lorem ipsum");
+  expect(referenceResolver.getReference(referenceUpdated.id)).resolves.toBeInstanceOf(Reference);
+  expect(referenceResolver.getReference(referenceUpdated.id)).resolves.toHaveProperty("active", false);
+  expect(referenceResolver.getReference(referenceUpdated.id)).resolves.toHaveProperty("title", "Lorem ipsum");
+  expect(referenceResolver.getReference(referenceUpdated.id)).resolves.toHaveProperty("author", "Miguel de Cervantes Saavedra");
+  expect(referenceResolver.getReference(referenceUpdated.id)).resolves.toHaveProperty("publicationYear", "1990");
+  expect(referenceResolver.getReference(referenceUpdated.id)).resolves.toHaveProperty("publicationPlace", "Barcelona, España");
+  expect(referenceResolver.getReference(referenceUpdated.id)).resolves.toHaveProperty("publishingCompany", "Trillas Editorial");
 });
 
 test("Delete reference", async () => {
-  expect((await referenceResolver.getReferences()).length).toEqual(11);
+  expect(referenceResolver.getReferences()).resolves.toHaveLength(11);
   const references = await referenceResolver.getReferences();
   const lastReference = references[references.length - 1];
-  const referenceDeleted = await referenceResolver.deleteReference(
-    lastReference.id
-  );
-  expect(referenceDeleted).toEqual(true);
-  expect((await referenceResolver.getReferences()).length).toEqual(10);
+  expect(referenceResolver.deleteReference(lastReference.id)).resolves.toEqual(true);
+  expect(referenceResolver.getReferences()).resolves.toHaveLength(10);
 });
 
-test("Get error if tries to delete a reference inexistent", async () => {
-  expect(async () => {
-    await referenceResolver.deleteReference(10000);
-  }).rejects.toThrowError();
+test("Get error if tries to delete a reference inexistent", () => {
+  expect(referenceResolver.deleteReference(10000)).rejects.toThrowError();
 });
