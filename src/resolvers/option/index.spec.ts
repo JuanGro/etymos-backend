@@ -4,7 +4,8 @@ import { OptionResolver } from ".";
 
 dbConnection();
 
-const { getOptions, getOption, createOption, updateOption, deleteOption } = new OptionResolver();
+const { getOptions, getOption, createOption, updateOption, deleteOption } =
+  new OptionResolver();
 
 test("Get all options", () => {
   expect(getOptions()).resolves.toHaveLength(10);
@@ -25,31 +26,36 @@ test("Create option", async () => {
   const optionCreated = await createOption({
     option: "lorem",
     correct: true,
-    active: true
+    active: true,
   });
   expect(getOption(optionCreated.id)).resolves.toBeInstanceOf(Option);
   expect(getOptions()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create an option with incorrect name length", () => {
-  expect(createOption({
-    option:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-    correct: false,
-    active: true
-  })).rejects.toThrowError();
+  expect(
+    createOption({
+      option:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
+      correct: false,
+      active: true,
+    })
+  ).rejects.toThrowError();
 });
 
 test("Update option", async () => {
   const optionUpdated = await updateOption(1, {
     option: "lorem ipsum",
     correct: true,
-    active: false
+    active: false,
   });
   expect(getOption(optionUpdated.id)).resolves.toBeInstanceOf(Option);
   expect(getOption(optionUpdated.id)).resolves.toHaveProperty("active", false);
   expect(getOption(optionUpdated.id)).resolves.toHaveProperty("correct", true);
-  expect(getOption(optionUpdated.id)).resolves.toHaveProperty("option", "lorem ipsum");
+  expect(getOption(optionUpdated.id)).resolves.toHaveProperty(
+    "option",
+    "lorem ipsum"
+  );
 });
 
 test("Delete option", async () => {

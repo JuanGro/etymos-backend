@@ -4,7 +4,8 @@ import { PatternResolver } from ".";
 
 dbConnection();
 
-const { getPatterns, getPattern, createPattern, updatePattern, deletePattern } = new PatternResolver();
+const { getPatterns, getPattern, createPattern, updatePattern, deletePattern } =
+  new PatternResolver();
 
 test("Get all patterns", async () => {
   expect(getPatterns()).resolves.toHaveLength(10);
@@ -24,28 +25,36 @@ test("Create pattern", async () => {
   expect(getPatterns()).resolves.toHaveLength(10);
   const patternCreated = await createPattern({
     pattern: "lorem",
-    active: true
+    active: true,
   });
   expect(getPattern(patternCreated.id)).resolves.toBeInstanceOf(Pattern);
   expect(getPatterns()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a pattern with incorrect name length", () => {
-  expect(createPattern({
+  expect(
+    createPattern({
       pattern:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-      active: true
-    })).rejects.toThrowError();
+      active: true,
+    })
+  ).rejects.toThrowError();
 });
 
 test("Update pattern", async () => {
   const patternUpdated = await updatePattern(1, {
     pattern: "hipo",
-    active: false
+    active: false,
   });
   expect(getPattern(patternUpdated.id)).resolves.toBeInstanceOf(Pattern);
-  expect(getPattern(patternUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(getPattern(patternUpdated.id)).resolves.toHaveProperty("pattern", "hipo");
+  expect(getPattern(patternUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
+  expect(getPattern(patternUpdated.id)).resolves.toHaveProperty(
+    "pattern",
+    "hipo"
+  );
 });
 
 test("Delete pattern", async () => {

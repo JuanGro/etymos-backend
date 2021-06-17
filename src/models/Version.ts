@@ -20,7 +20,7 @@ export class Version extends BaseEntity {
   version!: string;
 
   @Field(() => String)
-  @Column({ type: 'varchar', length: 1024 })
+  @Column({ type: "varchar", length: 1024 })
   description!: string;
 
   @Field(() => Boolean)

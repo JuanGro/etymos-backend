@@ -4,7 +4,8 @@ import { TestResolver } from ".";
 
 dbConnection();
 
-const { getTests, getTest, createTest, updateTest, deleteTest } = new TestResolver();
+const { getTests, getTest, createTest, updateTest, deleteTest } =
+  new TestResolver();
 
 test("Get all tests", () => {
   expect(getTests()).resolves.toHaveLength(10);
@@ -25,7 +26,7 @@ test("Create test", async () => {
   const testCreated = await createTest({
     userId: 1,
     questionId: 1,
-    active: true
+    active: true,
   });
   expect(getTest(testCreated.id)).resolves.toBeInstanceOf(Test);
   expect(getTests()).resolves.toHaveLength(11);
@@ -35,7 +36,7 @@ test("Update test", async () => {
   const testUpdated = await updateTest(1, {
     userId: 1,
     questionId: 1,
-    active: false
+    active: false,
   });
   expect(getTest(testUpdated.id)).resolves.toBeInstanceOf(Test);
   expect(getTest(testUpdated.id)).resolves.toHaveProperty("active", false);

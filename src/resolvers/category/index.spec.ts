@@ -4,7 +4,13 @@ import { CategoryResolver } from ".";
 
 dbConnection();
 
-const { getCategories, getCategory, createCategory, updateCategory, deleteCategory } = new CategoryResolver();
+const {
+  getCategories,
+  getCategory,
+  createCategory,
+  updateCategory,
+  deleteCategory,
+} = new CategoryResolver();
 
 test("Get all categories", () => {
   expect(getCategories()).resolves.toHaveLength(10);
@@ -34,10 +40,9 @@ test("Create category", async () => {
 test("Get error if tries to create a category with incorrect name length", () => {
   expect(
     createCategory({
-      name:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
+      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      active: false
+      active: false,
     })
   ).rejects.toThrowError();
 });
@@ -49,9 +54,18 @@ test("Update category", async () => {
     active: false,
   });
   expect(getCategory(categoryUpdated.id)).resolves.toBeInstanceOf(Category);
-  expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty("name", "automobile");
-  expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty("description", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+  expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
+  expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty(
+    "name",
+    "automobile"
+  );
+  expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty(
+    "description",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  );
 });
 
 test("Delete category", async () => {

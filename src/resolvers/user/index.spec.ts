@@ -4,7 +4,8 @@ import { UserResolver } from ".";
 
 dbConnection();
 
-const { getUsers, getUser, createUser, updateUser, deleteUser } = new UserResolver();
+const { getUsers, getUser, createUser, updateUser, deleteUser } =
+  new UserResolver();
 
 test("Get all users", () => {
   expect(getUsers()).resolves.toHaveLength(10);
@@ -25,31 +26,38 @@ test("Create user", async () => {
   const userCreated = await createUser({
     name: "Javier Fernando González Montalvo",
     email: "test@mail.com",
-    active: true
+    active: true,
   });
   expect(getUser(userCreated.id)).resolves.toBeInstanceOf(User);
   expect(getUsers()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a user with incorrect name length", () => {
-  expect(createUser({
-      name:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
+  expect(
+    createUser({
+      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       email: "test@mail.com",
-      active: true
-    })).rejects.toThrowError();
+      active: true,
+    })
+  ).rejects.toThrowError();
 });
 
 test("Update user", async () => {
   const userUpdated = await updateUser(1, {
     name: "Javier Fernando González Montalvo",
     email: "lorem@mail.com",
-    active: false
+    active: false,
   });
   expect(getUser(userUpdated.id)).resolves.toBeInstanceOf(User);
   expect(getUser(userUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(getUser(userUpdated.id)).resolves.toHaveProperty("name", "Javier Fernando González Montalvo");
-  expect(getUser(userUpdated.id)).resolves.toHaveProperty("email", "lorem@mail.com");
+  expect(getUser(userUpdated.id)).resolves.toHaveProperty(
+    "name",
+    "Javier Fernando González Montalvo"
+  );
+  expect(getUser(userUpdated.id)).resolves.toHaveProperty(
+    "email",
+    "lorem@mail.com"
+  );
 });
 
 test("Delete user", async () => {

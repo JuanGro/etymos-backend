@@ -4,7 +4,8 @@ import { VersionResolver } from ".";
 
 dbConnection();
 
-const { getVersions, getVersion, createVersion, updateVersion, deleteVersion } = new VersionResolver();
+const { getVersions, getVersion, createVersion, updateVersion, deleteVersion } =
+  new VersionResolver();
 
 test("Get all versions", () => {
   expect(getVersions()).resolves.toHaveLength(10);
@@ -26,20 +27,22 @@ test("Create version", async () => {
     version: "1.0.0",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     maintenance: false,
-    active: true
+    active: true,
   });
   expect(getVersion(versionCreated.id)).resolves.toBeInstanceOf(Version);
   expect(getVersions()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a version with incorrect name length", () => {
-  expect(createVersion({
+  expect(
+    createVersion({
       version:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       maintenance: true,
-      active: true
-    })).rejects.toThrowError();
+      active: true,
+    })
+  ).rejects.toThrowError();
 });
 
 test("Update version", async () => {
@@ -47,13 +50,25 @@ test("Update version", async () => {
     version: "1.1.0",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     maintenance: false,
-    active: false
+    active: false,
   });
   expect(getVersion(versionUpdated.id)).resolves.toBeInstanceOf(Version);
-  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty("maintenance", false);
-  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty("version", "1.1.0");
-  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty("description", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
+  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty(
+    "maintenance",
+    false
+  );
+  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty(
+    "version",
+    "1.1.0"
+  );
+  expect(getVersion(versionUpdated.id)).resolves.toHaveProperty(
+    "description",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  );
 });
 
 test("Delete version", async () => {

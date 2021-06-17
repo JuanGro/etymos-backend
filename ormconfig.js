@@ -4,7 +4,7 @@ const {
   DATABASE_PORT,
   DATABASE_USER,
   DATABASE_PASSWORD,
-  DATABASE_NAME
+  DATABASE_NAME,
 } = process.env;
 
 module.exports = {

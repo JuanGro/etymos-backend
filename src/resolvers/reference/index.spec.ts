@@ -4,7 +4,13 @@ import { ReferenceResolver } from ".";
 
 dbConnection();
 
-const { getReferences, getReference, createReference, updateReference, deleteReference } = new ReferenceResolver();
+const {
+  getReferences,
+  getReference,
+  createReference,
+  updateReference,
+  deleteReference,
+} = new ReferenceResolver();
 
 test("Get all references", () => {
   expect(getReferences()).resolves.toHaveLength(10);
@@ -28,22 +34,24 @@ test("Create reference", async () => {
     publicationYear: "1990",
     publicationPlace: "Barcelona, España",
     publishingCompany: "Trillas Editorial",
-    active: true
+    active: true,
   });
   expect(getReference(referenceCreated.id)).resolves.toBeInstanceOf(Reference);
   expect(getReferences()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a reference with incorrect name length", () => {
-  expect(createReference({
+  expect(
+    createReference({
       author:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       title: "Don Quijote de la Mancha",
       publicationYear: "1990",
       publicationPlace: "Barcelona, España",
       publishingCompany: "Trillas Editorial",
-      active: true
-    })).rejects.toThrowError();
+      active: true,
+    })
+  ).rejects.toThrowError();
 });
 
 test("Update reference", async () => {
@@ -53,15 +61,33 @@ test("Update reference", async () => {
     publicationYear: "1990",
     publicationPlace: "Barcelona, España",
     publishingCompany: "Trillas Editorial",
-    active: false
+    active: false,
   });
   expect(getReference(referenceUpdated.id)).resolves.toBeInstanceOf(Reference);
-  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty("title", "Lorem ipsum");
-  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty("author", "Miguel de Cervantes Saavedra");
-  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty("publicationYear", "1990");
-  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty("publicationPlace", "Barcelona, España");
-  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty("publishingCompany", "Trillas Editorial");
+  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
+  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
+    "title",
+    "Lorem ipsum"
+  );
+  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
+    "author",
+    "Miguel de Cervantes Saavedra"
+  );
+  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
+    "publicationYear",
+    "1990"
+  );
+  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
+    "publicationPlace",
+    "Barcelona, España"
+  );
+  expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
+    "publishingCompany",
+    "Trillas Editorial"
+  );
 });
 
 test("Delete reference", async () => {
