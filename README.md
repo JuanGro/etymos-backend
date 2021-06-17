@@ -1,1 +1,1 @@
-<*a href="https://snyk.io/test/github/JuanGro/etymos-backend">
+[![Known Vulnerabilities](https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg)](https://snyk.io/test/github/JuanGro/etymos-backend)
