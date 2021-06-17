@@ -4,35 +4,35 @@ import { OptionResolver } from ".";
 
 dbConnection();
 
-const optionResolver = new OptionResolver();
+const { getOptions, getOption, createOption, updateOption, deleteOption } = new OptionResolver();
 
 test("Get all options", () => {
-  expect(optionResolver.getOptions()).resolves.toHaveLength(10);
+  expect(getOptions()).resolves.toHaveLength(10);
 });
 
 test("Get option", async () => {
-  const options = await optionResolver.getOptions();
+  const options = await getOptions();
   const firstOption = options[0];
-  expect(optionResolver.getOption(firstOption.id)).resolves.toBeInstanceOf(Option);
+  expect(getOption(firstOption.id)).resolves.toBeInstanceOf(Option);
 });
 
 test("Get error if option does not exist", () => {
-  expect(optionResolver.getOption(10000)).rejects.toThrowError();
+  expect(getOption(10000)).rejects.toThrowError();
 });
 
 test("Create option", async () => {
-  expect(optionResolver.getOptions()).resolves.toHaveLength(10);
-  const optionCreated = await optionResolver.createOption({
+  expect(getOptions()).resolves.toHaveLength(10);
+  const optionCreated = await createOption({
     option: "lorem",
     correct: true,
     active: true
   });
-  expect(optionResolver.getOption(optionCreated.id)).resolves.toBeInstanceOf(Option);
-  expect(optionResolver.getOptions()).resolves.toHaveLength(11);
+  expect(getOption(optionCreated.id)).resolves.toBeInstanceOf(Option);
+  expect(getOptions()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create an option with incorrect name length", () => {
-  expect(optionResolver.createOption({
+  expect(createOption({
     option:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
     correct: false,
@@ -41,25 +41,25 @@ test("Get error if tries to create an option with incorrect name length", () => 
 });
 
 test("Update option", async () => {
-  const optionUpdated = await optionResolver.updateOption(1, {
+  const optionUpdated = await updateOption(1, {
     option: "lorem ipsum",
     correct: true,
     active: false
   });
-  expect(optionResolver.getOption(optionUpdated.id)).resolves.toBeInstanceOf(Option);
-  expect(optionResolver.getOption(optionUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(optionResolver.getOption(optionUpdated.id)).resolves.toHaveProperty("correct", true);
-  expect(optionResolver.getOption(optionUpdated.id)).resolves.toHaveProperty("option", "lorem ipsum");
+  expect(getOption(optionUpdated.id)).resolves.toBeInstanceOf(Option);
+  expect(getOption(optionUpdated.id)).resolves.toHaveProperty("active", false);
+  expect(getOption(optionUpdated.id)).resolves.toHaveProperty("correct", true);
+  expect(getOption(optionUpdated.id)).resolves.toHaveProperty("option", "lorem ipsum");
 });
 
 test("Delete option", async () => {
-  expect(optionResolver.getOptions()).resolves.toHaveLength(11);
-  const options = await optionResolver.getOptions();
+  expect(getOptions()).resolves.toHaveLength(11);
+  const options = await getOptions();
   const lastOption: Option = options[options.length - 1];
-  expect(optionResolver.deleteOption(lastOption.id)).resolves.toEqual(true);
-  expect(optionResolver.getOptions()).resolves.toHaveLength(10);
+  expect(deleteOption(lastOption.id)).resolves.toEqual(true);
+  expect(getOptions()).resolves.toHaveLength(10);
 });
 
 test("Get error if tries to delete an option inexistent", async () => {
-  expect(optionResolver.deleteOption(10000)).rejects.toThrowError();
+  expect(deleteOption(10000)).rejects.toThrowError();
 });

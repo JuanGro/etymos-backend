@@ -4,25 +4,25 @@ import { EtymologyResolver } from ".";
 
 dbConnection();
 
-const etymologyResolver = new EtymologyResolver();
+const { getEtymologies, getEtymology, createEtymology, updateEtymology, deleteEtymology } = new EtymologyResolver();
 
 test("Get all etymologies", () => {
-  expect(etymologyResolver.getEtymologies()).resolves.toHaveLength(10);
+  expect(getEtymologies()).resolves.toHaveLength(10);
 });
 
 test("Get etymology", async () => {
-  const etymologies = await etymologyResolver.getEtymologies();
+  const etymologies = await getEtymologies();
   const firstEtymology = etymologies[0];
-  expect(etymologyResolver.getEtymology(firstEtymology.id)).resolves.toBeInstanceOf(Etymology);
+  expect(getEtymology(firstEtymology.id)).resolves.toBeInstanceOf(Etymology);
 });
 
 test("Get error if etymology does not exist", () => {
-  expect(etymologyResolver.getEtymology(10000)).rejects.toThrowError();
+  expect(getEtymology(10000)).rejects.toThrowError();
 });
 
 test("Create etymology", async () => {
-  expect(etymologyResolver.getEtymologies()).resolves.toHaveLength(10);
-  const etymologyCreated = await etymologyResolver.createEtymology({
+  expect(getEtymologies()).resolves.toHaveLength(10);
+  const etymologyCreated = await createEtymology({
     graecoLatinEtymology: "ἐτυμος",
     meaning: "etymos",
     imageUrl:
@@ -31,12 +31,12 @@ test("Create etymology", async () => {
     languageId: 1,
     active: true
   });
-  expect(etymologyResolver.getEtymology(etymologyCreated.id)).resolves.toBeInstanceOf(Etymology);
-  expect(etymologyResolver.getEtymologies()).resolves.toHaveLength(11);
+  expect(getEtymology(etymologyCreated.id)).resolves.toBeInstanceOf(Etymology);
+  expect(getEtymologies()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create an etymology with incorrect type length", () => {
-  expect(etymologyResolver.createEtymology({
+  expect(createEtymology({
       graecoLatinEtymology: "ἐτυμος",
       meaning: "etymos",
       imageUrl:
@@ -48,7 +48,7 @@ test("Get error if tries to create an etymology with incorrect type length", () 
 });
 
 test("Update etymology", async () => {
-  const etymologyUpdated = await etymologyResolver.updateEtymology(1, {
+  const etymologyUpdated = await updateEtymology(1, {
     graecoLatinEtymology: "lorem",
     meaning: "lorem",
     imageUrl:
@@ -57,21 +57,21 @@ test("Update etymology", async () => {
     languageId: 1,
     active: false
   });
-  expect(etymologyResolver.getEtymology(etymologyUpdated.id)).resolves.toBeInstanceOf(Etymology);
-  expect(etymologyResolver.getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(etymologyResolver.getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("graecoLatinEtymology", "lorem");
-  expect(etymologyResolver.getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("meaning", "lorem");
-  expect(etymologyResolver.getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("imageUrl", "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg");
+  expect(getEtymology(etymologyUpdated.id)).resolves.toBeInstanceOf(Etymology);
+  expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("active", false);
+  expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("graecoLatinEtymology", "lorem");
+  expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("meaning", "lorem");
+  expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty("imageUrl", "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg");
 });
 
 test("Delete etymology", async () => {
-  expect(etymologyResolver.getEtymologies()).resolves.toHaveLength(11);
-  const etymologies = await etymologyResolver.getEtymologies();
+  expect(getEtymologies()).resolves.toHaveLength(11);
+  const etymologies = await getEtymologies();
   const lastEtymology = etymologies[etymologies.length - 1];
-  expect(etymologyResolver.deleteEtymology(lastEtymology.id)).resolves.toEqual(true);
-  expect(etymologyResolver.getEtymologies()).resolves.toHaveLength(10);
+  expect(deleteEtymology(lastEtymology.id)).resolves.toEqual(true);
+  expect(getEtymologies()).resolves.toHaveLength(10);
 });
 
 test("Get error if tries to delete an etymology inexistent", () => {
-  expect(etymologyResolver.deleteEtymology(10000)).rejects.toThrowError();
+  expect(deleteEtymology(10000)).rejects.toThrowError();
 });

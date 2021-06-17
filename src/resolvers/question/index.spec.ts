@@ -4,35 +4,35 @@ import { QuestionResolver } from ".";
 
 dbConnection();
 
-const questionResolver = new QuestionResolver();
+const { getQuestions, getQuestion, createQuestion, updateQuestion, deleteQuestion } = new QuestionResolver();
 
 test("Get all questions", () => {
-  expect(questionResolver.getQuestions()).resolves.toHaveLength(10);
+  expect(getQuestions()).resolves.toHaveLength(10);
 });
 
 test("Get question", async () => {
-  const questions = await questionResolver.getQuestions();
+  const questions = await getQuestions();
   const firstQuestion = questions[0];
-  expect(questionResolver.getQuestion(firstQuestion.id)).resolves.toBeInstanceOf(Question);
+  expect(getQuestion(firstQuestion.id)).resolves.toBeInstanceOf(Question);
 });
 
 test("Get error if question does not exist", () => {
-  expect(questionResolver.getQuestion(10000)).rejects.toThrowError();
+  expect(getQuestion(10000)).rejects.toThrowError();
 });
 
 test("Create question", async () => {
-  expect(questionResolver.getQuestions()).resolves.toHaveLength(10);
-  const questionCreated = await questionResolver.createQuestion({
+  expect(getQuestions()).resolves.toHaveLength(10);
+  const questionCreated = await createQuestion({
     sentence: "El ___ estuvo en el agua durante un largo periodo de tiempo",
     active: true,
     referenceId: 1
   });
-  expect(questionResolver.getQuestion(questionCreated.id)).resolves.toBeInstanceOf(Question);
-  expect(questionResolver.getQuestions()).resolves.toHaveLength(11);
+  expect(getQuestion(questionCreated.id)).resolves.toBeInstanceOf(Question);
+  expect(getQuestions()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a question with incorrect name length", () => {
-  expect(questionResolver.createQuestion({
+  expect(createQuestion({
       sentence:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a odio at metus egestas commodo. Quisque vel imperdiet tellus. Morbi eu ante efficitur, congue justo maximus, sollicitudin velit. Fusce at pharetra lectus. Fusce neque urna, rutrum in quam vitae, condimentum mattis turpis. Praesent accumsan lobortis sollicitudin. Vestibulum urna libero, gravida in lorem sit amet, ultricies volutpat diam. Mauris cursus eros elit, vestibulum vehicula libero ultrices at. Curabitur sed lectus nec lectus iaculis varius iaculis sed augue. Ut ut diam eget nibh gravida varius id in risus. Curabitur vel ultrices quam. Quisque viverra in erat ut molestie. Vestibulum rhoncus sapien sit amet iaculis fermentum. Fusce sagittis blandit nisi ut consectetur.\n\
         Sed eget ultrices ante, sit amet luctus justo. Donec elit enim, venenatis eu magna at, faucibus scelerisque mauris. In ut tempor urna. Duis posuere ligula odio. Morbi a condimentum felis. Cras auctor, tortor eget condimentum dignissim, eros enim laoreet lectus, ut hendrerit leo nulla eu est. Sed vitae luctus dui, sit amet blandit ante. Vestibulum bibendum massa odio.\n\
@@ -44,23 +44,23 @@ test("Get error if tries to create a question with incorrect name length", () =>
 });
 
 test("Update question", async () => {
-  const questionUpdated = await questionResolver.updateQuestion(1, {
+  const questionUpdated = await updateQuestion(1, {
     sentence: "El ___ estuvo en el agua por mucho tiempo",
     active: false,
     referenceId: 1
   });
-  expect(questionResolver.getQuestion(questionUpdated.id)).resolves.toBeInstanceOf(Question);
-  expect(questionResolver.getQuestion(questionUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(questionResolver.getQuestion(questionUpdated.id)).resolves.toHaveProperty("sentence", "El ___ estuvo en el agua por mucho tiempo");
+  expect(getQuestion(questionUpdated.id)).resolves.toBeInstanceOf(Question);
+  expect(getQuestion(questionUpdated.id)).resolves.toHaveProperty("active", false);
+  expect(getQuestion(questionUpdated.id)).resolves.toHaveProperty("sentence", "El ___ estuvo en el agua por mucho tiempo");
 
 test("Delete question", async () => {
-  expect(questionResolver.getQuestions()).resolves.toHaveLength(11);
-  const questions = await questionResolver.getQuestions();
+  expect(getQuestions()).resolves.toHaveLength(11);
+  const questions = await getQuestions();
   const lastQuestion = questions[questions.length - 1];
-  expect(questionResolver.deleteQuestion(lastQuestion.id)).resolves.toEqual(true);
-  expect(questionResolver.getQuestions()).resolves.toHaveLength(10);
+  expect(deleteQuestion(lastQuestion.id)).resolves.toEqual(true);
+  expect(getQuestions()).resolves.toHaveLength(10);
 });
 
 test("Get error if tries to delete a question inexistent", () => {
-  expect(questionResolver.deleteQuestion(10000)).rejects.toThrowError();
+  expect(deleteQuestion(10000)).rejects.toThrowError();
 });

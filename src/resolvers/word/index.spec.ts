@@ -4,25 +4,25 @@ import { WordResolver } from ".";
 
 dbConnection();
 
-const wordResolver = new WordResolver();
+const { getWords, getWord, createWord, updateWord, deleteWord } = new WordResolver();
 
 test("Get all words", () => {
-  expect(wordResolver.getWords()).resolves.toHaveLength(10);
+  expect(getWords()).resolves.toHaveLength(10);
 });
 
 test("Get word", async () => {
-  const words = await wordResolver.getWords();
+  const words = await getWords();
   const firstWord = words[0];
-  expect(wordResolver.getWord(firstWord.id)).resolves.toBeInstanceOf(Word);
+  expect(getWord(firstWord.id)).resolves.toBeInstanceOf(Word);
 });
 
 test("Get error if word does not exist", () => {
-  expect(wordResolver.getWord(10000)).rejects.toThrowError();
+  expect(getWord(10000)).rejects.toThrowError();
 });
 
 test("Create word", async () => {
-  expect(wordResolver.getWords()).resolves.toHaveLength(10);
-  const wordCreated = await wordResolver.createWord({
+  expect(getWords()).resolves.toHaveLength(10);
+  const wordCreated = await createWord({
     word: "Lorem",
     meaning: "Lorem ipsum dolor sit amet",
     imageUrl:
@@ -30,12 +30,12 @@ test("Create word", async () => {
     categoryId: 1,
     active: true
   });
-  expect(wordResolver.getWord(wordCreated.id)).resolves.toBeInstanceOf(Word);
-  expect(wordResolver.getWords()).resolves.toHaveLength(11);
+  expect(getWord(wordCreated.id)).resolves.toBeInstanceOf(Word);
+  expect(getWords()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a word with incorrect name length", async () => {
-  expect(wordResolver.createWord({
+  expect(createWord({
       word:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       meaning: "Lorem ipsum dolor sit amet",
@@ -47,7 +47,7 @@ test("Get error if tries to create a word with incorrect name length", async () 
 });
 
 test("Update word", async () => {
-  const wordUpdated = await wordResolver.updateWord(1, {
+  const wordUpdated = await updateWord(1, {
     word: "Lorems",
     meaning: "Lorem ipsum dolor sit amet",
     imageUrl:
@@ -55,21 +55,21 @@ test("Update word", async () => {
     categoryId: 1,
     active: false
   });
-  expect(wordResolver.getWord(wordUpdated.id)).resolves.toBeInstanceOf(Word);
-  expect(wordResolver.getWord(wordUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(wordResolver.getWord(wordUpdated.id)).resolves.toHaveProperty("word", "Lorems");
-  expect(wordResolver.getWord(wordUpdated.id)).resolves.toHaveProperty("meaning", "Lorem ipsum dolor sit amet");
-  expect(wordResolver.getWord(wordUpdated.id)).resolves.toHaveProperty("imageUrl", "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg");
+  expect(getWord(wordUpdated.id)).resolves.toBeInstanceOf(Word);
+  expect(getWord(wordUpdated.id)).resolves.toHaveProperty("active", false);
+  expect(getWord(wordUpdated.id)).resolves.toHaveProperty("word", "Lorems");
+  expect(getWord(wordUpdated.id)).resolves.toHaveProperty("meaning", "Lorem ipsum dolor sit amet");
+  expect(getWord(wordUpdated.id)).resolves.toHaveProperty("imageUrl", "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg");
 });
 
 test("Delete word", async () => {
-  expect(wordResolver.getWords()).resolves.toHaveLength(11);
-  const words = await wordResolver.getWords();
+  expect(getWords()).resolves.toHaveLength(11);
+  const words = await getWords();
   const lastWord = words[words.length - 1];
-  expect(wordResolver.deleteWord(lastWord.id)).resolves.toEqual(true);
-  expect(wordResolver.getWords()).resolves.toHaveLength(10);
+  expect(deleteWord(lastWord.id)).resolves.toEqual(true);
+  expect(getWords()).resolves.toHaveLength(10);
 });
 
 test("Get error if tries to delete a word inexistent", () => {
-  expect(wordResolver.deleteWord(10000)).rejects.toThrowError();
+  expect(deleteWord(10000)).rejects.toThrowError();
 });
