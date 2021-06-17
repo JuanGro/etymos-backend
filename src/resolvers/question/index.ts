@@ -3,7 +3,11 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreateQuestionInput } from "../../inputs/CreateQuestionInput";
 import { UpdateQuestionInput } from "../../inputs/UpdateQuestionInput";
 import { Question } from "../../models/Question";
-import { ID_PARAM, DATA_PARAM, QUESTION_NOT_FOUND } from "../../config/messages";
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  QUESTION_NOT_FOUND,
+} from "../../config/messages";
 
 @Resolver()
 export class QuestionResolver {

@@ -3,7 +3,11 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreateReferenceInput } from "../../inputs/CreateReferenceInput";
 import { UpdateReferenceInput } from "../../inputs/UpdateReferenceInput";
 import { Reference } from "../../models/Reference";
-import { ID_PARAM, DATA_PARAM, REFERENCE_NOT_FOUND } from "../../config/messages";
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  REFERENCE_NOT_FOUND,
+} from "../../config/messages";
 
 @Resolver()
 export class ReferenceResolver {

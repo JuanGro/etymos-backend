@@ -32,7 +32,7 @@ test:
     default: [image]
   before_script:
     - cat $TESTING_ENV_FILE > .env
-  script: 
+  script:
     - npm run migrate
     - npm run test
     - npm run schema:drop:test
@@ -78,7 +78,7 @@ upload:production:
   inherit:
     default: [image]
   script: npm run migrate
-  after_script: 
+  after_script:
     - rm .env
 
 migrate:staging:
@@ -107,13 +107,13 @@ migrate:production:
 deploy:staging:
   <<: *deploy
   only: [staging]
-  needs: ['upload:staging']
+  needs: ["upload:staging"]
   variables:
     NODE_ENV: staging
 
 deploy:production:
   <<: *deploy
   only: [master]
-  needs: ['upload:production']
+  needs: ["upload:production"]
   variables:
     NODE_ENV: production
