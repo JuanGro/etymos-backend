@@ -12,8 +12,8 @@ test("Get all categories", () => {
 
 test("Get category", async () => {
   const categories = await getCategories();
-  const { id } = categories[0];
-  expect(getCategory(id)).resolves.toBeInstanceOf(Category);
+  const firstCategory = categories[0];
+  expect(getCategory(firstCategory.id)).resolves.toBeInstanceOf(Category);
 });
 
 test("Get error if category does not exist", () => {
