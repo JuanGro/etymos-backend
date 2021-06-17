@@ -3,7 +3,11 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreateCategoryInput } from "../../inputs/CreateCategoryInput";
 import { UpdateCategoryInput } from "../../inputs/UpdateCategoryInput";
 import { Category } from "../../models/Category";
-import { ID_PARAM, DATA_PARAM, CATEGORY_NOT_FOUND } from "../../config/messages";
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  CATEGORY_NOT_FOUND,
+} from "../../config/messages";
 
 @Resolver()
 export class CategoryResolver {

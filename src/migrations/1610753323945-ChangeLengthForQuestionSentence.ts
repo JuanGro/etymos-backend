@@ -1,7 +1,8 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class ChangeLengthForQuestionSentence1610753323945
-  implements MigrationInterface {
+  implements MigrationInterface
+{
   name = "ChangeLengthForQuestionSentence1610753323945";
 
   public async up(queryRunner: QueryRunner): Promise<void> {

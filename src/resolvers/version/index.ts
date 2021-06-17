@@ -23,7 +23,9 @@ export class VersionResolver {
   }
 
   @Mutation(() => Version)
-  async createVersion(@Arg(DATA_PARAM) data: CreateVersionInput): Promise<Version> {
+  async createVersion(
+    @Arg(DATA_PARAM) data: CreateVersionInput
+  ): Promise<Version> {
     const version = Version.create(data);
     await version.save();
     return version;

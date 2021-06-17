@@ -23,7 +23,9 @@ export class PatternResolver {
   }
 
   @Mutation(() => Pattern)
-  async createPattern(@Arg(DATA_PARAM) data: CreatePatternInput): Promise<Pattern> {
+  async createPattern(
+    @Arg(DATA_PARAM) data: CreatePatternInput
+  ): Promise<Pattern> {
     const pattern = Pattern.create(data);
     await pattern.save();
     return pattern;

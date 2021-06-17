@@ -23,7 +23,9 @@ export class OptionResolver {
   }
 
   @Mutation(() => Option)
-  async createOption(@Arg(DATA_PARAM) data: CreateOptionInput): Promise<Option> {
+  async createOption(
+    @Arg(DATA_PARAM) data: CreateOptionInput
+  ): Promise<Option> {
     const option = Option.create(data);
     await option.save();
     return option;
