@@ -1,0 +1,28 @@
+version: "3"
+services:
+  database:
+    container_name: postgres-database
+    image: postgres:13.2-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+
+  backend:
+    container_name: graphql-backend
+    # To get the Dockerfile in that path
+    build: ./
+    # To reload the container with nodemon!
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 4000:4000
+    depends_on:
+      - database
+    links:
+      - database
+    environment:
+      DATABASE_HOST: database
+      #The other variables are in .env

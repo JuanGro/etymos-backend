@@ -1,0 +1,7 @@
+.env
+.DS_Store
+.vscode*
+.prettierrc
+
+node_modules/
+build/
