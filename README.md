@@ -1,2 +1,1 @@
-<p>package.json</p>
 <a href="https://snyk.io/test/github/JuanGro/etymos-backend"><img src="https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/JuanGro/etymos-backend" style="max-width:100%;"></a>
