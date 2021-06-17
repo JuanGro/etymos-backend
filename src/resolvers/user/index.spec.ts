@@ -50,6 +50,7 @@ test("Update user", async () => {
   expect(getUser(userUpdated.id)).resolves.toHaveProperty("active", false);
   expect(getUser(userUpdated.id)).resolves.toHaveProperty("name", "Javier Fernando González Montalvo");
   expect(getUser(userUpdated.id)).resolves.toHaveProperty("email", "lorem@mail.com");
+});
 
 test("Delete user", async () => {
   expect(getUsers()).resolves.toHaveLength(11);

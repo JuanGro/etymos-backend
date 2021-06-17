@@ -52,6 +52,7 @@ test("Update question", async () => {
   expect(getQuestion(questionUpdated.id)).resolves.toBeInstanceOf(Question);
   expect(getQuestion(questionUpdated.id)).resolves.toHaveProperty("active", false);
   expect(getQuestion(questionUpdated.id)).resolves.toHaveProperty("sentence", "El ___ estuvo en el agua por mucho tiempo");
+});
 
 test("Delete question", async () => {
   expect(getQuestions()).resolves.toHaveLength(11);
