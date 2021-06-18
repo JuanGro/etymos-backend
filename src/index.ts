@@ -38,7 +38,6 @@ async function main() {
                   if (ctx.operation) {
                     scope.setTag("kind", ctx.operation.operation);
                   }
-                  1.0;
 
                   // Log query and variables as extras (make sure to strip out sensitive data!)
                   scope.setExtra("query", ctx.request.query);
