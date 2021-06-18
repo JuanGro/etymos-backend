@@ -1,21 +1,13 @@
 import "reflect-metadata";
 import { createConnection, getConnection } from "typeorm";
 
-export async function dbConnection() {
-  beforeAll(async () => {
-    try {
-      await createConnection();
-    } catch (error) {
-      console.error(error);
-    }
+export function dbConnection() {
+  beforeAll(() => {
+    createConnection().catch(err => console.error(err));
   });
 
-  afterAll(async () => {
-    try {
-      const testingConnection = getConnection();
-      await testingConnection.close();
-    } catch (error) {
-      console.error(error);
-    }
+  afterAll(() => {
+    const testingConnection = getConnection();
+    testingConnection.close().catch(err => console.error(err));
   });
 }
