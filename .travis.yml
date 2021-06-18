@@ -29,9 +29,5 @@ jobs:
   include:
     - stage: lint
       script: npm run lint
-    - stage: migrate
-      script: npm run migrate
-    - stage: seed
-      script: npm run seed:run:test
     - stage: test
       script: npm run test:ci
