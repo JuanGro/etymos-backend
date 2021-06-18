@@ -2,12 +2,12 @@ import "reflect-metadata";
 import { createConnection, getConnection } from "typeorm";
 
 export function dbConnection() {
-  beforeAll(() => {
-    createConnection().catch(err => {throw new Error(err)});
+  beforeAll(async () => {
+    await createConnection().catch(err => {throw new Error(err)});
   });
 
-  afterAll(() => {
+  afterAll(async () => {
     const testingConnection = getConnection();
-    testingConnection.close().catch(err => {throw new Error(err)});
+    await testingConnection.close().catch(err => {throw new Error(err)});
   });
 }
