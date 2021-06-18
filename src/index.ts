@@ -83,7 +83,7 @@ async function main() {
   await server.listen(NODE_PORT);
 
   // tslint:disable-next-line: no-console
-  console.log("Server has started!");
+  console.info(`Server has started in port ${NODE_PORT}`);
 }
 
 main();
