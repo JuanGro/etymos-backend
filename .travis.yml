@@ -13,16 +13,14 @@ env:
   DATABASE_HOST=0.0.0.0
   DATABASE_PORT=5432
   DATABASE_NAME=travis-testing
-  DATABASE_USER=travis
+  DATABASE_USER=postgres
   DATABASE_PASSWORD=7!Zpv9tWQmsMYP%kJa!84$2%d2f%j6$F
 
 install:
   - npm ci
 
 before_script:
-  - psql --command "CREATE USER ${DATABASE_USER};"
-  - psql --command "CREATE DATABASE ${DATABASE_NAME} WITH PASSWORD = ${DATABASE_PASSWORD};"
-  - psql --command "GRANT ALL PRIVILEGES ON DATABASE ${DATABASE_NAME} TO ${DATABASE_USER};"
+  - psql --command 'CREATE DATABASE ${DATABASE_NAME} WITH PASSWORD = ${DATABASE_PASSWORD};' -U postgres
 
 script:
   - npm run lint
