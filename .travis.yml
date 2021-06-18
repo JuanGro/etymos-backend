@@ -1,3 +1,9 @@
 language: node_js
 node_js:
   - 16
+
+before_install:
+  - npm ci
+
+script:
+  - npm lint
