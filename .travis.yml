@@ -20,7 +20,7 @@ install:
   - npm ci
 
 before_script:
-  - psql -c 'CREATE DATABASE ${DATABASE_NAME} WITH PASSWORD = ${DATABASE_PASSWORD};' -U postgres
+  - psql --command "CREATE DATABASE ${DATABASE_NAME} WITH PASSWORD = ${DATABASE_PASSWORD};" -U postgres
 
 script:
   - npm run lint
