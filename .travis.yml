@@ -7,8 +7,13 @@ services:
 
 env:
   NODE_ENV=testing
+  NODE_PORT=4000
   PRODUCTION_ENV=production
+  DATABASE_TYPE=postgres
+  DATABASE_HOST=0.0.0.0
+  DATABASE_PORT=5432
   DATABASE_NAME=testing
+  DATABASE_USER=postgres
 
 install:
   - npm ci
