@@ -2,18 +2,20 @@ import "reflect-metadata";
 import { createConnection, getConnection } from "typeorm";
 
 export function dbConnection() {
-  beforeAll(() => {
-    return new Promise<void>(resolve => {
-      createConnection();
-      resolve();
-    });
+  beforeAll(async () => {
+    try {
+      await createConnection();
+    } catch (error) {
+      throw new Error(error);
+    }
   });
 
-  afterAll(() => {
-    return new Promise<void>(resolve => {
+  afterAll(async () => {
+    try {
       const testingConnection = getConnection();
-      testingConnection.close();
-      resolve();
-    });
+      await testingConnection.close();
+    } catch (error) {
+      throw new Error(error);
+    }
   });
 }
