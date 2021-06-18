@@ -5,11 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "start": "nodemon -w src --ext ts --exec ts-node src/index.ts",
-    "start:development": "npm run migrate && npm start",
     "start:production": "ts-node ./src/index.ts",
     "build": "tsc -p tsconfig.json",
     "build:clean": "rimraf ./build && npm run build",
-    "test": "npm run seed:run:test && DATABASE_NAME=etymos-testing jest --config jest.config.ts --detectOpenHandles",
+    "test": "npm run seed:run:test && jest --config jest.config.ts --detectOpenHandles",
     "lint": "tslint -p tsconfig.json",
     "prettier": "prettier --write \"**\"",
     "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
@@ -19,13 +18,8 @@
     "revertmigrations": "ts-node ./node_modules/typeorm/cli.js migration:revert",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "migrate:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js migration:run",
-    "showmigrations:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js migration:show",
-    "revertmigrations:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js migration:revert",
-    "schema:drop:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js schema:drop",
-    "schema:sync:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "seed:config:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
-    "seed:run:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --seed Testing"
+    "seed:config:test": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run:test": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --seed Testing"
   },
   "keywords": [],
   "author": "Juan Manuel Guerrero Hernández",
