@@ -6,4 +6,4 @@ before_install:
   - npm ci
 
 script:
-  - npm lint
+  - npm run lint
