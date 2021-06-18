@@ -16,7 +16,7 @@ services:
     build: ./
     # To reload the container with nodemon!
     volumes:
-      - .:/usr/src/app
+      - .:/app
     ports:
       - 4000:4000
     depends_on:
@@ -25,4 +25,5 @@ services:
       - database
     environment:
       DATABASE_HOST: database
-      #The other variables are in .env
+    env_file:
+      - .env
