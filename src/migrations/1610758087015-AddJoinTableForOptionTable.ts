@@ -1,7 +1,8 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class AddJoinTableForOptionTable1610758087015
-  implements MigrationInterface {
+  implements MigrationInterface
+{
   name = "AddJoinTableForOptionTable1610758087015";
 
   public async up(queryRunner: QueryRunner): Promise<void> {

@@ -1,9 +1,9 @@
-FROM node:15.10.0-slim
+FROM node:16-slim
 
 RUN npm install -g nodemon
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
