@@ -10,7 +10,7 @@ const {
   PRODUCTION_ENV,
   SENTRY_DSN,
   npm_package_name,
-  npm_package_version
+  npm_package_version,
 } = process.env;
 
 async function main() {
@@ -37,7 +37,8 @@ async function main() {
                   // Annotate whether failing operation was query/mutation/subscription
                   if (ctx.operation) {
                     scope.setTag("kind", ctx.operation.operation);
-                  }1.0
+                  }
+                  1.0;
 
                   // Log query and variables as extras (make sure to strip out sensitive data!)
                   scope.setExtra("query", ctx.request.query);
@@ -53,9 +54,8 @@ async function main() {
                   }
 
                   if (ctx.request.http) {
-                    const transactionId = ctx.request.http.headers.get(
-                      "x-transaction-id"
-                    );
+                    const transactionId =
+                      ctx.request.http.headers.get("x-transaction-id");
                     if (transactionId) {
                       scope.setTransaction(transactionId);
                     }
@@ -75,16 +75,15 @@ async function main() {
     // Configure Sentry
     Sentry.init({
       dsn: SENTRY_DSN,
-      release:
-        npm_package_name + "@" + npm_package_version,
-      environment: NODE_ENV
+      release: npm_package_name + "@" + npm_package_version,
+      environment: NODE_ENV,
     });
   }
 
   await server.listen(NODE_PORT);
 
   // tslint:disable-next-line: no-console
-  console.log("Server has started!");
+  console.info(`Server has started in port ${NODE_PORT}`);
 }
 
 main();

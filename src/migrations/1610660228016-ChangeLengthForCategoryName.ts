@@ -1,7 +1,8 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class ChangeLengthForCategoryName1610660228016
-  implements MigrationInterface {
+  implements MigrationInterface
+{
   name = "ChangeLengthForCategoryName1610660228016";
 
   public async up(queryRunner: QueryRunner): Promise<void> {

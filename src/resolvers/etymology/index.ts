@@ -3,7 +3,11 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreateEtymologyInput } from "../../inputs/CreateEtymologyInput";
 import { UpdateEtymologyInput } from "../../inputs/UpdateEtymologyInput";
 import { Etymology } from "../../models/Etymology";
-import { ID_PARAM, DATA_PARAM, ETYMOLOGY_NOT_FOUND } from "../../config/messages";
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  ETYMOLOGY_NOT_FOUND,
+} from "../../config/messages";
 
 @Resolver()
 export class EtymologyResolver {
