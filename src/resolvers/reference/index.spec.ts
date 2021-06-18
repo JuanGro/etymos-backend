@@ -1,8 +1,5 @@
 import { Reference } from "../../models/Reference";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { ReferenceResolver } from ".";
-
-dbConnection();
 
 const {
   getReferences,

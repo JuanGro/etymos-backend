@@ -1,8 +1,5 @@
 import { Word } from "../../models/Word";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { WordResolver } from ".";
-
-dbConnection();
 
 const { getWords, getWord, createWord, updateWord, deleteWord } =
   new WordResolver();
