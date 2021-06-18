@@ -27,7 +27,11 @@ install:
 before_script:
   - psql --command "CREATE DATABASE ${DATABASE_NAME};" -U postgres
 
-script:
-  - npm run lint
-  - npm run migrate
-  - npm run test:ci
+jobs:
+  include:
+    - stage: lint
+      script: npm run lint
+    - stage: migrate
+      script: npm run migrate
+    - stage: test
+      script: npm run test:ci
