@@ -1,7 +1,8 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
 export class ChangeTargetAndReplacementLength1610754966049
-  implements MigrationInterface {
+  implements MigrationInterface
+{
   name = "ChangeTargetAndReplacementLength1610754966049";
 
   public async up(queryRunner: QueryRunner): Promise<void> {
