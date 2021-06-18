@@ -3,11 +3,19 @@ import { createConnection, getConnection } from "typeorm";
 
 export async function dbConnection() {
   beforeAll(async () => {
-    await createConnection();
+    try {
+      await createConnection();
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   afterAll(async () => {
-    const testingConnection = getConnection();
-    await testingConnection.close();
+    try {
+      const testingConnection = getConnection();
+      await testingConnection.close();
+    } catch (error) {
+      console.error(error);
+    }
   });
 }
