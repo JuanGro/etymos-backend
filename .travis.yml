@@ -6,15 +6,15 @@ services:
   - postgresql
 
 env:
-  - NODE_ENV=testing
-  - NODE_PORT=4000
-  - PRODUCTION_ENV=production
-  - DATABASE_TYPE=postgres
-  - DATABASE_HOST=0.0.0.0
-  - DATABASE_PORT=5432
-  - DATABASE_NAME=travis-testing
-  - DATABASE_USER=travis
-  - DATABASE_PASSWORD=7!Zpv9tWQmsMYP%kJa!84$2%d2f%j6$F
+  NODE_ENV=testing
+  NODE_PORT=4000
+  PRODUCTION_ENV=production
+  DATABASE_TYPE=postgres
+  DATABASE_HOST=0.0.0.0
+  DATABASE_PORT=5432
+  DATABASE_NAME=travis-testing
+  DATABASE_USER=travis
+  DATABASE_PASSWORD=7!Zpv9tWQmsMYP%kJa!84$2%d2f%j6$F
 
 install:
   - npm ci
