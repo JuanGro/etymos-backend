@@ -1,8 +1,5 @@
 import { Test } from "../../models/Test";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { TestResolver } from ".";
-
-dbConnection();
 
 const { getTests, getTest, createTest, updateTest, deleteTest } =
   new TestResolver();
