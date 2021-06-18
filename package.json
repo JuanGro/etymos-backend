@@ -34,7 +34,7 @@
     "@sentry/node": "^5.29.2",
     "@sentry/tracing": "^5.29.2",
     "apollo-server": "^2.19.1",
-    "class-validator": "^0.13.0",
+    "class-validator": "^0.12.2",
     "graphql": "^15.5.0",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
