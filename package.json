@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json",
     "build:clean": "rimraf ./build && npm run build",
     "test": "npm run seed:run:test && jest --config jest.config.ts --detectOpenHandles",
-    "test:ci": "npm run seed:run:test && jest --config jest.config.ts --detectOpenHandles --ci --silent",
+    "test:ci": "npm run seed:run:test && jest --config jest.config.ts --detectOpenHandles --ci --silent --no-cache",
     "lint": "tslint -p tsconfig.json",
     "prettier": "prettier --write \"**\"",
     "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
