@@ -11,13 +11,13 @@ services:
   - postgresql
 
 env:
-  NODE_ENV=testing
+  NODE_ENV=test
   NODE_PORT=4000
   PRODUCTION_ENV=production
   DATABASE_TYPE=postgres
   DATABASE_HOST=0.0.0.0
   DATABASE_PORT=5432
-  DATABASE_NAME=testing
+  DATABASE_NAME=test
   DATABASE_USER=postgres
   DATABASE_PASSWORD=7oZpv9tWQmsMYP%kJaL84$2%d2f%j6$F
 
@@ -29,4 +29,4 @@ before_script:
 
 script:
   - npm run lint
-  - npm test
+  - npm test:ci
