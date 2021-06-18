@@ -18,4 +18,4 @@ COPY . .
 
 EXPOSE 4000
 
-CMD npm run migrate && npm start
+CMD npm run migrate && npm run test
