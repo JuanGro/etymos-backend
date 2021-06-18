@@ -1,4 +1,4 @@
-FROM node:15.10.0-slim
+FROM node:16-slim
 
 RUN npm install -g nodemon
 
