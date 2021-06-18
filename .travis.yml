@@ -1,9 +1,29 @@
 language: node_js
 node_js:
-  - 16
+  - node
 
-before_install:
+services:
+  - postgresql
+
+env:
+  - NODE_ENV=testing
+  - NODE_PORT=4000
+  - PRODUCTION_ENV=production
+  - DATABASE_TYPE=postgres
+  - DATABASE_HOST=0.0.0.0
+  - DATABASE_PORT=5432
+  - DATABASE_NAME=travis-testing
+  - DATABASE_USER=travis
+  - DATABASE_PASSWORD=7!Zpv9tWQmsMYP%kJa!84$2%d2f%j6$F
+
+install:
   - npm ci
+
+before_script:
+  - psql --command "CREATE USER ${DATABASE_USER};"
+  - psql --command "CREATE DATABASE ${DATABASE_NAME} WITH PASSWORD = ${DATABASE_PASSWORD};"
+  - psql --command "GRANT ALL PRIVILEGES ON DATABASE ${DATABASE_NAME} TO ${DATABASE_USER};"
 
 script:
   - npm run lint
+  - npm test
