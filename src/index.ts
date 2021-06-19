@@ -5,15 +5,6 @@ import * as Sentry from "@sentry/node";
 import Schema from "./schema";
 import { sentryConfiguration } from "./config/sentry";
 
-const {
-  NODE_ENV,
-  NODE_PORT,
-  PRODUCTION_ENV,
-  SENTRY_DSN,
-  npm_package_name,
-  npm_package_version,
-} = process.env;
-
 async function main() {
   await createConnection();
   const schema = await Schema();
@@ -21,6 +12,14 @@ async function main() {
     schema,
     plugins: [sentryConfiguration],
   });
+  const {
+    NODE_ENV,
+    NODE_PORT,
+    PRODUCTION_ENV,
+    SENTRY_DSN,
+    npm_package_name,
+    npm_package_version,
+  } = process.env;
 
   if (NODE_ENV === PRODUCTION_ENV) {
     // Configure Sentry
