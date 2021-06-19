@@ -18,13 +18,13 @@ function addVariables(scope: any, ctx: any) {
   scope.setExtra("variables", ctx.request.variables);
 }
 
-function addPath(scope: any, err: any, Sentry: any) {
+function addPath(scope: any, err: any, sentry: any) {
   if (err.path) {
     // We can also add the path as breadcrumb
     scope.addBreadcrumb({
       category: "query-path",
       message: err.path.join(" > "),
-      level: Sentry.Severity.Debug,
+      level: sentry.Severity.Debug,
     });
   }
 }
