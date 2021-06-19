@@ -1,8 +1,5 @@
 import { User } from "../../models/User";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { UserResolver } from ".";
-
-dbConnection();
 
 const { getUsers, getUser, createUser, updateUser, deleteUser } =
   new UserResolver();

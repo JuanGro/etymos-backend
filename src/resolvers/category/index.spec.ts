@@ -1,8 +1,5 @@
 import { Category } from "../../models/Category";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { CategoryResolver } from ".";
-
-dbConnection();
 
 const {
   getCategories,

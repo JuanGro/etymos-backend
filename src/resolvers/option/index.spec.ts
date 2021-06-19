@@ -1,8 +1,5 @@
 import { Option } from "../../models/Option";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { OptionResolver } from ".";
-
-dbConnection();
 
 const { getOptions, getOption, createOption, updateOption, deleteOption } =
   new OptionResolver();

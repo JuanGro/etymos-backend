@@ -1,8 +1,5 @@
 import { Version } from "../../models/Version";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { VersionResolver } from ".";
-
-dbConnection();
 
 const { getVersions, getVersion, createVersion, updateVersion, deleteVersion } =
   new VersionResolver();

@@ -1,8 +1,5 @@
 import { Question } from "../../models/Question";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { QuestionResolver } from ".";
-
-dbConnection();
 
 const {
   getQuestions,
