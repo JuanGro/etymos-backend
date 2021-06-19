@@ -1,9 +1,33 @@
 language: node_js
 node_js:
-  - 16
+  - node
 
-before_install:
+cache:
+  - npm
+
+services:
+  - postgresql
+
+env:
+  NODE_ENV=test
+  NODE_PORT=4000
+  PRODUCTION_ENV=production
+  DATABASE_TYPE=postgres
+  DATABASE_HOST=0.0.0.0
+  DATABASE_PORT=5432
+  DATABASE_NAME=test
+  DATABASE_USER=postgres
+  DATABASE_PASSWORD=7oZpv9tWQmsMYP%kJaL84$2%d2f%j6$F
+
+install:
   - npm ci
 
-script:
-  - npm run lint
+before_script:
+  - psql --command "CREATE DATABASE ${DATABASE_NAME};" -U postgres
+
+jobs:
+  include:
+    - stage: lint
+      script: npm run lint
+    - stage: test
+      script: npm run test:ci

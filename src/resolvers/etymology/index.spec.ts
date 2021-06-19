@@ -1,8 +1,5 @@
 import { Etymology } from "../../models/Etymology";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { EtymologyResolver } from ".";
-
-dbConnection();
 
 const {
   getEtymologies,

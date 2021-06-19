@@ -1,8 +1,5 @@
 import { Pattern } from "../../models/Pattern";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { PatternResolver } from ".";
-
-dbConnection();
 
 const { getPatterns, getPattern, createPattern, updatePattern, deletePattern } =
   new PatternResolver();
