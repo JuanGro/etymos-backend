@@ -18,6 +18,9 @@ env: NODE_ENV=test
   DATABASE_USER=postgres
   DATABASE_PASSWORD=7oZpv9tWQmsMYP%kJaL84$2%d2f%j6$F
 
+before_install:
+  - npm install -g codecov
+
 install:
   - npm ci
 
@@ -30,3 +33,5 @@ jobs:
       script: npm run lint
     - stage: test
       script: npm run test:ci
+    - stage: coverage
+      script: npm run test:coverage

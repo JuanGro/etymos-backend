@@ -10,6 +10,7 @@
     "build:clean": "rimraf ./build && npm run build",
     "test": "npm run seed:run:test && jest --config jest.config.ts --detectOpenHandles",
     "test:ci": "npm run seed:run:test && jest --config jest.config.ts --ci --silent --bail --clearCache",
+    "test:coverage": "jest --config jest.config.ts --ci --coverage && codecov",
     "lint": "tslint -p tsconfig.json",
     "prettier": "prettier --write \"**\"",
     "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
