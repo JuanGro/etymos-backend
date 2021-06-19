@@ -33,5 +33,3 @@ jobs:
       script: npm run lint
     - stage: test
       script: npm run test:ci
-    - stage: coverage
-      script: npm run test:coverage
