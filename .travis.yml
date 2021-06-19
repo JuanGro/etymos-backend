@@ -8,8 +8,7 @@ cache:
 services:
   - postgresql
 
-env:
-  NODE_ENV=test
+env: NODE_ENV=test
   NODE_PORT=4000
   PRODUCTION_ENV=production
   DATABASE_TYPE=postgres
