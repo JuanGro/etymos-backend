@@ -14,7 +14,7 @@ export default async (): Promise<Config.InitialOptions> => {
     verbose: true,
     moduleFileExtensions: [...defaults.moduleFileExtensions, "ts", "tsx"],
     setupFilesAfterEnv: [
-      "./src/config/databaseConnection.ts"
+      "./src/config/database.connection.ts"
     ]
   };
 };
