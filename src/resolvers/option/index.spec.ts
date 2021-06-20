@@ -43,7 +43,7 @@ test("Get error if tries to create an option with incorrect option length", asyn
 test("Get error if tries to create an option with duplicate option", async () => {
   await expect(
     createOption({
-      option:"lorem",
+      option: "lorem",
       correct: false,
       active: true,
     })
@@ -57,8 +57,14 @@ test("Update option", async () => {
     active: false,
   });
   await expect(getOption(optionUpdated.id)).resolves.toBeInstanceOf(Option);
-  await expect(getOption(optionUpdated.id)).resolves.toHaveProperty("active", false);
-  await expect(getOption(optionUpdated.id)).resolves.toHaveProperty("correct", true);
+  await expect(getOption(optionUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
+  await expect(getOption(optionUpdated.id)).resolves.toHaveProperty(
+    "correct",
+    true
+  );
   await expect(getOption(optionUpdated.id)).resolves.toHaveProperty(
     "option",
     "lorem ipsum"

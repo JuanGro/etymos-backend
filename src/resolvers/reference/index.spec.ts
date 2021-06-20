@@ -16,11 +16,15 @@ test("Get all references", async () => {
 test("Get reference", async () => {
   const references = await getReferences();
   const firstReference = references[0];
-  await expect(getReference(firstReference.id)).resolves.toBeInstanceOf(Reference);
+  await expect(getReference(firstReference.id)).resolves.toBeInstanceOf(
+    Reference
+  );
 });
 
 test("Get error if reference does not exist", async () => {
-  await expect(getReference(10000)).rejects.toThrowError("Reference not found!");
+  await expect(getReference(10000)).rejects.toThrowError(
+    "Reference not found!"
+  );
 });
 
 test("Create reference", async () => {
@@ -33,14 +37,17 @@ test("Create reference", async () => {
     publishingCompany: "Trillas Editorial",
     active: true,
   });
-  await expect(getReference(referenceCreated.id)).resolves.toBeInstanceOf(Reference);
+  await expect(getReference(referenceCreated.id)).resolves.toBeInstanceOf(
+    Reference
+  );
   await expect(getReferences()).resolves.toHaveLength(11);
 });
 
 test("Get error if tries to create a reference with incorrect author length", async () => {
   await expect(
     createReference({
-      author: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      author:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       title: "Lorem",
       publicationYear: "1990",
       publicationPlace: "Barcelona, España",
@@ -72,7 +79,9 @@ test("Update reference", async () => {
     publishingCompany: "Trillas Editorial",
     active: false,
   });
-  await expect(getReference(referenceUpdated.id)).resolves.toBeInstanceOf(Reference);
+  await expect(getReference(referenceUpdated.id)).resolves.toBeInstanceOf(
+    Reference
+  );
   await expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
     "active",
     false
@@ -108,5 +117,7 @@ test("Delete reference", async () => {
 });
 
 test("Get error if tries to delete a reference inexistent", async () => {
-  await expect(deleteReference(10000)).rejects.toThrowError("Reference not found!");
+  await expect(deleteReference(10000)).rejects.toThrowError(
+    "Reference not found!"
+  );
 });

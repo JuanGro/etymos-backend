@@ -30,7 +30,9 @@ test("Create question", async () => {
     active: true,
     referenceId: 1,
   });
-  await expect(getQuestion(questionCreated.id)).resolves.toBeInstanceOf(Question);
+  await expect(getQuestion(questionCreated.id)).resolves.toBeInstanceOf(
+    Question
+  );
   await expect(getQuestions()).resolves.toHaveLength(11);
 });
 
@@ -61,7 +63,9 @@ test("Update question", async () => {
     active: false,
     referenceId: 1,
   });
-  await expect(getQuestion(questionUpdated.id)).resolves.toBeInstanceOf(Question);
+  await expect(getQuestion(questionUpdated.id)).resolves.toBeInstanceOf(
+    Question
+  );
   await expect(getQuestion(questionUpdated.id)).resolves.toHaveProperty(
     "active",
     false
@@ -81,5 +85,7 @@ test("Delete question", async () => {
 });
 
 test("Get error if tries to delete a question inexistent", async () => {
-  await expect(deleteQuestion(10000)).rejects.toThrowError("Question not found!");
+  await expect(deleteQuestion(10000)).rejects.toThrowError(
+    "Question not found!"
+  );
 });
