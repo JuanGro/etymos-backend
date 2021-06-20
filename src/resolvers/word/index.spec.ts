@@ -15,7 +15,7 @@ test("Get word", async () => {
 });
 
 test("Get error if word does not exist", async () => {
-  await expect(getWord(10000)).rejects.toThrowError();
+  await expect(getWord(10000)).rejects.toThrowError("Word not found!");
 });
 
 test("Create word", async () => {
@@ -89,5 +89,5 @@ test("Delete word", async () => {
 });
 
 test("Get error if tries to delete a word inexistent", async () => {
-  await expect(deleteWord(10000)).rejects.toThrowError();
+  await expect(deleteWord(10000)).rejects.toThrowError("Word not found!");
 });

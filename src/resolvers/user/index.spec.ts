@@ -15,7 +15,7 @@ test("Get user", async () => {
 });
 
 test("Get error if user does not exist", async () => {
-  await expect(getUser(10000)).rejects.toThrowError();
+  await expect(getUser(10000)).rejects.toThrowError("User not found!");
 });
 
 test("Create user", async () => {
@@ -76,5 +76,5 @@ test("Delete user", async () => {
 });
 
 test("Get error if tries to delete a user inexistent", async () => {
-  await expect(deleteUser(10000)).rejects.toThrowError();
+  await expect(deleteUser(10000)).rejects.toThrowError("User not found!");
 });

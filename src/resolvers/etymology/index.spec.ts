@@ -20,7 +20,7 @@ test("Get etymology", async () => {
 });
 
 test("Get error if etymology does not exist", async () => {
-  await expect(getEtymology(10000)).rejects.toThrowError();
+  await expect(getEtymology(10000)).rejects.toThrowError("Etymology not found!");
 });
 
 test("Create etymology", async () => {
@@ -104,5 +104,5 @@ test("Delete etymology", async () => {
 });
 
 test("Get error if tries to delete an etymology inexistent", async () => {
-  await expect(deleteEtymology(10000)).rejects.toThrowError();
+  await expect(deleteEtymology(10000)).rejects.toThrowError("Etymology not found!");
 });

@@ -20,7 +20,7 @@ test("Get category", async () => {
 });
 
 test("Get error if category does not exist", async () => {
-  await expect(getCategory(10000)).rejects.toThrowError();
+  await expect(getCategory(10000)).rejects.toThrowError("Category not found!");
 });
 
 test("Create category", async () => {
@@ -84,5 +84,5 @@ test("Delete category", async () => {
 });
 
 test("Get error if tries to delete a category inexistent", async () => {
-  await expect(deleteCategory(10000)).rejects.toThrowError();
+  await expect(deleteCategory(10000)).rejects.toThrowError("Category not found!");
 });

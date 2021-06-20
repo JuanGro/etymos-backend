@@ -15,7 +15,7 @@ test("Get pattern", async () => {
 });
 
 test("Get error if pattern does not exist", async () => {
-  await expect(getPattern(10000)).rejects.toThrowError();
+  await expect(getPattern(10000)).rejects.toThrowError("Pattern not found!");
 });
 
 test("Create pattern", async () => {
@@ -72,5 +72,5 @@ test("Delete pattern", async () => {
 });
 
 test("Get error if tries to delete a pattern inexistent", async () => {
-  await expect(deletePattern(10000)).rejects.toThrowError();
+  await expect(deletePattern(10000)).rejects.toThrowError("Pattern not found!");
 });

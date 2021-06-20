@@ -15,7 +15,7 @@ test("Get version", async () => {
 });
 
 test("Get error if version does not exist", async () => {
-  await expect(getVersion(10000)).rejects.toThrowError();
+  await expect(getVersion(10000)).rejects.toThrowError("Version not found!");
 });
 
 test("Create version", async () => {
@@ -88,5 +88,5 @@ test("Delete version", async () => {
 });
 
 test("Get error if tries to delete a version inexistent", async () => {
-  await expect(deleteVersion(10000)).rejects.toThrowError();
+  await expect(deleteVersion(10000)).rejects.toThrowError("Version not found!");
 });

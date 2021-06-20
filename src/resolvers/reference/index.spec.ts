@@ -20,7 +20,7 @@ test("Get reference", async () => {
 });
 
 test("Get error if reference does not exist", async () => {
-  await expect(getReference(10000)).rejects.toThrowError();
+  await expect(getReference(10000)).rejects.toThrowError("Reference not found!");
 });
 
 test("Create reference", async () => {
@@ -108,5 +108,5 @@ test("Delete reference", async () => {
 });
 
 test("Get error if tries to delete a reference inexistent", async () => {
-  await expect(deleteReference(10000)).rejects.toThrowError();
+  await expect(deleteReference(10000)).rejects.toThrowError("Reference not found!");
 });

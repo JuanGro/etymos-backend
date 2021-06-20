@@ -15,7 +15,7 @@ test("Get option", async () => {
 });
 
 test("Get error if option does not exist", async () => {
-  await expect(getOption(10000)).rejects.toThrowError();
+  await expect(getOption(10000)).rejects.toThrowError("Option not found!");
 });
 
 test("Create option", async () => {
@@ -74,5 +74,5 @@ test("Delete option", async () => {
 });
 
 test("Get error if tries to delete an option inexistent", async () => {
-  await expect(deleteOption(10000)).rejects.toThrowError();
+  await expect(deleteOption(10000)).rejects.toThrowError("Option not found!");
 });

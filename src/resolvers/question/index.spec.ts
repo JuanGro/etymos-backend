@@ -20,7 +20,7 @@ test("Get question", async () => {
 });
 
 test("Get error if question does not exist", async () => {
-  await expect(getQuestion(10000)).rejects.toThrowError();
+  await expect(getQuestion(10000)).rejects.toThrowError("Question not found!");
 });
 
 test("Create question", async () => {
@@ -81,5 +81,5 @@ test("Delete question", async () => {
 });
 
 test("Get error if tries to delete a question inexistent", async () => {
-  await expect(deleteQuestion(10000)).rejects.toThrowError();
+  await expect(deleteQuestion(10000)).rejects.toThrowError("Question not found!");
 });
