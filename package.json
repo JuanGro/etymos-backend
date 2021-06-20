@@ -6,10 +6,11 @@
   "scripts": {
     "start": "nodemon -w src --ext ts --exec ts-node src/index.ts",
     "start:production": "ts-node ./src/index.ts",
+    "install:clean": "rm -rf node_modules/ && rm package-lock.json && npm install",
     "build": "tsc -p tsconfig.json",
     "build:clean": "rimraf ./build && npm run build",
     "test": "npm run seed:run:test && jest --config jest.config.ts --detectOpenHandles",
-    "test:ci": "npm run seed:run:test && jest --config jest.config.ts --ci --silent --bail --clearCache",
+    "test:ci": "npm run seed:run:test && jest --config jest.config.ts --ci --bail",
     "lint": "tslint -p tsconfig.json",
     "prettier": "prettier --write \"**\"",
     "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
