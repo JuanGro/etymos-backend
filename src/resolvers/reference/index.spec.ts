@@ -50,6 +50,19 @@ test("Get error if tries to create a reference with incorrect author length", as
   ).rejects.toThrowError("value too long for type character varying(256)");
 });
 
+test("Get error if tries to create a reference with duplicate title", async () => {
+  await expect(
+    createReference({
+      author: "Miguel de Cervantes Saavedra",
+      title: "Don Quijote de la Mancha",
+      publicationYear: "1990",
+      publicationPlace: "Barcelona, España",
+      publishingCompany: "Trillas Editorial",
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update reference", async () => {
   const referenceUpdated = await updateReference(1, {
     author: "Miguel de Cervantes Saavedra",

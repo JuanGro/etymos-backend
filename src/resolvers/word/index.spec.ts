@@ -45,6 +45,19 @@ test("Get error if tries to create a word with incorrect word length", async () 
   ).rejects.toThrowError("value too long for type character varying(64)");
 });
 
+test("Get error if tries to create a word with duplicate word", async () => {
+  await expect(
+    createWord({
+      word: "Lorem",
+      meaning: "Lorem ipsum dolor sit amet",
+      imageUrl:
+        "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+      categoryId: 1,
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update word", async () => {
   const wordUpdated = await updateWord(1, {
     word: "Lorems",

@@ -39,6 +39,16 @@ test("Get error if tries to create a user with incorrect name length", async () 
   ).rejects.toThrowError("value too long for type character varying(256)");
 });
 
+test("Get error if tries to create a user with duplicate email", async () => {
+  await expect(
+    createUser({
+      name: "Javier Fernando González Montalvo",
+      email: "test@mail.com",
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update user", async () => {
   const userUpdated = await updateUser(1, {
     name: "Javier Fernando González Montalvo",

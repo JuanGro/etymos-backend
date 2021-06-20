@@ -40,6 +40,16 @@ test("Get error if tries to create an option with incorrect option length", asyn
   ).rejects.toThrowError("value too long for type character varying(64)");
 });
 
+test("Get error if tries to create an option with duplicate option", async () => {
+  await expect(
+    createOption({
+      option:"lorem",
+      correct: false,
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update option", async () => {
   const optionUpdated = await updateOption(1, {
     option: "lorem ipsum",

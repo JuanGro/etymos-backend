@@ -45,6 +45,16 @@ test("Get error if tries to create a question with incorrect sentence length", a
   ).rejects.toThrowError("value too long for type character varying(2048)");
 });
 
+test("Get error if tries to create a question with duplicate sentence", async () => {
+  await expect(
+    createQuestion({
+      sentence: "El ___ estuvo en el agua durante un largo periodo de tiempo",
+      active: true,
+      referenceId: 1,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update question", async () => {
   const questionUpdated = await updateQuestion(1, {
     sentence: "El ___ estuvo en el agua por mucho tiempo",

@@ -38,6 +38,15 @@ test("Get error if tries to create a pattern with incorrect pattern length", asy
   ).rejects.toThrowError("value too long for type character varying(16)");
 });
 
+test("Get error if tries to create a pattern with duplicate pattern", async () => {
+  await expect(
+    createPattern({
+      pattern: "lorem",
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update pattern", async () => {
   const patternUpdated = await updatePattern(1, {
     pattern: "hipo",

@@ -44,6 +44,16 @@ test("Get error if tries to create a category with incorrect name length", async
   ).rejects.toThrowError("value too long for type character varying(64)");
 });
 
+test("Get error if tries to create a category with duplicate name", async () => {
+  await expect(
+    createCategory({
+      name: "animal",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      active: false,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update category", async () => {
   const categoryUpdated = await updateCategory(1, {
     name: "automobile",

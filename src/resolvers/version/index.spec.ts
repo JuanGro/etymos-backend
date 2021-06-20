@@ -42,6 +42,17 @@ test("Get error if tries to create a version with incorrect version length", asy
   ).rejects.toThrowError("value too long for type character varying(16)");
 });
 
+test("Get error if tries to create a version with duplicate version", async () => {
+  await expect(
+    createVersion({
+      version: "1.0.0",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      maintenance: true,
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
+});
+
 test("Update version", async () => {
   const versionUpdated = await updateVersion(1, {
     version: "1.1.0",
