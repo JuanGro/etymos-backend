@@ -32,11 +32,11 @@ test("Create user", async () => {
 test("Get error if tries to create a user with incorrect name length", async () => {
   await expect(
     createUser({
-      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-      email: "test@mail.com",
+      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      email: "lorem@mail.com",
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(256)");
 });
 
 test("Update user", async () => {

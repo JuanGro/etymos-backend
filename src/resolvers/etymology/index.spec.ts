@@ -38,10 +38,10 @@ test("Create etymology", async () => {
   await expect(getEtymologies()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create an etymology with incorrect type length", async () => {
+test("Get error if tries to create an etymology with incorrect graecoLatinEtymology length", async () => {
   await expect(
     createEtymology({
-      graecoLatinEtymology: "ἐτυμος",
+      graecoLatinEtymology: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       meaning: "etymos",
       imageUrl:
         "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
@@ -49,7 +49,7 @@ test("Get error if tries to create an etymology with incorrect type length", asy
       languageId: 1,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(64)");
 });
 
 test("Update etymology", async () => {

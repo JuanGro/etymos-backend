@@ -29,7 +29,7 @@ test("Create option", async () => {
   await expect(getOptions()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create an option with incorrect name length", async () => {
+test("Get error if tries to create an option with incorrect option length", async () => {
   await expect(
     createOption({
       option:
@@ -37,7 +37,7 @@ test("Get error if tries to create an option with incorrect name length", async 
       correct: false,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(64)");
 });
 
 test("Update option", async () => {

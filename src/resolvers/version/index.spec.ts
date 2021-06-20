@@ -30,7 +30,7 @@ test("Create version", async () => {
   await expect(getVersions()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a version with incorrect name length", async () => {
+test("Get error if tries to create a version with incorrect version length", async () => {
   await expect(
     createVersion({
       version:
@@ -39,7 +39,7 @@ test("Get error if tries to create a version with incorrect name length", async 
       maintenance: true,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(16)");
 });
 
 test("Update version", async () => {

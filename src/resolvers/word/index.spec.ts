@@ -32,7 +32,7 @@ test("Create word", async () => {
   await expect(getWords()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a word with incorrect name length", async () => {
+test("Get error if tries to create a word with incorrect word length", async () => {
   await expect(
     createWord({
       word: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
@@ -42,7 +42,7 @@ test("Get error if tries to create a word with incorrect name length", async () 
       categoryId: 1,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(64)");
 });
 
 test("Update word", async () => {

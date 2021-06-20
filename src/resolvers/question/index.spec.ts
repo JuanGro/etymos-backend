@@ -34,7 +34,7 @@ test("Create question", async () => {
   await expect(getQuestions()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a question with incorrect name length", async () => {
+test("Get error if tries to create a question with incorrect sentence length", async () => {
   await expect(
     createQuestion({
       sentence:
@@ -42,7 +42,7 @@ test("Get error if tries to create a question with incorrect name length", async
       active: true,
       referenceId: 1,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(2048)");
 });
 
 test("Update question", async () => {

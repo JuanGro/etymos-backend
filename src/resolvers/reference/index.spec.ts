@@ -37,18 +37,17 @@ test("Create reference", async () => {
   await expect(getReferences()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a reference with incorrect name length", async () => {
+test("Get error if tries to create a reference with incorrect author length", async () => {
   await expect(
     createReference({
-      author:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-      title: "Don Quijote de la Mancha",
+      author: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      title: "Lorem",
       publicationYear: "1990",
       publicationPlace: "Barcelona, España",
       publishingCompany: "Trillas Editorial",
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(256)");
 });
 
 test("Update reference", async () => {

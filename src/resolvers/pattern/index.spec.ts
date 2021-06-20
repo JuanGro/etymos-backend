@@ -28,14 +28,14 @@ test("Create pattern", async () => {
   await expect(getPatterns()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a pattern with incorrect name length", async () => {
+test("Get error if tries to create a pattern with incorrect pattern length", async () => {
   await expect(
     createPattern({
       pattern:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(16)");
 });
 
 test("Update pattern", async () => {
