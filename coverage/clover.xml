@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1624165680567" clover="3.2.0">
+  <project timestamp="1624165680567" name="All files">
+    <metrics statements="1079" coveredstatements="622" conditionals="448" coveredconditionals="345" methods="277" coveredmethods="104" elements="1804" coveredelements="1071" complexity="0" loc="1079" ncloc="1079" packages="15" files="58" classes="58"/>
+    <package name="etymos-backend">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="ormconfig.js" path="/home/juanma/Desktop/etymos-app/etymos-backend/ormconfig.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.config">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="messages.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/config/messages.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="43" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.inputs">
+      <metrics statements="116" coveredstatements="116" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="CreateCategoryInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateCategoryInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="CreateEtymologyInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateEtymologyInput.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+      <file name="CreateOptionInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateOptionInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="CreatePatternInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreatePatternInput.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="CreateQuestionInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateQuestionInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="CreateReferenceInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateReferenceInput.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+      <file name="CreateTestInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateTestInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="CreateUserInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateUserInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="CreateVersionInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateVersionInput.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="CreateWordInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/CreateWordInput.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateCategoryInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateCategoryInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateEtymologyInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateEtymologyInput.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateOptionInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateOptionInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="UpdatePatternInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdatePatternInput.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateQuestionInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateQuestionInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateReferenceInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateReferenceInput.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateTestInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateTestInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateUserInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateUserInput.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateVersionInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateVersionInput.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+      <file name="UpdateWordInput.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/inputs/UpdateWordInput.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.migrations">
+      <metrics statements="330" coveredstatements="28" conditionals="0" coveredconditionals="0" methods="42" coveredmethods="14"/>
+      <file name="1609832025065-InitialMigration.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1609832025065-InitialMigration.ts">
+        <metrics statements="60" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="124" count="0" type="stmt"/>
+        <line num="127" count="0" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="132" count="0" type="stmt"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="139" count="0" type="stmt"/>
+        <line num="140" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="144" count="0" type="stmt"/>
+        <line num="145" count="0" type="stmt"/>
+      </file>
+      <file name="1609902709018-AddRelations.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1609902709018-AddRelations.ts">
+        <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="1609953776534-MERVersion202.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1609953776534-MERVersion202.ts">
+        <metrics statements="18" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+      </file>
+      <file name="1609955318546-ChangeTestRelations.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1609955318546-ChangeTestRelations.ts">
+        <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+      </file>
+      <file name="1610660228016-ChangeLengthForCategoryName.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1610660228016-ChangeLengthForCategoryName.ts">
+        <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+      </file>
+      <file name="1610687701232-ChangeImageUrlLength.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1610687701232-ChangeImageUrlLength.ts">
+        <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+      <file name="1610753323945-ChangeLengthForQuestionSentence.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1610753323945-ChangeLengthForQuestionSentence.ts">
+        <metrics statements="10" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+      </file>
+      <file name="1610754374325-ChangeAttributesLength.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1610754374325-ChangeAttributesLength.ts">
+        <metrics statements="86" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="122" count="0" type="stmt"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="131" count="0" type="stmt"/>
+        <line num="132" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="139" count="0" type="stmt"/>
+        <line num="142" count="0" type="stmt"/>
+        <line num="145" count="0" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="151" count="0" type="stmt"/>
+        <line num="154" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+        <line num="161" count="0" type="stmt"/>
+        <line num="162" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="168" count="0" type="stmt"/>
+        <line num="169" count="0" type="stmt"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="179" count="0" type="stmt"/>
+        <line num="182" count="0" type="stmt"/>
+        <line num="185" count="0" type="stmt"/>
+        <line num="186" count="0" type="stmt"/>
+        <line num="189" count="0" type="stmt"/>
+        <line num="192" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="198" count="0" type="stmt"/>
+        <line num="201" count="0" type="stmt"/>
+        <line num="204" count="0" type="stmt"/>
+        <line num="207" count="0" type="stmt"/>
+        <line num="208" count="0" type="stmt"/>
+        <line num="211" count="0" type="stmt"/>
+        <line num="214" count="0" type="stmt"/>
+        <line num="215" count="0" type="stmt"/>
+      </file>
+      <file name="1610754966049-ChangeTargetAndReplacementLength.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1610754966049-ChangeTargetAndReplacementLength.ts">
+        <metrics statements="14" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+      </file>
+      <file name="1610758087015-AddJoinTableForOptionTable.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1610758087015-AddJoinTableForOptionTable.ts">
+        <metrics statements="24" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+      </file>
+      <file name="1616561263077-RemoveWrongOptionRule.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1616561263077-RemoveWrongOptionRule.ts">
+        <metrics statements="8" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+      </file>
+      <file name="1616566526215-RefactorMER.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1616566526215-RefactorMER.ts">
+        <metrics statements="46" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+      </file>
+      <file name="1616599514988-AddDescriptionToLanguage.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1616599514988-AddDescriptionToLanguage.ts">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="1616611419842-AddActiveFieldsToAllEntities.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/migrations/1616611419842-AddActiveFieldsToAllEntities.ts">
+        <metrics statements="20" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.models">
+      <metrics statements="266" coveredstatements="171" conditionals="120" coveredconditionals="94" methods="135" coveredmethods="40"/>
+      <file name="Category.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Category.ts">
+        <metrics statements="19" coveredstatements="12" conditionals="8" coveredconditionals="6" methods="9" coveredmethods="2"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="10" type="stmt"/>
+        <line num="42" count="10" type="stmt"/>
+      </file>
+      <file name="Etymology.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Etymology.ts">
+        <metrics statements="33" coveredstatements="22" conditionals="16" coveredconditionals="12" methods="19" coveredmethods="8"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="10" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="10" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="10" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="48" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="10" type="stmt"/>
+        <line num="53" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="10" type="stmt"/>
+        <line num="58" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="10" type="stmt"/>
+        <line num="63" count="10" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="10" type="stmt"/>
+        <line num="67" count="10" type="stmt"/>
+      </file>
+      <file name="EtymologyType.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/EtymologyType.ts">
+        <metrics statements="19" coveredstatements="12" conditionals="8" coveredconditionals="6" methods="9" coveredmethods="2"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="10" type="stmt"/>
+        <line num="42" count="10" type="stmt"/>
+      </file>
+      <file name="Language.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Language.ts">
+        <metrics statements="19" coveredstatements="12" conditionals="8" coveredconditionals="6" methods="9" coveredmethods="2"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="10" type="stmt"/>
+        <line num="42" count="10" type="stmt"/>
+      </file>
+      <file name="Option.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Option.ts">
+        <metrics statements="19" coveredstatements="12" conditionals="8" coveredconditionals="6" methods="9" coveredmethods="2"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="10" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="10" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="10" type="stmt"/>
+        <line num="44" count="10" type="stmt"/>
+      </file>
+      <file name="Pattern.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Pattern.ts">
+        <metrics statements="17" coveredstatements="11" conditionals="8" coveredconditionals="6" methods="8" coveredmethods="2"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="10" type="stmt"/>
+        <line num="38" count="10" type="stmt"/>
+      </file>
+      <file name="Question.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Question.ts">
+        <metrics statements="25" coveredstatements="17" conditionals="12" coveredconditionals="10" methods="14" coveredmethods="6"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="10" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="10" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="10" type="stmt"/>
+        <line num="44" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="10" type="stmt"/>
+        <line num="48" count="10" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="10" type="stmt"/>
+        <line num="52" count="10" type="stmt"/>
+      </file>
+      <file name="Reference.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Reference.ts">
+        <metrics statements="25" coveredstatements="15" conditionals="8" coveredconditionals="6" methods="12" coveredmethods="2"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="10" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="10" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="10" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="10" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="46" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="50" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="10" type="stmt"/>
+        <line num="54" count="10" type="stmt"/>
+      </file>
+      <file name="Test.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Test.ts">
+        <metrics statements="21" coveredstatements="14" conditionals="16" coveredconditionals="14" methods="11" coveredmethods="4"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="10" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="10" type="stmt"/>
+        <line num="41" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="10" type="stmt"/>
+        <line num="46" count="10" type="cond" truecount="4" falsecount="0"/>
+      </file>
+      <file name="User.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/User.ts">
+        <metrics statements="23" coveredstatements="15" conditionals="8" coveredconditionals="6" methods="12" coveredmethods="4"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="10" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="10" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="10" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="10" type="stmt"/>
+        <line num="45" count="10" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="10" type="stmt"/>
+        <line num="50" count="10" type="stmt"/>
+      </file>
+      <file name="Version.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Version.ts">
+        <metrics statements="17" coveredstatements="10" conditionals="8" coveredconditionals="6" methods="7" coveredmethods="0"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="9" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="10" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="10" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="40" count="10" type="cond" truecount="3" falsecount="1"/>
+      </file>
+      <file name="Word.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/models/Word.ts">
+        <metrics statements="29" coveredstatements="19" conditionals="12" coveredconditionals="10" methods="16" coveredmethods="6"/>
+        <line num="1" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="10" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="10" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="10" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="10" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="10" type="cond" truecount="3" falsecount="1"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="10" type="stmt"/>
+        <line num="52" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="55" count="10" type="stmt"/>
+        <line num="57" count="10" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="10" type="stmt"/>
+        <line num="61" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.category">
+      <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/category/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="22" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.etymology">
+      <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/etymology/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="21" count="8" type="stmt"/>
+        <line num="22" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.option">
+      <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/option/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="18" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.pattern">
+      <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/pattern/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="18" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.question">
+      <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/question/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="22" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.reference">
+      <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/reference/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="21" count="10" type="stmt"/>
+        <line num="22" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="9" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="54" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.test">
+      <metrics statements="36" coveredstatements="30" conditionals="22" coveredconditionals="17" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/test/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="22" coveredconditionals="17" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.user">
+      <metrics statements="37" coveredstatements="31" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/user/index.ts">
+        <metrics statements="37" coveredstatements="31" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="26" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="6" falsecount="2"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.version">
+      <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/version/index.ts">
+        <metrics statements="36" coveredstatements="30" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="17" count="8" type="stmt"/>
+        <line num="18" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="etymos-backend.src.resolvers.word">
+      <metrics statements="37" coveredstatements="31" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+      <file name="index.ts" path="/home/juanma/Desktop/etymos-app/etymos-backend/src/resolvers/word/index.ts">
+        <metrics statements="37" coveredstatements="31" conditionals="34" coveredconditionals="26" methods="10" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="26" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="7" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="1" type="cond" truecount="6" falsecount="2"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
