@@ -1,28 +1,25 @@
 import { Word } from "../../models/Word";
-import { dbConnection } from "../../tests/config/databaseConnection";
 import { WordResolver } from ".";
-
-dbConnection();
 
 const { getWords, getWord, createWord, updateWord, deleteWord } =
   new WordResolver();
 
-test("Get all words", () => {
-  expect(getWords()).resolves.toHaveLength(10);
+test("Get all words", async () => {
+  await expect(getWords()).resolves.toHaveLength(10);
 });
 
 test("Get word", async () => {
   const words = await getWords();
   const firstWord = words[0];
-  expect(getWord(firstWord.id)).resolves.toBeInstanceOf(Word);
+  await expect(getWord(firstWord.id)).resolves.toBeInstanceOf(Word);
 });
 
-test("Get error if word does not exist", () => {
-  expect(getWord(10000)).rejects.toThrowError();
+test("Get error if word does not exist", async () => {
+  await expect(getWord(10000)).rejects.toThrowError("Word not found!");
 });
 
 test("Create word", async () => {
-  expect(getWords()).resolves.toHaveLength(10);
+  await expect(getWords()).resolves.toHaveLength(10);
   const wordCreated = await createWord({
     word: "Lorem",
     meaning: "Lorem ipsum dolor sit amet",
@@ -31,12 +28,12 @@ test("Create word", async () => {
     categoryId: 1,
     active: true,
   });
-  expect(getWord(wordCreated.id)).resolves.toBeInstanceOf(Word);
-  expect(getWords()).resolves.toHaveLength(11);
+  await expect(getWord(wordCreated.id)).resolves.toBeInstanceOf(Word);
+  await expect(getWords()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a word with incorrect name length", async () => {
-  expect(
+test("Get error if tries to create a word with incorrect word length", async () => {
+  await expect(
     createWord({
       word: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       meaning: "Lorem ipsum dolor sit amet",
@@ -45,7 +42,20 @@ test("Get error if tries to create a word with incorrect name length", async () 
       categoryId: 1,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying");
+});
+
+test("Get error if tries to create a word with duplicate word", async () => {
+  await expect(
+    createWord({
+      word: "Lorem",
+      meaning: "Lorem ipsum dolor sit amet",
+      imageUrl:
+        "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+      categoryId: 1,
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 
 test("Update word", async () => {
@@ -57,27 +67,33 @@ test("Update word", async () => {
     categoryId: 1,
     active: false,
   });
-  expect(getWord(wordUpdated.id)).resolves.toBeInstanceOf(Word);
-  expect(getWord(wordUpdated.id)).resolves.toHaveProperty("active", false);
-  expect(getWord(wordUpdated.id)).resolves.toHaveProperty("word", "Lorems");
-  expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+  await expect(getWord(wordUpdated.id)).resolves.toBeInstanceOf(Word);
+  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
+  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+    "word",
+    "Lorems"
+  );
+  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
     "meaning",
     "Lorem ipsum dolor sit amet"
   );
-  expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
     "imageUrl",
     "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg"
   );
 });
 
 test("Delete word", async () => {
-  expect(getWords()).resolves.toHaveLength(11);
+  await expect(getWords()).resolves.toHaveLength(11);
   const words = await getWords();
   const lastWord = words[words.length - 1];
-  expect(deleteWord(lastWord.id)).resolves.toEqual(true);
-  expect(getWords()).resolves.toHaveLength(10);
+  await expect(deleteWord(lastWord.id)).resolves.toEqual(true);
+  await expect(getWords()).resolves.toHaveLength(10);
 });
 
-test("Get error if tries to delete a word inexistent", () => {
-  expect(deleteWord(10000)).rejects.toThrowError();
+test("Get error if tries to delete a word inexistent", async () => {
+  await expect(deleteWord(10000)).rejects.toThrowError("Word not found!");
 });

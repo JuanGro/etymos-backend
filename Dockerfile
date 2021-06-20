@@ -1,4 +1,4 @@
-FROM node:16-slim
+FROM node:15-slim
 
 RUN npm install -g nodemon
 
@@ -18,5 +18,4 @@ COPY . .
 
 EXPOSE 4000
 
-# Script created by me, includes migration and start scripts
-CMD npm run start:development
+CMD npm run migrate && npm start

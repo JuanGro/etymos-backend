@@ -5,11 +5,12 @@
   "main": "index.ts",
   "scripts": {
     "start": "nodemon -w src --ext ts --exec ts-node src/index.ts",
-    "start:development": "npm run migrate && npm start",
     "start:production": "ts-node ./src/index.ts",
+    "install:clean": "rm -rf node_modules/ && rm package-lock.json && npm install",
     "build": "tsc -p tsconfig.json",
     "build:clean": "rimraf ./build && npm run build",
-    "test": "npm run seed:run:test && DATABASE_NAME=etymos-testing jest --config jest.config.ts --detectOpenHandles",
+    "test": "npm run seed:run:test && jest",
+    "test:ci": "npm run seed:run:test && jest --ci --bail",
     "lint": "tslint -p tsconfig.json",
     "prettier": "prettier --write \"**\"",
     "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run",
@@ -19,13 +20,8 @@
     "revertmigrations": "ts-node ./node_modules/typeorm/cli.js migration:revert",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "migrate:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js migration:run",
-    "showmigrations:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js migration:show",
-    "revertmigrations:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js migration:revert",
-    "schema:drop:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js schema:drop",
-    "schema:sync:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "seed:config:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
-    "seed:run:test": "DATABASE_NAME=etymos-testing ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --seed Testing"
+    "seed:config:test": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run:test": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --seed Testing"
   },
   "keywords": [],
   "author": "Juan Manuel Guerrero Hernández",
@@ -34,13 +30,13 @@
     "@sentry/node": "^5.29.2",
     "@sentry/tracing": "^5.29.2",
     "apollo-server": "^2.19.1",
-    "class-validator": "^0.12.2",
+    "class-validator": "^0.13.0",
     "graphql": "^15.5.0",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^9.1.1",
     "type-graphql": "^1.1.1",
-    "typeorm": "^0.2.29"
+    "typeorm": "^0.2.32"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.12.12",

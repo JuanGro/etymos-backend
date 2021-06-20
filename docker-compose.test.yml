@@ -1,0 +1,31 @@
+version: "3"
+services:
+  database:
+    container_name: postgres-database-test
+    image: postgres:13.3-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+
+  backend:
+    container_name: graphql-backend-test
+    # To get the Dockerfile in that path
+    build:
+      context: ./
+      dockerfile: Dockerfile.test
+    # To reload the container with nodemon!
+    volumes:
+      - .:/app
+    ports:
+      - 4000:4000
+    depends_on:
+      - database
+    links:
+      - database
+    environment:
+      DATABASE_HOST: database
+    env_file:
+      - .env
