@@ -32,4 +32,6 @@ jobs:
     - stage: lint
       script: npm run lint
     - stage: test
-      script: npm run test:ci && codecov
+      script: npm run test:ci
+    - stage: coverage
+      script: codecov
