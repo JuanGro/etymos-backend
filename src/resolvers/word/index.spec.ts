@@ -15,7 +15,7 @@ test("Get word", async () => {
 });
 
 test("Get error if word does not exist", async () => {
-  await expect(getWord(10000)).rejects.toThrowError();
+  await expect(getWord(10000)).rejects.toThrowError("Word not found!");
 });
 
 test("Create word", async () => {
@@ -32,7 +32,7 @@ test("Create word", async () => {
   await expect(getWords()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a word with incorrect name length", async () => {
+test("Get error if tries to create a word with incorrect word length", async () => {
   await expect(
     createWord({
       word: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
@@ -42,7 +42,20 @@ test("Get error if tries to create a word with incorrect name length", async () 
       categoryId: 1,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying");
+});
+
+test("Get error if tries to create a word with duplicate word", async () => {
+  await expect(
+    createWord({
+      word: "Lorem",
+      meaning: "Lorem ipsum dolor sit amet",
+      imageUrl:
+        "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+      categoryId: 1,
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 
 test("Update word", async () => {
@@ -76,5 +89,5 @@ test("Delete word", async () => {
 });
 
 test("Get error if tries to delete a word inexistent", async () => {
-  await expect(deleteWord(10000)).rejects.toThrowError();
+  await expect(deleteWord(10000)).rejects.toThrowError("Word not found!");
 });

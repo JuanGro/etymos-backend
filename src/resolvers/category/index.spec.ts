@@ -20,7 +20,7 @@ test("Get category", async () => {
 });
 
 test("Get error if category does not exist", async () => {
-  await expect(getCategory(10000)).rejects.toThrowError();
+  await expect(getCategory(10000)).rejects.toThrowError("Category not found!");
 });
 
 test("Create category", async () => {
@@ -41,7 +41,17 @@ test("Get error if tries to create a category with incorrect name length", async
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       active: false,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying");
+});
+
+test("Get error if tries to create a category with duplicate name", async () => {
+  await expect(
+    createCategory({
+      name: "animal",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      active: false,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 
 test("Update category", async () => {
@@ -74,5 +84,5 @@ test("Delete category", async () => {
 });
 
 test("Get error if tries to delete a category inexistent", async () => {
-  await expect(deleteCategory(10000)).rejects.toThrowError();
+  await expect(deleteCategory(10000)).rejects.toThrowError("Category not found!");
 });

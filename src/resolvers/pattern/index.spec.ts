@@ -15,7 +15,7 @@ test("Get pattern", async () => {
 });
 
 test("Get error if pattern does not exist", async () => {
-  await expect(getPattern(10000)).rejects.toThrowError();
+  await expect(getPattern(10000)).rejects.toThrowError("Pattern not found!");
 });
 
 test("Create pattern", async () => {
@@ -28,14 +28,23 @@ test("Create pattern", async () => {
   await expect(getPatterns()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a pattern with incorrect name length", async () => {
+test("Get error if tries to create a pattern with incorrect pattern length", async () => {
   await expect(
     createPattern({
       pattern:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying");
+});
+
+test("Get error if tries to create a pattern with duplicate pattern", async () => {
+  await expect(
+    createPattern({
+      pattern: "lorem",
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 
 test("Update pattern", async () => {
@@ -63,5 +72,5 @@ test("Delete pattern", async () => {
 });
 
 test("Get error if tries to delete a pattern inexistent", async () => {
-  await expect(deletePattern(10000)).rejects.toThrowError();
+  await expect(deletePattern(10000)).rejects.toThrowError("Pattern not found!");
 });

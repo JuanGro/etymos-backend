@@ -20,7 +20,7 @@ test("Get question", async () => {
 });
 
 test("Get error if question does not exist", async () => {
-  await expect(getQuestion(10000)).rejects.toThrowError();
+  await expect(getQuestion(10000)).rejects.toThrowError("Question not found!");
 });
 
 test("Create question", async () => {
@@ -34,7 +34,7 @@ test("Create question", async () => {
   await expect(getQuestions()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a question with incorrect name length", async () => {
+test("Get error if tries to create a question with incorrect sentence length", async () => {
   await expect(
     createQuestion({
       sentence:
@@ -42,7 +42,17 @@ test("Get error if tries to create a question with incorrect name length", async
       active: true,
       referenceId: 1,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying(2048)");
+});
+
+test("Get error if tries to create a question with duplicate sentence", async () => {
+  await expect(
+    createQuestion({
+      sentence: "El ___ estuvo en el agua durante un largo periodo de tiempo",
+      active: true,
+      referenceId: 1,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 
 test("Update question", async () => {
@@ -71,5 +81,5 @@ test("Delete question", async () => {
 });
 
 test("Get error if tries to delete a question inexistent", async () => {
-  await expect(deleteQuestion(10000)).rejects.toThrowError();
+  await expect(deleteQuestion(10000)).rejects.toThrowError("Question not found!");
 });

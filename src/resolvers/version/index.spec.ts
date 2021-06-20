@@ -15,7 +15,7 @@ test("Get version", async () => {
 });
 
 test("Get error if version does not exist", async () => {
-  await expect(getVersion(10000)).rejects.toThrowError();
+  await expect(getVersion(10000)).rejects.toThrowError("Version not found!");
 });
 
 test("Create version", async () => {
@@ -30,7 +30,7 @@ test("Create version", async () => {
   await expect(getVersions()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a version with incorrect name length", async () => {
+test("Get error if tries to create a version with incorrect version length", async () => {
   await expect(
     createVersion({
       version:
@@ -39,7 +39,18 @@ test("Get error if tries to create a version with incorrect name length", async 
       maintenance: true,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying");
+});
+
+test("Get error if tries to create a version with duplicate version", async () => {
+  await expect(
+    createVersion({
+      version: "1.0.0",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      maintenance: true,
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 
 test("Update version", async () => {
@@ -77,5 +88,5 @@ test("Delete version", async () => {
 });
 
 test("Get error if tries to delete a version inexistent", async () => {
-  await expect(deleteVersion(10000)).rejects.toThrowError();
+  await expect(deleteVersion(10000)).rejects.toThrowError("Version not found!");
 });

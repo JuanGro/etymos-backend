@@ -15,7 +15,7 @@ test("Get test", async () => {
 });
 
 test("Get error if test does not exist", async () => {
-  await expect(getTest(10000)).rejects.toThrowError();
+  await expect(getTest(10000)).rejects.toThrowError("Test not found!");
 });
 
 test("Create test", async () => {
@@ -48,5 +48,5 @@ test("Delete test", async () => {
 });
 
 test("Get error if tries to delete a test inexistent", async () => {
-  await expect(deleteTest(10000)).rejects.toThrowError();
+  await expect(deleteTest(10000)).rejects.toThrowError("Test not found!");
 });

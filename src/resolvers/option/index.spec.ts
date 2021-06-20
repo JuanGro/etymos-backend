@@ -15,7 +15,7 @@ test("Get option", async () => {
 });
 
 test("Get error if option does not exist", async () => {
-  await expect(getOption(10000)).rejects.toThrowError();
+  await expect(getOption(10000)).rejects.toThrowError("Option not found!");
 });
 
 test("Create option", async () => {
@@ -29,7 +29,7 @@ test("Create option", async () => {
   await expect(getOptions()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create an option with incorrect name length", async () => {
+test("Get error if tries to create an option with incorrect option length", async () => {
   await expect(
     createOption({
       option:
@@ -37,7 +37,17 @@ test("Get error if tries to create an option with incorrect name length", async 
       correct: false,
       active: true,
     })
-  ).rejects.toThrowError();
+  ).rejects.toThrowError("value too long for type character varying");
+});
+
+test("Get error if tries to create an option with duplicate option", async () => {
+  await expect(
+    createOption({
+      option:"lorem",
+      correct: false,
+      active: true,
+    })
+  ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 
 test("Update option", async () => {
@@ -64,5 +74,5 @@ test("Delete option", async () => {
 });
 
 test("Get error if tries to delete an option inexistent", async () => {
-  await expect(deleteOption(10000)).rejects.toThrowError();
+  await expect(deleteOption(10000)).rejects.toThrowError("Option not found!");
 });
