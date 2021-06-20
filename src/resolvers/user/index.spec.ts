@@ -36,7 +36,7 @@ test("Get error if tries to create a user with incorrect name length", async () 
       email: "lorem@mail.com",
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying(256)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create a user with duplicate email", async () => {

@@ -35,7 +35,7 @@ test("Get error if tries to create a pattern with incorrect pattern length", asy
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying(16)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create a pattern with duplicate pattern", async () => {

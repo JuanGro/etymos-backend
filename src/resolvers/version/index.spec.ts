@@ -39,7 +39,7 @@ test("Get error if tries to create a version with incorrect version length", asy
       maintenance: true,
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying(16)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create a version with duplicate version", async () => {

@@ -42,7 +42,7 @@ test("Get error if tries to create a word with incorrect word length", async () 
       categoryId: 1,
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying(64)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create a word with duplicate word", async () => {

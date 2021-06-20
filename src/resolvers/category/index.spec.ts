@@ -41,7 +41,7 @@ test("Get error if tries to create a category with incorrect name length", async
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       active: false,
     })
-  ).rejects.toThrowError("value too long for type character varying(64)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create a category with duplicate name", async () => {

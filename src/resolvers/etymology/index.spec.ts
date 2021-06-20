@@ -49,7 +49,7 @@ test("Get error if tries to create an etymology with incorrect graecoLatinEtymol
       languageId: 1,
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying(64)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create an etymology with duplicate graecoLatinEtymology", async () => {

@@ -47,7 +47,7 @@ test("Get error if tries to create a reference with incorrect author length", as
       publishingCompany: "Trillas Editorial",
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying(256)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create a reference with duplicate title", async () => {

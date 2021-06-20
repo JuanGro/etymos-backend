@@ -37,7 +37,7 @@ test("Get error if tries to create an option with incorrect option length", asyn
       correct: false,
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying(64)");
+  ).rejects.toThrowError("value too long for type character varying");
 });
 
 test("Get error if tries to create an option with duplicate option", async () => {
