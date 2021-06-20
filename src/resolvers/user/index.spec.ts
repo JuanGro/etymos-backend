@@ -56,7 +56,10 @@ test("Update user", async () => {
     active: false,
   });
   await expect(getUser(userUpdated.id)).resolves.toBeInstanceOf(User);
-  await expect(getUser(userUpdated.id)).resolves.toHaveProperty("active", false);
+  await expect(getUser(userUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
   await expect(getUser(userUpdated.id)).resolves.toHaveProperty(
     "name",
     "Javier Fernando González Montalvo"

@@ -68,8 +68,14 @@ test("Update word", async () => {
     active: false,
   });
   await expect(getWord(wordUpdated.id)).resolves.toBeInstanceOf(Word);
-  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty("active", false);
-  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty("word", "Lorems");
+  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
+  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+    "word",
+    "Lorems"
+  );
   await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
     "meaning",
     "Lorem ipsum dolor sit amet"

@@ -30,7 +30,9 @@ test("Create category", async () => {
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     active: true,
   });
-  await expect(getCategory(categoryCreated.id)).resolves.toBeInstanceOf(Category);
+  await expect(getCategory(categoryCreated.id)).resolves.toBeInstanceOf(
+    Category
+  );
   await expect(getCategories()).resolves.toHaveLength(11);
 });
 
@@ -60,7 +62,9 @@ test("Update category", async () => {
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     active: false,
   });
-  await expect(getCategory(categoryUpdated.id)).resolves.toBeInstanceOf(Category);
+  await expect(getCategory(categoryUpdated.id)).resolves.toBeInstanceOf(
+    Category
+  );
   await expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty(
     "active",
     false
@@ -84,5 +88,7 @@ test("Delete category", async () => {
 });
 
 test("Get error if tries to delete a category inexistent", async () => {
-  await expect(deleteCategory(10000)).rejects.toThrowError("Category not found!");
+  await expect(deleteCategory(10000)).rejects.toThrowError(
+    "Category not found!"
+  );
 });

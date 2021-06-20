@@ -36,7 +36,10 @@ test("Update test", async () => {
     active: false,
   });
   await expect(getTest(testUpdated.id)).resolves.toBeInstanceOf(Test);
-  await expect(getTest(testUpdated.id)).resolves.toHaveProperty("active", false);
+  await expect(getTest(testUpdated.id)).resolves.toHaveProperty(
+    "active",
+    false
+  );
 });
 
 test("Delete test", async () => {
