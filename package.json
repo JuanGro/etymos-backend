@@ -9,7 +9,7 @@
     "install:clean": "rm -rf node_modules/ && rm package-lock.json && npm install",
     "build": "tsc -p tsconfig.json",
     "build:clean": "rimraf ./build && npm run build",
-    "test": "npm run seed:run:test && jest --detectOpenHandles",
+    "test": "npm run seed:run:test && jest",
     "test:ci": "npm run seed:run:test && jest --ci --bail",
     "lint": "tslint -p tsconfig.json",
     "prettier": "prettier --write \"**\"",
