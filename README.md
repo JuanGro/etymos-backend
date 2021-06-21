@@ -1,7 +1,7 @@
 [![MIT License](https://img.shields.io/github/license/othneildrew/Best-README-Template.svg)](https://choosealicense.com/licenses/mit/)
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/JuanGro/etymos-backend/coverage.svg)](https://codecov.io/gh/JuanGro/etymos-backend/)
 [![Known Vulnerabilities](https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg)](https://snyk.io/test/github/JuanGro/etymos-backend)
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin)](https://mx.linkedin.com/in/juan-manuel-guerrero-hernandez)
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555)](https://mx.linkedin.com/in/juan-manuel-guerrero-hernandez)
 
 # Etymos backend
 
