@@ -1,7 +1,7 @@
-[![MIT License][license-shield]][license-url]
+[![MIT License](https://img.shields.io/github/license/othneildrew/Best-README-Template.svg)](https://choosealicense.com/licenses/mit/)
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/JuanGro/etymos-backend/coverage.svg)](https://codecov.io/gh/JuanGro/etymos-backend/)
 [![Known Vulnerabilities](https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg)](https://snyk.io/test/github/JuanGro/etymos-backend)
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555)](https://mx.linkedin.com/in/juan-manuel-guerrero-hernandez)
 
 # Etymos backend
 
@@ -22,10 +22,3 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg
-[license-url]: https://choosealicense.com/licenses/mit/
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
-[linkedin-url]: https://mx.linkedin.com/in/juan-manuel-guerrero-hernandez
