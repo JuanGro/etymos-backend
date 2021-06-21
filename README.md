@@ -1,1 +1,2 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg)](https://snyk.io/test/github/JuanGro/etymos-backend)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/JuanGro/etymos-backend/coverage.svg?style=flat-square)](https://codecov.io/gh/JuanGro/etymos-backend/)
