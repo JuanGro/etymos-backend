@@ -3,7 +3,7 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreateVersionInput } from "../../inputs/CreateVersionInput";
 import { UpdateVersionInput } from "../../inputs/UpdateVersionInput";
 import { Version } from "../../models/Version";
-import { ID_PARAM, DATA_PARAM, VERSION_NOT_FOUND } from "../../config/messages";
+import { ID_PARAM, DATA_PARAM, VERSION_NOT_FOUND } from "../../config/constants";
 
 @Resolver()
 export class VersionResolver {

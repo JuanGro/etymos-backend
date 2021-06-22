@@ -1,13 +1,14 @@
 import { InputType, Field } from "type-graphql";
+import { NULLABLE } from "../config/constants";
 
 @InputType()
 export class UpdateLanguageInput {
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   name?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   description?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   active?: boolean;
 }

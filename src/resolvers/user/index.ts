@@ -4,7 +4,7 @@ import { getConnection } from "typeorm";
 import { CreateUserInput } from "../../inputs/CreateUserInput";
 import { UpdateUserInput } from "../../inputs/UpdateUserInput";
 import { User } from "../../models/User";
-import { ID_PARAM, DATA_PARAM, USER_NOT_FOUND } from "../../config/messages";
+import { ID_PARAM, DATA_PARAM, USER_NOT_FOUND } from "../../config/constants";
 
 @Resolver()
 export class UserResolver {

@@ -1,16 +1,17 @@
 import { InputType, Field } from "type-graphql";
+import { NULLABLE } from "../config/constants";
 
 @InputType()
 export class UpdateVersionInput {
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   version?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   description?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   maintenance?: boolean;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   active?: boolean;
 }

@@ -3,7 +3,7 @@ import { Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreatePatternInput } from "../../inputs/CreatePatternInput";
 import { UpdatePatternInput } from "../../inputs/UpdatePatternInput";
 import { Pattern } from "../../models/Pattern";
-import { ID_PARAM, DATA_PARAM, PATTERN_NOT_FOUND } from "../../config/messages";
+import { ID_PARAM, DATA_PARAM, PATTERN_NOT_FOUND } from "../../config/constants";
 
 @Resolver()
 export class PatternResolver {

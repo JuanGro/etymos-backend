@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { Question } from "./Question";
+import { BOOLEAN_DEFAULT_FALSE, BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE } from "../config/constants";
 
 @Entity()
 @ObjectType()
@@ -19,26 +20,26 @@ export class Option extends BaseEntity {
   id!: number;
 
   @Field(() => String)
-  @Column({ unique: true, type: "varchar", length: 64 })
+  @Column(VARCHAR_L_UNIQUE)
   option!: string;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: false })
+  @Column(BOOLEAN_DEFAULT_FALSE)
   correct!: boolean;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: true })
+  @Column(BOOLEAN_DEFAULT_TRUE)
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn(TIMESTAMP)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => [Question], { nullable: true })
+  @Field(() => [Question], NULLABLE)
   @ManyToMany(() => Question, (question) => question.options)
   @JoinTable()
   questions?: Question[];

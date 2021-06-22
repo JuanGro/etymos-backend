@@ -1,0 +1,129 @@
+const {
+  NOT_FOUND,
+  CATEGORY,
+  ETYMOLOGY,
+  OPTION,
+  PATTERN,
+  QUESTION,
+  REFERENCE,
+  TEST,
+  USER,
+  VERSION,
+  WORD,
+} = {
+  NOT_FOUND: " not found!",
+  CATEGORY: "Category",
+  ETYMOLOGY: "Etymology",
+  OPTION: "Option",
+  PATTERN: "Pattern",
+  QUESTION: "Question",
+  REFERENCE: "Reference",
+  TEST: "Test",
+  USER: "User",
+  VERSION: "Version",
+  WORD: "Word",
+};
+
+const PARAMS = {
+  ID_PARAM: "id",
+  DATA_PARAM: "data",
+}
+
+const {
+  VARCHAR_TYPE,
+  BOOLEAN_TYPE,
+  TIMESTAMP_TYPE,
+}: Types = {
+  VARCHAR_TYPE: { type: "varchar" },
+  BOOLEAN_TYPE: { type: "boolean" },
+  TIMESTAMP_TYPE: { type: "timestamp" },
+}
+
+const {
+  XXS,
+  XS,
+  S,
+  M,
+  L,
+  XL,
+  XXL,
+  XXXXL,
+} = {
+  XXS: 4,
+  XS: 8,
+  S: 16,
+  M: 32,
+  L: 64,
+  XL: 128,
+  XXL: 256,
+  XXXXL: 1024,
+}
+
+const DATABASE_CONFIG = {
+  BOOLEAN_DEFAULT_TRUE: { ...BOOLEAN_TYPE, default: true },
+  BOOLEAN_DEFAULT_FALSE: { ...BOOLEAN_TYPE, default: false },
+  VARCHAR_XXS: { ...VARCHAR_TYPE, length: XXS },
+  VARCHAR_XS: { ...VARCHAR_TYPE, length: XS },
+  VARCHAR_S: { ...VARCHAR_TYPE, length: S },
+  VARCHAR_M: { ...VARCHAR_TYPE, length: M },
+  VARCHAR_L: { ...VARCHAR_TYPE, length: L },
+  VARCHAR_XL: { ...VARCHAR_TYPE, length: XL },
+  VARCHAR_XXL: { ...VARCHAR_TYPE, length: XXL },
+  VARCHAR_XXXXL: { ...VARCHAR_TYPE, length: XXXXL },
+  VARCHAR_S_UNIQUE: { ...VARCHAR_TYPE, length: S, unique: true },
+  VARCHAR_L_UNIQUE: { ...VARCHAR_TYPE, length: L, unique: true },
+  VARCHAR_XXL_UNIQUE: { ...VARCHAR_TYPE, length: XXL, unique: true },
+  VARCHAR_XXXXL_UNIQUE: { ...VARCHAR_TYPE, length: XXXXL, unique: true },
+  TIMESTAMP: TIMESTAMP_TYPE,
+  NULLABLE: { nullable: true }
+}
+
+const MESSAGES = {
+  CATEGORY_NOT_FOUND: `${CATEGORY}${NOT_FOUND}`,
+  ETYMOLOGY_NOT_FOUND: `${ETYMOLOGY}${NOT_FOUND}`,
+  OPTION_NOT_FOUND: `${OPTION}${NOT_FOUND}`,
+  PATTERN_NOT_FOUND: `${PATTERN}${NOT_FOUND}`,
+  QUESTION_NOT_FOUND: `${QUESTION}${NOT_FOUND}`,
+  REFERENCE_NOT_FOUND: `${REFERENCE}${NOT_FOUND}`,
+  TEST_NOT_FOUND: `${TEST}${NOT_FOUND}`,
+  USER_NOT_FOUND: `${USER}${NOT_FOUND}`,
+  VERSION_NOT_FOUND: `${VERSION}${NOT_FOUND}`,
+  WORD_NOT_FOUND: `${WORD}${NOT_FOUND}`,
+}
+
+const CONSTANTS = {
+  ...PARAMS,
+  ...DATABASE_CONFIG,
+  ...MESSAGES,
+};
+
+export const {
+  ID_PARAM,
+  DATA_PARAM,
+  BOOLEAN_DEFAULT_TRUE,
+  BOOLEAN_DEFAULT_FALSE,
+  VARCHAR_XXS,
+  VARCHAR_XS,
+  VARCHAR_S,
+  VARCHAR_M,
+  VARCHAR_L,
+  VARCHAR_XL,
+  VARCHAR_XXL,
+  VARCHAR_XXXXL,
+  VARCHAR_S_UNIQUE,
+  VARCHAR_L_UNIQUE,
+  VARCHAR_XXL_UNIQUE,
+  VARCHAR_XXXXL_UNIQUE,
+  TIMESTAMP,
+  NULLABLE,
+  CATEGORY_NOT_FOUND,
+  ETYMOLOGY_NOT_FOUND,
+  OPTION_NOT_FOUND,
+  PATTERN_NOT_FOUND,
+  QUESTION_NOT_FOUND,
+  REFERENCE_NOT_FOUND,
+  TEST_NOT_FOUND,
+  USER_NOT_FOUND,
+  VERSION_NOT_FOUND,
+  WORD_NOT_FOUND,
+} = CONSTANTS;

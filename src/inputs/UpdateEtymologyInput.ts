@@ -1,22 +1,23 @@
 import { InputType, Field } from "type-graphql";
+import { NULLABLE } from "../config/constants";
 
 @InputType()
 export class UpdateEtymologyInput {
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   graecoLatinEtymology?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   meaning?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   imageUrl?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   etymologyTypeId?: number;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   languageId?: number;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   active?: boolean;
 }

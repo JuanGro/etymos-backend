@@ -14,6 +14,7 @@ import { ObjectType, Field, ID } from "type-graphql";
 import { Reference } from "./Reference";
 import { Option } from "./Option";
 import { Test } from "./Test";
+import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXXXL_UNIQUE } from "../config/constants";
 
 @Entity()
 @ObjectType()
@@ -23,19 +24,19 @@ export class Question extends BaseEntity {
   id!: number;
 
   @Field(() => String)
-  @Column({ unique: true, type: "varchar", length: 2048 })
+  @Column(VARCHAR_XXXXL_UNIQUE)
   sentence!: string;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: true })
+  @Column(BOOLEAN_DEFAULT_TRUE)
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn(TIMESTAMP)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
   @Field(() => Reference)
@@ -43,11 +44,11 @@ export class Question extends BaseEntity {
   @JoinColumn()
   reference!: Reference;
 
-  @Field(() => [Option], { nullable: true })
+  @Field(() => [Option], NULLABLE)
   @ManyToMany(() => Option, (option) => option.questions)
   options?: Option[];
 
-  @Field(() => [Test], { nullable: true })
+  @Field(() => [Test], NULLABLE)
   @OneToMany(() => Test, (test) => test.question)
   tests?: Test[];
 }

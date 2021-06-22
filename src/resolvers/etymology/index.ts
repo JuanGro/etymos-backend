@@ -7,7 +7,7 @@ import {
   ID_PARAM,
   DATA_PARAM,
   ETYMOLOGY_NOT_FOUND,
-} from "../../config/messages";
+} from "../../config/constants";
 
 @Resolver()
 export class EtymologyResolver {

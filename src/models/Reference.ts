@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { Question } from "./Question";
+import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXL, VARCHAR_XXL_UNIQUE, VARCHAR_XXS } from "./../config/constants"
 
 @Entity()
 @ObjectType()
@@ -18,38 +19,38 @@ export class Reference extends BaseEntity {
   id!: number;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 256 })
+  @Column(VARCHAR_XXL)
   author!: string;
 
   @Field(() => String)
-  @Column({ unique: true, type: "varchar", length: 256 })
+  @Column(VARCHAR_XXL_UNIQUE)
   title!: string;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 4 })
+  @Column(VARCHAR_XXS)
   publicationYear!: string;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 256 })
+  @Column(VARCHAR_XXL)
   publicationPlace!: string;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 256 })
+  @Column(VARCHAR_XXL)
   publishingCompany!: string;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: true })
+  @Column(BOOLEAN_DEFAULT_TRUE)
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn(TIMESTAMP)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => [Question], { nullable: true })
+  @Field(() => [Question], NULLABLE)
   @OneToMany(() => Question, (question) => question.reference)
   questions?: Question[];
 }

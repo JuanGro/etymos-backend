@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { Word } from "./Word";
+import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE, VARCHAR_XL } from "../config/constants";
 
 @Entity()
 @ObjectType()
@@ -19,26 +20,26 @@ export class Category extends BaseEntity {
 
   @Field(() => String)
   // You can set these default values as constants an replicated in all models, it would be cleaner
-  @Column({ unique: true, type: "varchar", length: 64 })
+  @Column(VARCHAR_L_UNIQUE)
   name!: string;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 128 })
+  @Column(VARCHAR_XL)
   description!: string;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: true })
+  @Column(BOOLEAN_DEFAULT_TRUE)
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn(TIMESTAMP)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => [Word], { nullable: true })
+  @Field(() => [Word], NULLABLE)
   @OneToMany(() => Word, (word) => word.category)
   words?: Word[];
 }
