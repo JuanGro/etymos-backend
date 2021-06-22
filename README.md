@@ -1,4 +1,3 @@
-[![GitHub license](https://img.shields.io/github/license/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/readme/LICENSE.md)
 [![Github issues](https://img.shields.io/github/issues/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/issues)
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/JuanGro/etymos-backend/coverage.svg)](https://codecov.io/gh/JuanGro/etymos-backend/)
 [![Known Vulnerabilities](https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg)](https://snyk.io/test/github/JuanGro/etymos-backend)
@@ -33,4 +32,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[![GitHub license](https://img.shields.io/github/license/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/readme/LICENSE.md)
