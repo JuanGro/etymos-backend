@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/JuanGro/etymos-backend.svg?branch=master)](https://travis-ci.com/JuanGro/etymos-backend)
 [![Github issues](https://img.shields.io/github/issues/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/issues)
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/JuanGro/etymos-backend/coverage.svg)](https://codecov.io/gh/JuanGro/etymos-backend/)
 [![Known Vulnerabilities](https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg)](https://snyk.io/test/github/JuanGro/etymos-backend)
