@@ -7,8 +7,7 @@ beforeAll(async () => {
   try {
     await createConnection();
   } catch (error) {
-    // Error in database... you could have a function in this file that generates the error message and avoid duplicated statements
-    throw new ApolloError(`Error in database connection: ${error}`);
+    throw new ApolloError('Error in database connection');
   }
 });
 
@@ -17,6 +16,6 @@ afterAll(async () => {
   try {
     await testingConnection.close();
   } catch (error) {
-    throw new ApolloError(`Error in database close: ${error}`);
+    throw new ApolloError('Error in database close');
   }
 });
