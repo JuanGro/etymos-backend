@@ -13,9 +13,9 @@ Etymos is a platform to improve the spelling through etymologies.
 [![Typescript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Apollo GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?logo=apollo-graphql)](https://www.apollographql.com)
 [![PostgreSQL](https://img.shields.io/badge/postgres-%23316192.svg?logo=postgresql&logoColor=white)](https://www.postgresql.org)
-[![Travis CI](https://img.shields.io/badge/travisci-%232B2F33.svg?logo=travis&logoColor=white)](https://www.travis-ci.com)
 [![Jest](https://img.shields.io/badge/-jest-%23C21325?logo=jest&logoColor=white)](https://jestjs.io)
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?logo=docker&logoColor=white)](https://www.docker.com)
+[![Travis CI](https://img.shields.io/badge/travisci-%232B2F33.svg?logo=travis&logoColor=white)](https://www.travis-ci.com)
 [![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)](https://www.postman.com)
 
 ## Usage
