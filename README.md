@@ -32,4 +32,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## License
-[![GitHub license](https://img.shields.io/github/license/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/readme/LICENSE.md)
+[![GitHub license](https://img.shields.io/github/license/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/blob/master/LICENSE.md)
