@@ -21,7 +21,8 @@
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
     "seed:config:test": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
-    "seed:run:test": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --seed Testing"
+    "seed:run:test": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --seed Testing",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "Juan Manuel Guerrero Hernández",
@@ -51,6 +52,7 @@
     "ts-jest": "^26.4.4",
     "tslint": "^6.1.3",
     "typeorm-seeding": "^1.6.1",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "husky": "^6.0.0"
   }
 }
