@@ -10,16 +10,20 @@ const {
 } = new CategoryResolver();
 
 test("Get all categories", async () => {
+  // why ten? avoid magic numberes
   await expect(getCategories()).resolves.toHaveLength(10);
 });
 
 test("Get category", async () => {
   const categories = await getCategories();
   const firstCategory = categories[0];
+  // you can destructure an array
+  // const [firstCategory] = categories;
   await expect(getCategory(firstCategory.id)).resolves.toBeInstanceOf(Category);
 });
 
 test("Get error if category does not exist", async () => {
+  // Same avoid magic numbers
   await expect(getCategory(10000)).rejects.toThrowError("Category not found!");
 });
 
@@ -30,6 +34,7 @@ test("Create category", async () => {
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     active: true,
   });
+  // If you only need the id, const { id } = await crea....
   await expect(getCategory(categoryCreated.id)).resolves.toBeInstanceOf(
     Category
   );
@@ -39,6 +44,7 @@ test("Create category", async () => {
 test("Get error if tries to create a category with incorrect name length", async () => {
   await expect(
     createCategory({
+      // You can create const in your test that would be better, on this way you avoid several duplicated statements
       name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       active: false,
@@ -53,6 +59,7 @@ test("Get error if tries to create a category with duplicate name", async () => 
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       active: false,
     })
+    // What do you think about having error as const?
   ).rejects.toThrowError("duplicate key value violates unique constraint");
 });
 

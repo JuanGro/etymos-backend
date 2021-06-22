@@ -27,6 +27,7 @@ const {
 const MESSAGES = {
   ID_PARAM: "id",
   DATA_PARAM: "data",
+  // Its a better approach to implement string templates instead of +
   CATEGORY_NOT_FOUND: CATEGORY + NOT_FOUND,
   ETYMOLOGY_NOT_FOUND: ETYMOLOGY + NOT_FOUND,
   OPTION_NOT_FOUND: OPTION + NOT_FOUND,

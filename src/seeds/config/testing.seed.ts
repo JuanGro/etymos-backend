@@ -19,6 +19,7 @@ import { Word } from "../../models/Word";
 export default class Testing implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     await useRefreshDatabase();
+    // Same, magic number if all use 10, use a const instead of
     await factory(Category)().createMany(10);
     await factory(Etymology)().createMany(10);
     await factory(Option)().createMany(10);
