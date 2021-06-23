@@ -1,10 +1,10 @@
-import { Connection } from "typeorm";
 import {
   Factory,
   Seeder,
   tearDownDatabase,
   useRefreshDatabase,
 } from "typeorm-seeding";
+import { FAKER_ELEMENTS_NUMBER_L } from "../../config/constants";
 import { Category } from "../../models/Category";
 import { Etymology } from "../../models/Etymology";
 import { Option } from "../../models/Option";
@@ -17,19 +17,18 @@ import { Version } from "../../models/Version";
 import { Word } from "../../models/Word";
 
 export default class Testing implements Seeder {
-  public async run(factory: Factory, connection: Connection): Promise<any> {
+  public async run(factory: Factory): Promise<void> {
     await useRefreshDatabase();
-    // Same, magic number if all use 10, use a const instead of
-    await factory(Category)().createMany(10);
-    await factory(Etymology)().createMany(10);
-    await factory(Option)().createMany(10);
-    await factory(Pattern)().createMany(10);
-    await factory(Question)().createMany(10);
-    await factory(Reference)().createMany(10);
-    await factory(Test)().createMany(10);
-    await factory(User)().createMany(10);
-    await factory(Version)().createMany(10);
-    await factory(Word)().createMany(10);
+    await factory(Category)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Etymology)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Option)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Pattern)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Question)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Reference)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Test)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(User)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Version)().createMany(FAKER_ELEMENTS_NUMBER_L);
+    await factory(Word)().createMany(FAKER_ELEMENTS_NUMBER_L);
     await tearDownDatabase();
   }
 }

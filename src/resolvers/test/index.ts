@@ -13,7 +13,7 @@ export class TestResolver {
   }
 
   @Query(() => Test)
-  async getTest(@Arg(ID_PARAM) id: number) {
+  async getTest(@Arg(ID_PARAM) id: number): Promise<Test> {
     const test = await Test.findOne({ where: { id } });
     if (!test) {
       throw new ApolloError(TEST_NOT_FOUND);
@@ -23,7 +23,7 @@ export class TestResolver {
   }
 
   @Mutation(() => Test)
-  async createTest(@Arg(DATA_PARAM) data: CreateTestInput) {
+  async createTest(@Arg(DATA_PARAM) data: CreateTestInput): Promise<Test> {
     const test = Test.create(data);
     await test.save();
     return test;
@@ -45,7 +45,7 @@ export class TestResolver {
   }
 
   @Mutation(() => Boolean)
-  async deleteTest(@Arg(ID_PARAM) id: number) {
+  async deleteTest(@Arg(ID_PARAM) id: number): Promise<boolean> {
     const test = await Test.findOne({ where: { id } });
     if (!test) {
       throw new ApolloError(TEST_NOT_FOUND);
