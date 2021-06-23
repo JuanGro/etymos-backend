@@ -1,6 +1,6 @@
 import { Category } from "../../models/Category";
 import { CategoryResolver } from ".";
-import { CATEGORY_NOT_FOUND, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX } from "../../config/constants";
+import { CATEGORY_NOT_FOUND, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX } from "../../config/constants";
 
 const {
   getCategories,
@@ -11,7 +11,7 @@ const {
 } = new CategoryResolver();
 
 test("Get all categories", async () => {
-  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get category", async () => {
@@ -27,7 +27,7 @@ test("Get error if category does not exist", async () => {
 });
 
 test("Create category", async () => {
-  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createCategory({
     name: DUMMY_TEXT_XS,
     description: DUMMY_TEXT_S,
@@ -36,7 +36,7 @@ test("Create category", async () => {
   await expect(getCategory(id)).resolves.toBeInstanceOf(
     Category
   );
-  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test("Get error if tries to create a category with incorrect name length", async () => {
@@ -83,11 +83,11 @@ test("Update category", async () => {
 });
 
 test("Delete category", async () => {
-  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const categories = await getCategories();
   const { id } = categories[categories.length - 1];
   await expect(deleteCategory(id)).resolves.toBeTruthy();
-  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get error if tries to delete a category inexistent", async () => {

@@ -1,6 +1,6 @@
 import { Etymology } from "../../models/Etymology";
 import { EtymologyResolver } from ".";
-import { DUMMY_IMAGE_URL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, ETYMOLOGY_NOT_FOUND, FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX } from "../../config/constants";
+import { DUMMY_IMAGE_URL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, ETYMOLOGY_NOT_FOUND, FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX } from "../../config/constants";
 
 const {
   getEtymologies,
@@ -11,7 +11,7 @@ const {
 } = new EtymologyResolver();
 
 test("Get all etymologies", async () => {
-  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get etymology", async () => {
@@ -29,7 +29,7 @@ test("Get error if etymology does not exist", async () => {
 });
 
 test("Create etymology", async () => {
-  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createEtymology({
     graecoLatinEtymology: DUMMY_TEXT_XS,
     meaning: DUMMY_TEXT_S,
@@ -42,7 +42,7 @@ test("Create etymology", async () => {
   await expect(getEtymology(id)).resolves.toBeInstanceOf(
     Etymology
   );
-  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test("Get error if tries to create an etymology with incorrect graecoLatinEtymology length", async () => {
@@ -106,11 +106,11 @@ test("Update etymology", async () => {
 });
 
 test("Delete etymology", async () => {
-  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const etymologies = await getEtymologies();
   const { id } = etymologies[etymologies.length - 1];
   await expect(deleteEtymology(id)).resolves.toEqual(true);
-  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get error if tries to delete an etymology inexistent", async () => {

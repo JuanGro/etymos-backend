@@ -1,12 +1,12 @@
 import { Version } from "../../models/Version";
 import { VersionResolver } from ".";
-import { FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_M, DUMMY_TEXT_L, DUMMY_VERSION, DUMMY_VERSION2, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, VERSION_NOT_FOUND } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_M, DUMMY_TEXT_L, DUMMY_VERSION, DUMMY_VERSION2, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, VERSION_NOT_FOUND } from "../../config/constants";
 
 const { getVersions, getVersion, createVersion, updateVersion, deleteVersion } =
   new VersionResolver();
 
 test("Get all versions", async () => {
-  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get version", async () => {
@@ -20,7 +20,7 @@ test("Get error if version does not exist", async () => {
 });
 
 test("Create version", async () => {
-  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createVersion({
     version: DUMMY_VERSION,
     description: DUMMY_TEXT_M,
@@ -28,7 +28,7 @@ test("Create version", async () => {
     active: true,
   });
   await expect(getVersion(id)).resolves.toBeInstanceOf(Version);
-  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test("Get error if tries to create a version with incorrect version length", async () => {
@@ -81,11 +81,11 @@ test("Update version", async () => {
 });
 
 test("Delete version", async () => {
-  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const versions = await getVersions();
   const { id } = versions[versions.length - 1];
   await expect(deleteVersion(id)).resolves.toEqual(true);
-  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get error if tries to delete a version inexistent", async () => {

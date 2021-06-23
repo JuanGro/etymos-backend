@@ -1,6 +1,6 @@
 import { Reference } from "../../models/Reference";
 import { ReferenceResolver } from ".";
-import { FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, REFERENCE_NOT_FOUND, DUMMY_TEXT_XL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_YEAR_STRING } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, REFERENCE_NOT_FOUND, DUMMY_TEXT_XL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_YEAR_STRING } from "../../config/constants";
 
 const {
   getReferences,
@@ -11,7 +11,7 @@ const {
 } = new ReferenceResolver();
 
 test("Get all references", async () => {
-  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get reference", async () => {
@@ -29,7 +29,7 @@ test("Get error if reference does not exist", async () => {
 });
 
 test("Create reference", async () => {
-  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createReference({
     author: DUMMY_TEXT_S,
     title: DUMMY_TEXT_S,
@@ -41,7 +41,7 @@ test("Create reference", async () => {
   await expect(getReference(id)).resolves.toBeInstanceOf(
     Reference
   );
-  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test("Get error if tries to create a reference with incorrect author length", async () => {
@@ -109,11 +109,11 @@ test("Update reference", async () => {
 });
 
 test("Delete reference", async () => {
-  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const references = await getReferences();
   const { id } = references[references.length - 1];
   await expect(deleteReference(id)).resolves.toEqual(true);
-  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get error if tries to delete a reference inexistent", async () => {

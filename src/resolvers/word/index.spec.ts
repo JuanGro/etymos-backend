@@ -1,12 +1,12 @@
 import { Word } from "../../models/Word";
 import { WordResolver } from ".";
-import { FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_L, WORD_NOT_FOUND, DUMMY_TEXT_S, DUMMY_IMAGE_URL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, DUMMY_TEXT2_XS } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_L, WORD_NOT_FOUND, DUMMY_TEXT_S, DUMMY_IMAGE_URL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, DUMMY_TEXT2_XS } from "../../config/constants";
 
 const { getWords, getWord, createWord, updateWord, deleteWord } =
   new WordResolver();
 
 test("Get all words", async () => {
-  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get word", async () => {
@@ -20,7 +20,7 @@ test("Get error if word does not exist", async () => {
 });
 
 test("Create word", async () => {
-  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createWord({
     word: DUMMY_TEXT_XS,
     meaning: DUMMY_TEXT_S,
@@ -30,7 +30,7 @@ test("Create word", async () => {
     active: true,
   });
   await expect(getWord(id)).resolves.toBeInstanceOf(Word);
-  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test("Get error if tries to create a word with incorrect word length", async () => {
@@ -88,11 +88,11 @@ test("Update word", async () => {
 });
 
 test("Delete word", async () => {
-  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const words = await getWords();
   const { id } = words[words.length - 1];
   await expect(deleteWord(id)).resolves.toEqual(true);
-  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get error if tries to delete a word inexistent", async () => {

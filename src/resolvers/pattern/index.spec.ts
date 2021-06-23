@@ -1,12 +1,12 @@
 import { Pattern } from "../../models/Pattern";
 import { PatternResolver } from ".";
-import { FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_XL, PATTERN_NOT_FOUND, DUMMY_TEXT2_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_XL, PATTERN_NOT_FOUND, DUMMY_TEXT2_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH } from "../../config/constants";
 
 const { getPatterns, getPattern, createPattern, updatePattern, deletePattern } =
   new PatternResolver();
 
 test("Get all patterns", async () => {
-  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get pattern", async () => {
@@ -20,13 +20,13 @@ test("Get error if pattern does not exist", async () => {
 });
 
 test("Create pattern", async () => {
-  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createPattern({
     pattern: DUMMY_TEXT_XS,
     active: true,
   });
   await expect(getPattern(id)).resolves.toBeInstanceOf(Pattern);
-  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test("Get error if tries to create a pattern with incorrect pattern length", async () => {
@@ -65,11 +65,11 @@ test("Update pattern", async () => {
 });
 
 test("Delete pattern", async () => {
-  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const patterns = await getPatterns();
   const { id } = patterns[patterns.length - 1];
   await expect(deletePattern(id)).resolves.toEqual(true);
-  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get error if tries to delete a pattern inexistent", async () => {

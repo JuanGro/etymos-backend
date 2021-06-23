@@ -1,6 +1,6 @@
 import { Question } from "../../models/Question";
 import { QuestionResolver } from ".";
-import { DUMMY_TEXT2_XS, DUMMY_TEXT_M, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, QUESTION_NOT_FOUND } from "../../config/constants";
+import { DUMMY_TEXT2_XS, DUMMY_TEXT_M, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, QUESTION_NOT_FOUND } from "../../config/constants";
 
 const {
   getQuestions,
@@ -11,7 +11,7 @@ const {
 } = new QuestionResolver();
 
 test("Get all questions", async () => {
-  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get question", async () => {
@@ -25,7 +25,7 @@ test("Get error if question does not exist", async () => {
 });
 
 test("Create question", async () => {
-  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createQuestion({
     sentence: DUMMY_TEXT_M,
     active: true,
@@ -34,7 +34,7 @@ test("Create question", async () => {
   await expect(getQuestion(id)).resolves.toBeInstanceOf(
     Question
   );
-  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test("Get error if tries to create a question with incorrect sentence length", async () => {
@@ -78,11 +78,11 @@ test("Update question", async () => {
 });
 
 test("Delete question", async () => {
-  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
+  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const questions = await getQuestions();
   const { id } = questions[questions.length - 1];
   await expect(deleteQuestion(id)).resolves.toEqual(true);
-  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS);
+  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
 test("Get error if tries to delete a question inexistent", async () => {
