@@ -15,8 +15,8 @@ test("Get all questions", async () => {
 });
 
 test("Get question", async () => {
-  const questions = await getQuestions();
-  const { id } = questions[FIRST_INDEX];
+  const [questions] = await getQuestions();
+  const { id } = questions;
   await expect(getQuestion(id)).resolves.toBeInstanceOf(Question);
 });
 

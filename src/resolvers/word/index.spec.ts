@@ -10,8 +10,8 @@ test("Get all words", async () => {
 });
 
 test("Get word", async () => {
-  const words = await getWords();
-  const { id } = words[FIRST_INDEX];
+  const [words] = await getWords();
+  const { id } = words;
   await expect(getWord(id)).resolves.toBeInstanceOf(Word);
 });
 

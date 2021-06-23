@@ -10,8 +10,8 @@ test("Get all versions", async () => {
 });
 
 test("Get version", async () => {
-  const versions = await getVersions();
-  const { id } = versions[FIRST_INDEX];
+  const [versions] = await getVersions();
+  const { id } = versions;
   await expect(getVersion(id)).resolves.toBeInstanceOf(Version);
 });
 

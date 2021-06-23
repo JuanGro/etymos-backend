@@ -10,8 +10,8 @@ test("Get all options", async () => {
 });
 
 test("Get option", async () => {
-  const options = await getOptions();
-  const { id } = options[FIRST_INDEX];
+  const [options] = await getOptions();
+  const { id } = options;
   await expect(getOption(id)).resolves.toBeInstanceOf(Option);
 });
 

@@ -15,10 +15,8 @@ test("Get all categories", async () => {
 });
 
 test("Get category", async () => {
-  const categories = await getCategories();
-  const { id } = categories[FIRST_INDEX];
-  // you can destructure an array
-  // const [firstCategory] = categories;
+  const [categories] = await getCategories();
+  const { id } = categories;
   await expect(getCategory(id)).resolves.toBeInstanceOf(Category);
 });
 

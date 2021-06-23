@@ -15,8 +15,8 @@ test("Get all etymologies", async () => {
 });
 
 test("Get etymology", async () => {
-  const etymologies = await getEtymologies();
-  const { id } = etymologies[FIRST_INDEX];
+  const [etymologies] = await getEtymologies();
+  const { id } = etymologies;
   await expect(getEtymology(id)).resolves.toBeInstanceOf(
     Etymology
   );

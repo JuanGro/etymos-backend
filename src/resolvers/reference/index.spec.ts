@@ -15,8 +15,8 @@ test("Get all references", async () => {
 });
 
 test("Get reference", async () => {
-  const references = await getReferences();
-  const { id } = references[FIRST_INDEX];
+  const [references] = await getReferences();
+  const { id } = references;
   await expect(getReference(id)).resolves.toBeInstanceOf(
     Reference
   );

@@ -10,8 +10,8 @@ test("Get all patterns", async () => {
 });
 
 test("Get pattern", async () => {
-  const patterns = await getPatterns();
-  const { id } = patterns[FIRST_INDEX];
+  const [patterns] = await getPatterns();
+  const { id } = patterns;
   await expect(getPattern(id)).resolves.toBeInstanceOf(Pattern);
 });
 

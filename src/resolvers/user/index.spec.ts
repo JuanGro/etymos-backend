@@ -10,8 +10,8 @@ test("Get all users", async () => {
 });
 
 test("Get user", async () => {
-  const users = await getUsers();
-  const { id } = users[FIRST_INDEX];
+  const [users] = await getUsers();
+  const { id } = users;
   await expect(getUser(id)).resolves.toBeInstanceOf(User);
 });
 
