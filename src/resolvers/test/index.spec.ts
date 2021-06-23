@@ -1,4 +1,4 @@
-import { Test } from '../../models/Test';
+import { Test } from '../../models/test';
 import { TestResolver } from '.';
 import {
   FAKER_ELEMENTS_NUMBER_L,

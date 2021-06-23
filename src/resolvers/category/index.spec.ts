@@ -1,4 +1,4 @@
-import { Category } from '../../models/Category';
+import { Category } from '../../models/category';
 import { CategoryResolver } from '.';
 import {
   CATEGORY_NOT_FOUND,

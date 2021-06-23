@@ -2,9 +2,9 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreateVersionInput } from '../../inputs/CreateVersionInput';
-import { UpdateVersionInput } from '../../inputs/UpdateVersionInput';
-import { Version } from '../../models/Version';
+import { CreateVersionInput } from '../../inputs/version/create';
+import { UpdateVersionInput } from '../../inputs/version/update';
+import { Version } from '../../models/version';
 import {
   ID_PARAM,
   DATA_PARAM,

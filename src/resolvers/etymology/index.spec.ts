@@ -1,4 +1,4 @@
-import { Etymology } from '../../models/Etymology';
+import { Etymology } from '../../models/etymology';
 import { EtymologyResolver } from '.';
 import {
   DUMMY_IMAGE_URL,

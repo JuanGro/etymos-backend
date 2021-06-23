@@ -1,4 +1,4 @@
-import { Word } from '../../models/Word';
+import { Word } from '../../models/word';
 import { WordResolver } from '.';
 import {
   FAKER_ELEMENTS_NUMBER_L,

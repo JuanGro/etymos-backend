@@ -2,9 +2,9 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreateQuestionInput } from '../../inputs/CreateQuestionInput';
-import { UpdateQuestionInput } from '../../inputs/UpdateQuestionInput';
-import { Question } from '../../models/Question';
+import { CreateQuestionInput } from '../../inputs/question/create';
+import { UpdateQuestionInput } from '../../inputs/question/update';
+import { Question } from '../../models/question';
 import {
   ID_PARAM,
   DATA_PARAM,

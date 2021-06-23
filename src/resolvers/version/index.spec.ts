@@ -1,4 +1,4 @@
-import { Version } from '../../models/Version';
+import { Version } from '../../models/version';
 import { VersionResolver } from '.';
 import {
   FAKER_ELEMENTS_NUMBER_L,

@@ -2,9 +2,9 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreateOptionInput } from '../../inputs/CreateOptionInput';
-import { UpdateOptionInput } from '../../inputs/UpdateOptionInput';
-import { Option } from '../../models/Option';
+import { CreateOptionInput } from '../../inputs/option/create';
+import { UpdateOptionInput } from '../../inputs/option/update';
+import { Option } from '../../models/option';
 import { ID_PARAM, DATA_PARAM, OPTION_NOT_FOUND } from '../../config/constants';
 
 @Resolver()

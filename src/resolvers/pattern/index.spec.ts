@@ -1,4 +1,4 @@
-import { Pattern } from '../../models/Pattern';
+import { Pattern } from '../../models/pattern';
 import { PatternResolver } from '.';
 import {
   FAKER_ELEMENTS_NUMBER_L,

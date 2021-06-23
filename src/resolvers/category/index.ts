@@ -2,9 +2,9 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreateCategoryInput } from '../../inputs/CreateCategoryInput';
-import { UpdateCategoryInput } from '../../inputs/UpdateCategoryInput';
-import { Category } from '../../models/Category';
+import { CreateCategoryInput } from '../../inputs/category/create';
+import { UpdateCategoryInput } from '../../inputs/category/update';
+import { Category } from '../../models/category';
 import {
   ID_PARAM,
   DATA_PARAM,

@@ -1,4 +1,4 @@
-import { Reference } from '../../models/Reference';
+import { Reference } from '../../models/reference';
 import { ReferenceResolver } from '.';
 import {
   FAKER_ELEMENTS_NUMBER_L,

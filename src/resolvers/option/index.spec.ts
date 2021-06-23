@@ -1,4 +1,4 @@
-import { Option } from '../../models/Option';
+import { Option } from '../../models/option';
 import { OptionResolver } from '.';
 import {
   FAKER_ELEMENTS_NUMBER_L,
