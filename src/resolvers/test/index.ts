@@ -2,8 +2,8 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreateTestInput } from '../../inputs/CreateTestInput';
-import { UpdateTestInput } from '../../inputs/UpdateTestInput';
+import { CreateTestInput } from '../../inputs/test/create';
+import { UpdateTestInput } from '../../inputs/test/update';
 import { Test } from '../../models/test';
 import { ID_PARAM, DATA_PARAM, TEST_NOT_FOUND } from '../../config/constants';
 

@@ -1,13 +1,13 @@
 import { InputType, Field } from 'type-graphql';
-import { NULLABLE } from '../config/constants';
+import { NULLABLE } from '../../../config/constants';
 
 @InputType()
-export class UpdateOptionInput {
+export class UpdateCategoryInput {
   @Field(NULLABLE)
-  option?: string;
+  name?: string;
 
   @Field(NULLABLE)
-  correct?: boolean;
+  description?: string;
 
   @Field(NULLABLE)
   active?: boolean;

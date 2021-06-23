@@ -2,8 +2,8 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreatePatternInput } from '../../inputs/CreatePatternInput';
-import { UpdatePatternInput } from '../../inputs/UpdatePatternInput';
+import { CreatePatternInput } from '../../inputs/pattern/create';
+import { UpdatePatternInput } from '../../inputs/pattern/update';
 import { Pattern } from '../../models/pattern';
 import {
   ID_PARAM,

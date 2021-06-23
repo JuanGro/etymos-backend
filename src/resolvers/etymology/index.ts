@@ -2,8 +2,8 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreateEtymologyInput } from '../../inputs/CreateEtymologyInput';
-import { UpdateEtymologyInput } from '../../inputs/UpdateEtymologyInput';
+import { CreateEtymologyInput } from '../../inputs/etymology/create';
+import { UpdateEtymologyInput } from '../../inputs/etymology/update';
 import { Etymology } from '../../models/etymology';
 import {
   ID_PARAM,

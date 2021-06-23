@@ -1,8 +1,8 @@
 import { InputType, Field } from 'type-graphql';
-import { NULLABLE } from '../config/constants';
+import { NULLABLE } from '../../../config/constants';
 
 @InputType()
-export class UpdateCategoryInput {
+export class UpdateEtymologyTypeInput {
   @Field(NULLABLE)
   name?: string;
 

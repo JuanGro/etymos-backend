@@ -2,8 +2,8 @@ import { ApolloError } from 'apollo-server';
 import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
-import { CreateReferenceInput } from '../../inputs/CreateReferenceInput';
-import { UpdateReferenceInput } from '../../inputs/UpdateReferenceInput';
+import { CreateReferenceInput } from '../../inputs/reference/create';
+import { UpdateReferenceInput } from '../../inputs/reference/update';
 import { Reference } from '../../models/reference';
 import {
   ID_PARAM,

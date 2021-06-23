@@ -3,8 +3,8 @@ import {
   Arg, Mutation, Query, Resolver,
 } from 'type-graphql';
 import { getConnection } from 'typeorm';
-import { CreateWordInput } from '../../inputs/CreateWordInput';
-import { UpdateWordInput } from '../../inputs/UpdateWordInput';
+import { CreateWordInput } from '../../inputs/word/create';
+import { UpdateWordInput } from '../../inputs/word/update';
 import { Word } from '../../models/word';
 import { ID_PARAM, DATA_PARAM, WORD_NOT_FOUND } from '../../config/constants';
 
