@@ -1,6 +1,6 @@
 import { define } from 'typeorm-seeding';
-import { FAKER_ELEMENTS_NUMBER_M } from '../../config/constants';
-import { Question } from '../../models/Question';
+import { FAKER_ELEMENTS_NUMBER_M } from '../../../config/constants';
+import { Question } from '../../../models/question';
 
 define(Question, (faker) => {
   const question = new Question();

@@ -4,8 +4,8 @@ import {
   FAKER_ELEMENTS_NUMBER_M,
   FAKER_ELEMENTS_NUMBER_S,
   FAKER_ELEMENTS_NUMBER_XXL,
-} from '../../config/constants';
-import { Reference } from '../../models/Reference';
+} from '../../../config/constants';
+import { Reference } from '../../../models/reference';
 
 define(Reference, (faker) => {
   const reference = new Reference();

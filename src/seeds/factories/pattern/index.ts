@@ -1,6 +1,6 @@
 import { define } from 'typeorm-seeding';
-import { FAKER_ELEMENTS_NUMBER_L } from '../../config/constants';
-import { Pattern } from '../../models/Pattern';
+import { FAKER_ELEMENTS_NUMBER_L } from '../../../config/constants';
+import { Pattern } from '../../../models/pattern';
 
 define(Pattern, (faker) => {
   const pattern = new Pattern();

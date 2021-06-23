@@ -6,34 +6,44 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
-  ManyToMany,
-  JoinTable,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { Test } from './Test';
-import { Word } from './Word';
+import { Question } from '../question';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
   TIMESTAMP,
   VARCHAR_XXL,
   VARCHAR_XXL_UNIQUE,
-} from '../config/constants';
+  VARCHAR_XXS,
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()
-export class User extends BaseEntity {
+export class Reference extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Field(() => String)
+  @Column(VARCHAR_XXL)
+  author!: string;
+
+  @Field(() => String)
   @Column(VARCHAR_XXL_UNIQUE)
-  email!: string;
+  title!: string;
+
+  @Field(() => String)
+  @Column(VARCHAR_XXS)
+  publicationYear!: string;
 
   @Field(() => String)
   @Column(VARCHAR_XXL)
-  name!: string;
+  publicationPlace!: string;
+
+  @Field(() => String)
+  @Column(VARCHAR_XXL)
+  publishingCompany!: string;
 
   @Field(() => Boolean)
   @Column(BOOLEAN_DEFAULT_TRUE)
@@ -47,12 +57,7 @@ export class User extends BaseEntity {
   @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => [Test], NULLABLE)
-  @OneToMany(() => Test, (test) => test.user)
-  tests?: Test[];
-
-  @Field(() => [Word], NULLABLE)
-  @ManyToMany(() => Word, (word) => word.users)
-  @JoinTable()
-  words?: Word[];
+  @Field(() => [Question], NULLABLE)
+  @OneToMany(() => Question, (question) => question.reference)
+  questions?: Question[];
 }

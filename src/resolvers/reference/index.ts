@@ -4,7 +4,7 @@ import {
 } from 'type-graphql';
 import { CreateReferenceInput } from '../../inputs/CreateReferenceInput';
 import { UpdateReferenceInput } from '../../inputs/UpdateReferenceInput';
-import { Reference } from '../../models/Reference';
+import { Reference } from '../../models/reference';
 import {
   ID_PARAM,
   DATA_PARAM,

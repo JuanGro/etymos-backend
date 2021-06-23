@@ -1,6 +1,6 @@
 import { define } from 'typeorm-seeding';
-import { FAKER_ELEMENTS_NUMBER_L } from '../../config/constants';
-import { Option } from '../../models/Option';
+import { FAKER_ELEMENTS_NUMBER_L } from '../../../config/constants';
+import { Option } from '../../../models/option';
 
 define(Option, (faker) => {
   const option = new Option();

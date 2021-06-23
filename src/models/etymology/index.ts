@@ -11,9 +11,10 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { User } from './User';
-import { Etymology } from './Etymology';
-import { Category } from './Category';
+import { Word } from '../word';
+import { Pattern } from '../pattern';
+import { Language } from '../language';
+import { EtymologyType } from '../etymology-type';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
@@ -21,18 +22,18 @@ import {
   VARCHAR_L_UNIQUE,
   VARCHAR_XXL,
   VARCHAR_XXXXL,
-} from '../config/constants';
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()
-export class Word extends BaseEntity {
+export class Etymology extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Field(() => String)
   @Column(VARCHAR_L_UNIQUE)
-  word!: string;
+  graecoLatinEtymology!: string;
 
   @Field(() => String)
   @Column(VARCHAR_XXL)
@@ -54,17 +55,22 @@ export class Word extends BaseEntity {
   @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => Category, NULLABLE)
-  @ManyToOne(() => Category, (category) => category.words)
+  @Field(() => EtymologyType)
+  @ManyToOne(() => EtymologyType, (etymologyType) => etymologyType.etymologies)
   @JoinColumn()
-  category!: Category;
+  etymologyType!: EtymologyType;
 
-  @Field(() => [Etymology], NULLABLE)
-  @ManyToMany(() => Etymology, (etymology) => etymology.words)
+  @Field(() => Language)
+  @ManyToOne(() => Language, (language) => language.etymologies)
+  @JoinColumn()
+  language!: Language;
+
+  @Field(() => [Pattern], NULLABLE)
+  @ManyToMany(() => Pattern, (pattern) => pattern.etymologies)
   @JoinTable()
-  etymologies?: Etymology[];
+  patterns?: Pattern[];
 
-  @Field(() => [User], NULLABLE)
-  @ManyToMany(() => User, (user) => user.words)
-  users?: User[];
+  @Field(() => [Word], NULLABLE)
+  @ManyToMany(() => Word, (word) => word.etymologies)
+  words?: Word[];
 }

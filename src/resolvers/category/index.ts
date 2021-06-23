@@ -4,7 +4,7 @@ import {
 } from 'type-graphql';
 import { CreateCategoryInput } from '../../inputs/CreateCategoryInput';
 import { UpdateCategoryInput } from '../../inputs/UpdateCategoryInput';
-import { Category } from '../../models/Category';
+import { Category } from '../../models/category';
 import {
   ID_PARAM,
   DATA_PARAM,

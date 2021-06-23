@@ -4,7 +4,7 @@ import {
 } from 'type-graphql';
 import { CreateOptionInput } from '../../inputs/CreateOptionInput';
 import { UpdateOptionInput } from '../../inputs/UpdateOptionInput';
-import { Option } from '../../models/Option';
+import { Option } from '../../models/option';
 import { ID_PARAM, DATA_PARAM, OPTION_NOT_FOUND } from '../../config/constants';
 
 @Resolver()

@@ -5,27 +5,34 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToMany,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { Etymology } from './Etymology';
 import {
+  BOOLEAN_DEFAULT_FALSE,
   BOOLEAN_DEFAULT_TRUE,
-  NULLABLE,
   TIMESTAMP,
   VARCHAR_S_UNIQUE,
-} from '../config/constants';
+  VARCHAR_XXXXL,
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()
-export class Pattern extends BaseEntity {
+export class Version extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Field(() => String)
   @Column(VARCHAR_S_UNIQUE)
-  pattern!: string;
+  version!: string;
+
+  @Field(() => String)
+  @Column(VARCHAR_XXXXL)
+  description!: string;
+
+  @Field(() => Boolean)
+  @Column(BOOLEAN_DEFAULT_FALSE)
+  maintenance!: boolean;
 
   @Field(() => Boolean)
   @Column(BOOLEAN_DEFAULT_TRUE)
@@ -38,8 +45,4 @@ export class Pattern extends BaseEntity {
   @Field(() => Date)
   @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
-
-  @Field(() => [Etymology], NULLABLE)
-  @ManyToMany(() => Etymology, (etymology) => etymology.patterns)
-  etymologies?: Etymology[];
 }

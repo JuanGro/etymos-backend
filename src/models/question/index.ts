@@ -11,15 +11,15 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { Reference } from './Reference';
-import { Option } from './Option';
-import { Test } from './Test';
+import { Reference } from '../reference';
+import { Option } from '../option';
+import { Test } from '../test';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
   TIMESTAMP,
   VARCHAR_XXXXL_UNIQUE,
-} from '../config/constants';
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()

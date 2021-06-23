@@ -5,16 +5,16 @@ import {
   useRefreshDatabase,
 } from 'typeorm-seeding';
 import { FAKER_ELEMENTS_NUMBER_L } from '../../config/constants';
-import { Category } from '../../models/Category';
-import { Etymology } from '../../models/Etymology';
-import { Option } from '../../models/Option';
-import { Pattern } from '../../models/Pattern';
-import { Question } from '../../models/Question';
-import { Reference } from '../../models/Reference';
-import { Test } from '../../models/Test';
-import { User } from '../../models/User';
-import { Version } from '../../models/Version';
-import { Word } from '../../models/Word';
+import { Category } from '../../models/category';
+import { Etymology } from '../../models/etymology';
+import { Option } from '../../models/option';
+import { Pattern } from '../../models/pattern';
+import { Question } from '../../models/question';
+import { Reference } from '../../models/reference';
+import { Test } from '../../models/test';
+import { User } from '../../models/user';
+import { Version } from '../../models/version';
+import { Word } from '../../models/word';
 
 export class Testing implements Seeder {
   public async run(factory: Factory): Promise<void> {

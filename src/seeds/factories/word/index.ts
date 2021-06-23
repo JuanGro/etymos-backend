@@ -2,8 +2,8 @@ import { define } from 'typeorm-seeding';
 import {
   FAKER_ELEMENTS_NUMBER_L,
   FAKER_ELEMENTS_NUMBER_S,
-} from '../../config/constants';
-import { Word } from '../../models/Word';
+} from '../../../config/constants';
+import { Word } from '../../../models/word';
 
 define(Word, (faker) => {
   const word = new Word();

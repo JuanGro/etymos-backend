@@ -8,24 +8,24 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { Word } from './Word';
+import { Etymology } from '../etymology';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
   TIMESTAMP,
-  VARCHAR_L_UNIQUE,
+  VARCHAR_S_UNIQUE,
   VARCHAR_XL,
-} from '../config/constants';
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()
-export class Category extends BaseEntity {
+export class Language extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Field(() => String)
-  @Column(VARCHAR_L_UNIQUE)
+  @Column(VARCHAR_S_UNIQUE)
   name!: string;
 
   @Field(() => String)
@@ -44,7 +44,7 @@ export class Category extends BaseEntity {
   @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => [Word], NULLABLE)
-  @OneToMany(() => Word, (word) => word.category)
-  words?: Word[];
+  @Field(() => [Etymology], NULLABLE)
+  @OneToMany(() => Etymology, (etymology) => etymology.language)
+  etymologies?: Etymology[];
 }

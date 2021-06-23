@@ -2,8 +2,8 @@ import { define } from 'typeorm-seeding';
 import {
   FAKER_ELEMENTS_NUMBER_M,
   FAKER_ELEMENTS_NUMBER_XL,
-} from '../../config/constants';
-import { Version } from '../../models/Version';
+} from '../../../config/constants';
+import { Version } from '../../../models/version';
 
 define(Version, (faker) => {
   const version = new Version();

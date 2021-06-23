@@ -1,4 +1,4 @@
-import { User } from '../../models/User';
+import { User } from '../../models/user';
 import { UserResolver } from '.';
 import {
   DUMMY_EMAIL,

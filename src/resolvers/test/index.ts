@@ -4,7 +4,7 @@ import {
 } from 'type-graphql';
 import { CreateTestInput } from '../../inputs/CreateTestInput';
 import { UpdateTestInput } from '../../inputs/UpdateTestInput';
-import { Test } from '../../models/Test';
+import { Test } from '../../models/test';
 import { ID_PARAM, DATA_PARAM, TEST_NOT_FOUND } from '../../config/constants';
 
 @Resolver()

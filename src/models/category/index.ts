@@ -8,42 +8,29 @@ import {
   OneToMany,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { Question } from './Question';
+import { Word } from '../word';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
   TIMESTAMP,
-  VARCHAR_XXL,
-  VARCHAR_XXL_UNIQUE,
-  VARCHAR_XXS,
-} from '../config/constants';
+  VARCHAR_L_UNIQUE,
+  VARCHAR_XL,
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()
-export class Reference extends BaseEntity {
+export class Category extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Field(() => String)
-  @Column(VARCHAR_XXL)
-  author!: string;
+  @Column(VARCHAR_L_UNIQUE)
+  name!: string;
 
   @Field(() => String)
-  @Column(VARCHAR_XXL_UNIQUE)
-  title!: string;
-
-  @Field(() => String)
-  @Column(VARCHAR_XXS)
-  publicationYear!: string;
-
-  @Field(() => String)
-  @Column(VARCHAR_XXL)
-  publicationPlace!: string;
-
-  @Field(() => String)
-  @Column(VARCHAR_XXL)
-  publishingCompany!: string;
+  @Column(VARCHAR_XL)
+  description!: string;
 
   @Field(() => Boolean)
   @Column(BOOLEAN_DEFAULT_TRUE)
@@ -57,7 +44,7 @@ export class Reference extends BaseEntity {
   @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => [Question], NULLABLE)
-  @OneToMany(() => Question, (question) => question.reference)
-  questions?: Question[];
+  @Field(() => [Word], NULLABLE)
+  @OneToMany(() => Word, (word) => word.category)
+  words?: Word[];
 }

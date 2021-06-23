@@ -6,32 +6,26 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
-  JoinTable,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { Question } from './Question';
+import { Etymology } from '../etymology';
 import {
-  BOOLEAN_DEFAULT_FALSE,
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
   TIMESTAMP,
-  VARCHAR_L_UNIQUE,
-} from '../config/constants';
+  VARCHAR_S_UNIQUE,
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()
-export class Option extends BaseEntity {
+export class Pattern extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Field(() => String)
-  @Column(VARCHAR_L_UNIQUE)
-  option!: string;
-
-  @Field(() => Boolean)
-  @Column(BOOLEAN_DEFAULT_FALSE)
-  correct!: boolean;
+  @Column(VARCHAR_S_UNIQUE)
+  pattern!: string;
 
   @Field(() => Boolean)
   @Column(BOOLEAN_DEFAULT_TRUE)
@@ -45,8 +39,7 @@ export class Option extends BaseEntity {
   @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => [Question], NULLABLE)
-  @ManyToMany(() => Question, (question) => question.options)
-  @JoinTable()
-  questions?: Question[];
+  @Field(() => [Etymology], NULLABLE)
+  @ManyToMany(() => Etymology, (etymology) => etymology.patterns)
+  etymologies?: Etymology[];
 }

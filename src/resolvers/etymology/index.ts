@@ -4,7 +4,7 @@ import {
 } from 'type-graphql';
 import { CreateEtymologyInput } from '../../inputs/CreateEtymologyInput';
 import { UpdateEtymologyInput } from '../../inputs/UpdateEtymologyInput';
-import { Etymology } from '../../models/Etymology';
+import { Etymology } from '../../models/etymology';
 import {
   ID_PARAM,
   DATA_PARAM,

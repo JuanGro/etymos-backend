@@ -4,7 +4,7 @@ import {
 } from 'type-graphql';
 import { CreatePatternInput } from '../../inputs/CreatePatternInput';
 import { UpdatePatternInput } from '../../inputs/UpdatePatternInput';
-import { Pattern } from '../../models/Pattern';
+import { Pattern } from '../../models/pattern';
 import {
   ID_PARAM,
   DATA_PARAM,

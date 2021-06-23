@@ -4,7 +4,7 @@ import {
 } from 'type-graphql';
 import { CreateVersionInput } from '../../inputs/CreateVersionInput';
 import { UpdateVersionInput } from '../../inputs/UpdateVersionInput';
-import { Version } from '../../models/Version';
+import { Version } from '../../models/version';
 import {
   ID_PARAM,
   DATA_PARAM,

@@ -2,31 +2,35 @@ import {
   Entity,
   BaseEntity,
   PrimaryGeneratedColumn,
+  Column,
   CreateDateColumn,
   UpdateDateColumn,
-  JoinColumn,
-  ManyToOne,
-  Column,
+  OneToMany,
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
-import { User } from './User';
-import { Question } from './Question';
+import { Etymology } from '../etymology';
 import {
-  BOOLEAN_DEFAULT_FALSE,
   BOOLEAN_DEFAULT_TRUE,
+  NULLABLE,
   TIMESTAMP,
-} from '../config/constants';
+  VARCHAR_S_UNIQUE,
+  VARCHAR_XL,
+} from '../../config/constants';
 
 @Entity()
 @ObjectType()
-export class Test extends BaseEntity {
+export class EtymologyType extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Field(() => Boolean)
-  @Column(BOOLEAN_DEFAULT_FALSE)
-  correct!: boolean;
+  @Field(() => String)
+  @Column(VARCHAR_S_UNIQUE)
+  name!: string;
+
+  @Field(() => String)
+  @Column(VARCHAR_XL)
+  description!: string;
 
   @Field(() => Boolean)
   @Column(BOOLEAN_DEFAULT_TRUE)
@@ -40,13 +44,7 @@ export class Test extends BaseEntity {
   @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => User)
-  @ManyToOne(() => User, (user) => user.tests)
-  @JoinColumn()
-  user!: User;
-
-  @Field(() => Question)
-  @ManyToOne(() => Question, (question) => question.tests)
-  @JoinColumn()
-  question!: Question;
+  @Field(() => [Etymology], NULLABLE)
+  @OneToMany(() => Etymology, (etymology) => etymology.language)
+  etymologies?: Etymology[];
 }

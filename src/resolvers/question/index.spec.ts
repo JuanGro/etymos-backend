@@ -1,4 +1,4 @@
-import { Question } from '../../models/Question';
+import { Question } from '../../models/question';
 import { QuestionResolver } from '.';
 import {
   DUMMY_TEXT2_XS,
