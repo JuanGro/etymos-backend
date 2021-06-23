@@ -1,13 +1,15 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateEtymologyInput } from "../../inputs/CreateEtymologyInput";
-import { UpdateEtymologyInput } from "../../inputs/UpdateEtymologyInput";
-import { Etymology } from "../../models/Etymology";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreateEtymologyInput } from '../../inputs/etymology/create';
+import { UpdateEtymologyInput } from '../../inputs/etymology/update';
+import { Etymology } from '../../models/etymology';
 import {
   ID_PARAM,
   DATA_PARAM,
   ETYMOLOGY_NOT_FOUND,
-} from "../../config/messages";
+} from '../../config/constants';
 
 @Resolver()
 export class EtymologyResolver {
@@ -28,7 +30,7 @@ export class EtymologyResolver {
 
   @Mutation(() => Etymology)
   async createEtymology(
-    @Arg(DATA_PARAM) data: CreateEtymologyInput
+    @Arg(DATA_PARAM) data: CreateEtymologyInput,
   ): Promise<Etymology> {
     const etymology = Etymology.create(data);
     await etymology.save();
@@ -38,7 +40,7 @@ export class EtymologyResolver {
   @Mutation(() => Etymology)
   async updateEtymology(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateEtymologyInput
+    @Arg(DATA_PARAM) data: UpdateEtymologyInput,
   ): Promise<Etymology> {
     const etymology = await Etymology.findOne({ where: { id } });
     if (!etymology) {

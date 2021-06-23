@@ -1,13 +1,15 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateQuestionInput } from "../../inputs/CreateQuestionInput";
-import { UpdateQuestionInput } from "../../inputs/UpdateQuestionInput";
-import { Question } from "../../models/Question";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreateQuestionInput } from '../../inputs/question/create';
+import { UpdateQuestionInput } from '../../inputs/question/update';
+import { Question } from '../../models/question';
 import {
   ID_PARAM,
   DATA_PARAM,
   QUESTION_NOT_FOUND,
-} from "../../config/messages";
+} from '../../config/constants';
 
 @Resolver()
 export class QuestionResolver {
@@ -28,7 +30,7 @@ export class QuestionResolver {
 
   @Mutation(() => Question)
   async createQuestion(
-    @Arg(DATA_PARAM) data: CreateQuestionInput
+    @Arg(DATA_PARAM) data: CreateQuestionInput,
   ): Promise<Question> {
     const question = Question.create(data);
     await question.save();
@@ -38,7 +40,7 @@ export class QuestionResolver {
   @Mutation(() => Question)
   async updateQuestion(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateQuestionInput
+    @Arg(DATA_PARAM) data: UpdateQuestionInput,
   ): Promise<Question> {
     const question = await Question.findOne({ where: { id } });
     if (!question) {
