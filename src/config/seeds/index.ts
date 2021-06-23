@@ -4,7 +4,7 @@ import {
   tearDownDatabase,
   useRefreshDatabase,
 } from 'typeorm-seeding';
-import { FAKER_ELEMENTS_NUMBER_L } from '../../config/constants';
+import { FAKER_ELEMENTS_NUMBER_L } from '../constants';
 import { Category } from '../../models/category';
 import { Etymology } from '../../models/etymology';
 import { Option } from '../../models/option';

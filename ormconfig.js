@@ -19,8 +19,8 @@ module.exports = {
   logging: false,
   entities: ['./src/models/**/*.ts'],
   migrations: ['./src/migrations/**/*.ts'],
-  seeds: ['./src/seeds/config/**/*.ts'],
-  factories: ['./src/seeds/factories/**/*.ts'],
+  seeds: ['./src/config/seeds/**/*.ts'],
+  factories: ['./src/config/factories/**/*.ts'],
   cli: {
     entitiesDir: './src/models',
     migrationsDir: './src/migrations',

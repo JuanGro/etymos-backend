@@ -1,5 +1,5 @@
 import { define } from 'typeorm-seeding';
-import { FAKER_ELEMENTS_NUMBER_L } from '../../../config/constants';
+import { FAKER_ELEMENTS_NUMBER_L } from '../../constants';
 import { Etymology } from '../../../models/etymology';
 
 define(Etymology, (faker) => {

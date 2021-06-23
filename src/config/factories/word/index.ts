@@ -2,7 +2,7 @@ import { define } from 'typeorm-seeding';
 import {
   FAKER_ELEMENTS_NUMBER_L,
   FAKER_ELEMENTS_NUMBER_S,
-} from '../../../config/constants';
+} from '../../constants';
 import { Word } from '../../../models/word';
 
 define(Word, (faker) => {

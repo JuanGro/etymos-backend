@@ -4,7 +4,7 @@ import {
   FAKER_ELEMENTS_NUMBER_M,
   FAKER_ELEMENTS_NUMBER_S,
   FAKER_ELEMENTS_NUMBER_XXL,
-} from '../../../config/constants';
+} from '../../constants';
 import { Reference } from '../../../models/reference';
 
 define(Reference, (faker) => {
