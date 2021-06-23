@@ -8,7 +8,7 @@ import { Test } from '../../models/Test';
 import { ID_PARAM, DATA_PARAM, TEST_NOT_FOUND } from '../../config/constants';
 
 @Resolver()
-export default class TestResolver {
+export class TestResolver {
   @Query(() => [Test])
   async getTests(): Promise<Test[]> {
     return Test.find();

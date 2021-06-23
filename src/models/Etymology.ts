@@ -16,12 +16,17 @@ import { Pattern } from './Pattern';
 import { Language } from './Language';
 import { EtymologyType } from './EtymologyType';
 import {
-  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE, VARCHAR_XXL, VARCHAR_XXXXL,
+  BOOLEAN_DEFAULT_TRUE,
+  NULLABLE,
+  TIMESTAMP,
+  VARCHAR_L_UNIQUE,
+  VARCHAR_XXL,
+  VARCHAR_XXXXL,
 } from '../config/constants';
 
 @Entity()
 @ObjectType()
-export default class Etymology extends BaseEntity {
+export class Etymology extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

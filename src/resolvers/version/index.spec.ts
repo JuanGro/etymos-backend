@@ -1,7 +1,15 @@
 import { Version } from '../../models/Version';
 import { VersionResolver } from '.';
 import {
-  FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, DUMMY_TEXT_M, DUMMY_TEXT_L, DUMMY_VERSION, DUMMY_VERSION2, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, VERSION_NOT_FOUND,
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  DUMMY_TEXT_M,
+  DUMMY_TEXT_L,
+  DUMMY_VERSION,
+  DUMMY_VERSION2,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+  VERSION_NOT_FOUND,
 } from '../../config/constants';
 
 const {
@@ -19,7 +27,9 @@ test('Get version', async () => {
 });
 
 test('Get error if version does not exist', async () => {
-  await expect(getVersion(INEXISTENT_INDEX)).rejects.toThrowError(VERSION_NOT_FOUND);
+  await expect(getVersion(INEXISTENT_INDEX)).rejects.toThrowError(
+    VERSION_NOT_FOUND,
+  );
 });
 
 test('Create version', async () => {
@@ -31,14 +41,15 @@ test('Create version', async () => {
     active: true,
   });
   await expect(getVersion(id)).resolves.toBeInstanceOf(Version);
-  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
+  await expect(getVersions()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
 });
 
 test('Get error if tries to create a version with incorrect version length', async () => {
   await expect(
     createVersion({
-      version:
-        DUMMY_TEXT_L,
+      version: DUMMY_TEXT_L,
       description: DUMMY_TEXT_M,
       maintenance: true,
       active: true,
@@ -65,14 +76,8 @@ test('Update version', async () => {
     active: false,
   });
   await expect(getVersion(id)).resolves.toBeInstanceOf(Version);
-  await expect(getVersion(id)).resolves.toHaveProperty(
-    'active',
-    false,
-  );
-  await expect(getVersion(id)).resolves.toHaveProperty(
-    'maintenance',
-    false,
-  );
+  await expect(getVersion(id)).resolves.toHaveProperty('active', false);
+  await expect(getVersion(id)).resolves.toHaveProperty('maintenance', false);
   await expect(getVersion(id)).resolves.toHaveProperty(
     'version',
     DUMMY_VERSION2,
@@ -84,7 +89,9 @@ test('Update version', async () => {
 });
 
 test('Delete version', async () => {
-  await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
+  await expect(getVersions()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
   const versions = await getVersions();
   const { id } = versions[versions.length - 1];
   await expect(deleteVersion(id)).resolves.toEqual(true);
@@ -92,5 +99,7 @@ test('Delete version', async () => {
 });
 
 test('Get error if tries to delete a version inexistent', async () => {
-  await expect(deleteVersion(INEXISTENT_INDEX)).rejects.toThrowError(VERSION_NOT_FOUND);
+  await expect(deleteVersion(INEXISTENT_INDEX)).rejects.toThrowError(
+    VERSION_NOT_FOUND,
+  );
 });

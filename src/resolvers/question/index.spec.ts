@@ -1,7 +1,14 @@
 import { Question } from '../../models/Question';
 import { QuestionResolver } from '.';
 import {
-  DUMMY_TEXT2_XS, DUMMY_TEXT_M, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, QUESTION_NOT_FOUND,
+  DUMMY_TEXT2_XS,
+  DUMMY_TEXT_M,
+  DUMMY_TEXT_XL,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  QUESTION_NOT_FOUND,
 } from '../../config/constants';
 
 const {
@@ -23,7 +30,9 @@ test('Get question', async () => {
 });
 
 test('Get error if question does not exist', async () => {
-  await expect(getQuestion(INEXISTENT_INDEX)).rejects.toThrowError(QUESTION_NOT_FOUND);
+  await expect(getQuestion(INEXISTENT_INDEX)).rejects.toThrowError(
+    QUESTION_NOT_FOUND,
+  );
 });
 
 test('Create question', async () => {
@@ -33,17 +42,16 @@ test('Create question', async () => {
     active: true,
     referenceId: 1,
   });
-  await expect(getQuestion(id)).resolves.toBeInstanceOf(
-    Question,
+  await expect(getQuestion(id)).resolves.toBeInstanceOf(Question);
+  await expect(getQuestions()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
   );
-  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test('Get error if tries to create a question with incorrect sentence length', async () => {
   await expect(
     createQuestion({
-      sentence:
-        DUMMY_TEXT_XL,
+      sentence: DUMMY_TEXT_XL,
       active: true,
       referenceId: 1,
     }),
@@ -66,13 +74,8 @@ test('Update question', async () => {
     active: false,
     referenceId: 1,
   });
-  await expect(getQuestion(id)).resolves.toBeInstanceOf(
-    Question,
-  );
-  await expect(getQuestion(id)).resolves.toHaveProperty(
-    'active',
-    false,
-  );
+  await expect(getQuestion(id)).resolves.toBeInstanceOf(Question);
+  await expect(getQuestion(id)).resolves.toHaveProperty('active', false);
   await expect(getQuestion(id)).resolves.toHaveProperty(
     'sentence',
     DUMMY_TEXT2_XS,
@@ -80,7 +83,9 @@ test('Update question', async () => {
 });
 
 test('Delete question', async () => {
-  await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
+  await expect(getQuestions()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
   const questions = await getQuestions();
   const { id } = questions[questions.length - 1];
   await expect(deleteQuestion(id)).resolves.toEqual(true);

@@ -10,12 +10,16 @@ import {
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Word } from './Word';
 import {
-  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE, VARCHAR_XL,
+  BOOLEAN_DEFAULT_TRUE,
+  NULLABLE,
+  TIMESTAMP,
+  VARCHAR_L_UNIQUE,
+  VARCHAR_XL,
 } from '../config/constants';
 
 @Entity()
 @ObjectType()
-export default class Category extends BaseEntity {
+export class Category extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

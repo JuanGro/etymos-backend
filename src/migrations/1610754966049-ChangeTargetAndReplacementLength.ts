@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class ChangeTargetAndReplacementLength1610754966049
+export class ChangeTargetAndReplacementLength1610754966049
 implements MigrationInterface {
   name = 'ChangeTargetAndReplacementLength1610754966049';
 

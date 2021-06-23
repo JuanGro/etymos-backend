@@ -9,7 +9,7 @@ import { User } from '../../models/User';
 import { ID_PARAM, DATA_PARAM, USER_NOT_FOUND } from '../../config/constants';
 
 @Resolver()
-export default class UserResolver {
+export class UserResolver {
   @Query(() => [User])
   async getUsers(): Promise<User[]> {
     return User.find();

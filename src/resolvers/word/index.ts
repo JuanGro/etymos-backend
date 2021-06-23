@@ -9,7 +9,7 @@ import { Word } from '../../models/Word';
 import { ID_PARAM, DATA_PARAM, WORD_NOT_FOUND } from '../../config/constants';
 
 @Resolver()
-export default class WordResolver {
+export class WordResolver {
   @Query(() => [Word])
   async getWords(): Promise<Word[]> {
     return Word.find({ relations: ['users'] });

@@ -1,7 +1,16 @@
 import { Word } from '../../models/Word';
 import { WordResolver } from '.';
 import {
-  FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_L, WORD_NOT_FOUND, DUMMY_TEXT_S, DUMMY_IMAGE_URL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, DUMMY_TEXT2_XS,
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  DUMMY_TEXT_XS,
+  DUMMY_TEXT_L,
+  WORD_NOT_FOUND,
+  DUMMY_TEXT_S,
+  DUMMY_IMAGE_URL,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+  DUMMY_TEXT2_XS,
 } from '../../config/constants';
 
 const {
@@ -27,8 +36,7 @@ test('Create word', async () => {
   const { id } = await createWord({
     word: DUMMY_TEXT_XS,
     meaning: DUMMY_TEXT_S,
-    imageUrl:
-      DUMMY_IMAGE_URL,
+    imageUrl: DUMMY_IMAGE_URL,
     categoryId: 1,
     active: true,
   });
@@ -41,8 +49,7 @@ test('Get error if tries to create a word with incorrect word length', async () 
     createWord({
       word: DUMMY_TEXT_L,
       meaning: DUMMY_TEXT_S,
-      imageUrl:
-        DUMMY_IMAGE_URL,
+      imageUrl: DUMMY_IMAGE_URL,
       categoryId: 1,
       active: true,
     }),
@@ -54,8 +61,7 @@ test('Get error if tries to create a word with duplicate word', async () => {
     createWord({
       word: DUMMY_TEXT_XS,
       meaning: DUMMY_TEXT_S,
-      imageUrl:
-        DUMMY_IMAGE_URL,
+      imageUrl: DUMMY_IMAGE_URL,
       categoryId: 1,
       active: true,
     }),
@@ -66,24 +72,14 @@ test('Update word', async () => {
   const { id } = await updateWord(1, {
     word: DUMMY_TEXT2_XS,
     meaning: DUMMY_TEXT_S,
-    imageUrl:
-      DUMMY_IMAGE_URL,
+    imageUrl: DUMMY_IMAGE_URL,
     categoryId: 1,
     active: false,
   });
   await expect(getWord(id)).resolves.toBeInstanceOf(Word);
-  await expect(getWord(id)).resolves.toHaveProperty(
-    'active',
-    false,
-  );
-  await expect(getWord(id)).resolves.toHaveProperty(
-    'word',
-    DUMMY_TEXT2_XS,
-  );
-  await expect(getWord(id)).resolves.toHaveProperty(
-    'meaning',
-    DUMMY_TEXT_S,
-  );
+  await expect(getWord(id)).resolves.toHaveProperty('active', false);
+  await expect(getWord(id)).resolves.toHaveProperty('word', DUMMY_TEXT2_XS);
+  await expect(getWord(id)).resolves.toHaveProperty('meaning', DUMMY_TEXT_S);
   await expect(getWord(id)).resolves.toHaveProperty(
     'imageUrl',
     DUMMY_IMAGE_URL,
@@ -99,5 +95,7 @@ test('Delete word', async () => {
 });
 
 test('Get error if tries to delete a word inexistent', async () => {
-  await expect(deleteWord(INEXISTENT_INDEX)).rejects.toThrowError(WORD_NOT_FOUND);
+  await expect(deleteWord(INEXISTENT_INDEX)).rejects.toThrowError(
+    WORD_NOT_FOUND,
+  );
 });

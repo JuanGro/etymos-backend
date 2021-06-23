@@ -16,7 +16,7 @@ import { User } from '../../models/User';
 import { Version } from '../../models/Version';
 import { Word } from '../../models/Word';
 
-export default class Testing implements Seeder {
+export class Testing implements Seeder {
   public async run(factory: Factory): Promise<void> {
     await useRefreshDatabase();
     await factory(Category)().createMany(FAKER_ELEMENTS_NUMBER_L);

@@ -1,7 +1,7 @@
 import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export default class CreateWordEtymologyInput {
+export class CreateWordEtymologyInput {
   @Field()
   wordId!: number;
 

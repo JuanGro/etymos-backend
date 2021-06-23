@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class ChangeAttributesLength1610754374325 implements MigrationInterface {
+export class ChangeAttributesLength1610754374325
+implements MigrationInterface {
   name = 'ChangeAttributesLength1610754374325';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

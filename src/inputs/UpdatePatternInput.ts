@@ -2,7 +2,7 @@ import { InputType, Field } from 'type-graphql';
 import { NULLABLE } from '../config/constants';
 
 @InputType()
-export default class UpdatePatternInput {
+export class UpdatePatternInput {
   @Field(NULLABLE)
   pattern?: string;
 

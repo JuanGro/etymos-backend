@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class MERVersion2021609953776534 implements MigrationInterface {
+export class MERVersion2021609953776534 implements MigrationInterface {
   name = 'MERVersion2021609953776534';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

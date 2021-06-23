@@ -8,7 +8,7 @@ import { Option } from '../../models/Option';
 import { ID_PARAM, DATA_PARAM, OPTION_NOT_FOUND } from '../../config/constants';
 
 @Resolver()
-export default class OptionResolver {
+export class OptionResolver {
   @Query(() => [Option])
   async getOptions(): Promise<Option[]> {
     return Option.find();

@@ -1,7 +1,7 @@
 import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export default class CreatePatternInput {
+export class CreatePatternInput {
   @Field()
   pattern!: string;
 

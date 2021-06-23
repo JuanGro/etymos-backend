@@ -12,7 +12,7 @@ import {
 } from '../../config/constants';
 
 @Resolver()
-export default class QuestionResolver {
+export class QuestionResolver {
   @Query(() => [Question])
   async getQuestions(): Promise<Question[]> {
     return Question.find();

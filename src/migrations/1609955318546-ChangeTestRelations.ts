@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class ChangeTestRelations1609955318546 implements MigrationInterface {
+export class ChangeTestRelations1609955318546
+implements MigrationInterface {
   name = 'ChangeTestRelations1609955318546';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

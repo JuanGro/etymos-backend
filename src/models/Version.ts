@@ -8,12 +8,16 @@ import {
 } from 'typeorm';
 import { ObjectType, Field, ID } from 'type-graphql';
 import {
-  BOOLEAN_DEFAULT_FALSE, BOOLEAN_DEFAULT_TRUE, TIMESTAMP, VARCHAR_S_UNIQUE, VARCHAR_XXXXL,
+  BOOLEAN_DEFAULT_FALSE,
+  BOOLEAN_DEFAULT_TRUE,
+  TIMESTAMP,
+  VARCHAR_S_UNIQUE,
+  VARCHAR_XXXXL,
 } from '../config/constants';
 
 @Entity()
 @ObjectType()
-export default class Version extends BaseEntity {
+export class Version extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

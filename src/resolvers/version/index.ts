@@ -5,10 +5,14 @@ import {
 import { CreateVersionInput } from '../../inputs/CreateVersionInput';
 import { UpdateVersionInput } from '../../inputs/UpdateVersionInput';
 import { Version } from '../../models/Version';
-import { ID_PARAM, DATA_PARAM, VERSION_NOT_FOUND } from '../../config/constants';
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  VERSION_NOT_FOUND,
+} from '../../config/constants';
 
 @Resolver()
-export default class VersionResolver {
+export class VersionResolver {
   @Query(() => [Version])
   async getVersions(): Promise<Version[]> {
     return Version.find();

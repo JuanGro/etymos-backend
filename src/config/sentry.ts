@@ -1,3 +1,8 @@
+/* eslint-disable no-continue */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Sentry from '@sentry/node';
 import { ApolloError } from 'apollo-server';
@@ -51,7 +56,7 @@ function addReportDetails(err: any, ctx: any) {
   });
 }
 
-const sentryConfiguration = {
+export const sentryConfiguration = {
   requestDidStart(_: any) {
     /* Within this returned object, define functions that respond
            to request-specific lifecycle events. */
@@ -70,5 +75,3 @@ const sentryConfiguration = {
     };
   },
 };
-
-export default sentryConfiguration;

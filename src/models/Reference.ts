@@ -10,12 +10,17 @@ import {
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Question } from './Question';
 import {
-  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXL, VARCHAR_XXL_UNIQUE, VARCHAR_XXS,
+  BOOLEAN_DEFAULT_TRUE,
+  NULLABLE,
+  TIMESTAMP,
+  VARCHAR_XXL,
+  VARCHAR_XXL_UNIQUE,
+  VARCHAR_XXS,
 } from '../config/constants';
 
 @Entity()
 @ObjectType()
-export default class Reference extends BaseEntity {
+export class Reference extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

@@ -1,7 +1,7 @@
 import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export default class CreateOptionInput {
+export class CreateOptionInput {
   @Field()
   option!: string;
 

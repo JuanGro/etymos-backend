@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class AddActiveFieldsToAllEntities1616611419842
+export class AddActiveFieldsToAllEntities1616611419842
 implements MigrationInterface {
   name = 'AddActiveFieldsToAllEntities1616611419842';
 

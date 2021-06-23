@@ -1,7 +1,7 @@
 import { define } from 'typeorm-seeding';
 import { User } from '../../models/User';
 
-define(User, (faker: Faker.FakerStatic) => {
+define(User, (faker) => {
   const user = new User();
   const firstName = faker.name.firstName();
   const lastName = faker.name.lastName();

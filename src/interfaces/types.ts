@@ -1,9 +1,9 @@
 interface Type {
-    type: 'varchar' | 'boolean' | 'timestamp',
+  type: 'varchar' | 'boolean' | 'timestamp';
 }
 
 export interface Types {
-    VARCHAR_TYPE: Type,
-    BOOLEAN_TYPE: Type,
-    TIMESTAMP_TYPE: Type,
+  VARCHAR_TYPE: Type;
+  BOOLEAN_TYPE: Type;
+  TIMESTAMP_TYPE: Type;
 }

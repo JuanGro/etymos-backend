@@ -5,10 +5,14 @@ import {
 import { CreatePatternInput } from '../../inputs/CreatePatternInput';
 import { UpdatePatternInput } from '../../inputs/UpdatePatternInput';
 import { Pattern } from '../../models/Pattern';
-import { ID_PARAM, DATA_PARAM, PATTERN_NOT_FOUND } from '../../config/constants';
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  PATTERN_NOT_FOUND,
+} from '../../config/constants';
 
 @Resolver()
-export default class PatternResolver {
+export class PatternResolver {
   @Query(() => [Pattern])
   async getPatterns(): Promise<Pattern[]> {
     return Pattern.find();

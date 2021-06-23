@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class ChangeLengthForQuestionSentence1610753323945
+export class ChangeLengthForQuestionSentence1610753323945
 implements MigrationInterface {
   name = 'ChangeLengthForQuestionSentence1610753323945';
 

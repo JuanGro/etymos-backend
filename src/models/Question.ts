@@ -15,12 +15,15 @@ import { Reference } from './Reference';
 import { Option } from './Option';
 import { Test } from './Test';
 import {
-  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXXXL_UNIQUE,
+  BOOLEAN_DEFAULT_TRUE,
+  NULLABLE,
+  TIMESTAMP,
+  VARCHAR_XXXXL_UNIQUE,
 } from '../config/constants';
 
 @Entity()
 @ObjectType()
-export default class Question extends BaseEntity {
+export class Question extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

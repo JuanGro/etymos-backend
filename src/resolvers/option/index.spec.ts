@@ -1,7 +1,14 @@
 import { Option } from '../../models/Option';
 import { OptionResolver } from '.';
 import {
-  FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, DUMMY_TEXT_XS, ERROR_MAX_LENGTH, ERROR_DUPLICATE_KEY, DUMMY_TEXT2_XS, OPTION_NOT_FOUND, DUMMY_TEXT_XL,
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  DUMMY_TEXT_XS,
+  ERROR_MAX_LENGTH,
+  ERROR_DUPLICATE_KEY,
+  DUMMY_TEXT2_XS,
+  OPTION_NOT_FOUND,
+  DUMMY_TEXT_XL,
 } from '../../config/constants';
 
 const {
@@ -19,7 +26,9 @@ test('Get option', async () => {
 });
 
 test('Get error if option does not exist', async () => {
-  await expect(getOption(INEXISTENT_INDEX)).rejects.toThrowError(OPTION_NOT_FOUND);
+  await expect(getOption(INEXISTENT_INDEX)).rejects.toThrowError(
+    OPTION_NOT_FOUND,
+  );
 });
 
 test('Create option', async () => {
@@ -36,8 +45,7 @@ test('Create option', async () => {
 test('Get error if tries to create an option with incorrect option length', async () => {
   await expect(
     createOption({
-      option:
-        DUMMY_TEXT_XL,
+      option: DUMMY_TEXT_XL,
       correct: false,
       active: true,
     }),
@@ -61,18 +69,9 @@ test('Update option', async () => {
     active: false,
   });
   await expect(getOption(id)).resolves.toBeInstanceOf(Option);
-  await expect(getOption(id)).resolves.toHaveProperty(
-    'active',
-    false,
-  );
-  await expect(getOption(id)).resolves.toHaveProperty(
-    'correct',
-    true,
-  );
-  await expect(getOption(id)).resolves.toHaveProperty(
-    'option',
-    DUMMY_TEXT2_XS,
-  );
+  await expect(getOption(id)).resolves.toHaveProperty('active', false);
+  await expect(getOption(id)).resolves.toHaveProperty('correct', true);
+  await expect(getOption(id)).resolves.toHaveProperty('option', DUMMY_TEXT2_XS);
 });
 
 test('Delete option', async () => {
@@ -84,5 +83,7 @@ test('Delete option', async () => {
 });
 
 test('Get error if tries to delete an option inexistent', async () => {
-  await expect(deleteOption(INEXISTENT_INDEX)).rejects.toThrowError(OPTION_NOT_FOUND);
+  await expect(deleteOption(INEXISTENT_INDEX)).rejects.toThrowError(
+    OPTION_NOT_FOUND,
+  );
 });

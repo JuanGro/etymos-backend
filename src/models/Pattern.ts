@@ -10,12 +10,15 @@ import {
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Etymology } from './Etymology';
 import {
-  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_S_UNIQUE,
+  BOOLEAN_DEFAULT_TRUE,
+  NULLABLE,
+  TIMESTAMP,
+  VARCHAR_S_UNIQUE,
 } from '../config/constants';
 
 @Entity()
 @ObjectType()
-export default class Pattern extends BaseEntity {
+export class Pattern extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

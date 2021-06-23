@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class AddDescriptionToLanguage1616599514988
+export class AddDescriptionToLanguage1616599514988
 implements MigrationInterface {
   name = 'AddDescriptionToLanguage1616599514988';
 

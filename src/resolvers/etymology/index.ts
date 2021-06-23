@@ -12,7 +12,7 @@ import {
 } from '../../config/constants';
 
 @Resolver()
-export default class EtymologyResolver {
+export class EtymologyResolver {
   @Query(() => [Etymology])
   async getEtymologies(): Promise<Etymology[]> {
     return Etymology.find();

@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class AddJoinTableForOptionTable1610758087015
+export class AddJoinTableForOptionTable1610758087015
 implements MigrationInterface {
   name = 'AddJoinTableForOptionTable1610758087015';
 

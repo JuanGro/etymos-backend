@@ -1,7 +1,7 @@
 import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export default class CreateQuestionInput {
+export class CreateQuestionInput {
   @Field()
   sentence!: string;
 

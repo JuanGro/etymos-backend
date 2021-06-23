@@ -1,7 +1,7 @@
 import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export default class CreateCategoryInput {
+export class CreateCategoryInput {
   @Field()
   name!: string;
 

@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class ChangeImageUrlLength1610687701232 implements MigrationInterface {
+export class ChangeImageUrlLength1610687701232
+implements MigrationInterface {
   name = 'ChangeImageUrlLength1610687701232';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

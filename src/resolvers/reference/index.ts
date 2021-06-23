@@ -12,7 +12,7 @@ import {
 } from '../../config/constants';
 
 @Resolver()
-export default class ReferenceResolver {
+export class ReferenceResolver {
   @Query(() => [Reference])
   async getReferences(): Promise<Reference[]> {
     return Reference.find();

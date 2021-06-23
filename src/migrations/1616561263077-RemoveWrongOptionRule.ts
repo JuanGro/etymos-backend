@@ -1,6 +1,7 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class RemoveWrongOptionRule1616561263077 implements MigrationInterface {
+export class RemoveWrongOptionRule1616561263077
+implements MigrationInterface {
   name = 'RemoveWrongOptionRule1616561263077';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

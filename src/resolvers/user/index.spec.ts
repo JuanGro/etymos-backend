@@ -1,7 +1,15 @@
 import { User } from '../../models/User';
 import { UserResolver } from '.';
 import {
-  DUMMY_EMAIL, DUMMY_EMAIL2, DUMMY_TEXT_S, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, USER_NOT_FOUND,
+  DUMMY_EMAIL,
+  DUMMY_EMAIL2,
+  DUMMY_TEXT_S,
+  DUMMY_TEXT_XL,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  USER_NOT_FOUND,
 } from '../../config/constants';
 
 const {
@@ -60,18 +68,9 @@ test('Update user', async () => {
     active: false,
   });
   await expect(getUser(id)).resolves.toBeInstanceOf(User);
-  await expect(getUser(id)).resolves.toHaveProperty(
-    'active',
-    false,
-  );
-  await expect(getUser(id)).resolves.toHaveProperty(
-    'name',
-    DUMMY_TEXT_S,
-  );
-  await expect(getUser(id)).resolves.toHaveProperty(
-    'email',
-    DUMMY_EMAIL2,
-  );
+  await expect(getUser(id)).resolves.toHaveProperty('active', false);
+  await expect(getUser(id)).resolves.toHaveProperty('name', DUMMY_TEXT_S);
+  await expect(getUser(id)).resolves.toHaveProperty('email', DUMMY_EMAIL2);
 });
 
 test('Delete user', async () => {
@@ -83,5 +82,7 @@ test('Delete user', async () => {
 });
 
 test('Get error if tries to delete a user inexistent', async () => {
-  await expect(deleteUser(INEXISTENT_INDEX)).rejects.toThrowError(USER_NOT_FOUND);
+  await expect(deleteUser(INEXISTENT_INDEX)).rejects.toThrowError(
+    USER_NOT_FOUND,
+  );
 });

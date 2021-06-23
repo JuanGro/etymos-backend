@@ -1,6 +1,10 @@
 import { Test } from '../../models/Test';
 import { TestResolver } from '.';
-import { FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, TEST_NOT_FOUND } from '../../config/constants';
+import {
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  TEST_NOT_FOUND,
+} from '../../config/constants';
 
 const {
   getTests, getTest, createTest, updateTest, deleteTest,
@@ -38,10 +42,7 @@ test('Update test', async () => {
     active: false,
   });
   await expect(getTest(id)).resolves.toBeInstanceOf(Test);
-  await expect(getTest(id)).resolves.toHaveProperty(
-    'active',
-    false,
-  );
+  await expect(getTest(id)).resolves.toHaveProperty('active', false);
 });
 
 test('Delete test', async () => {
@@ -53,5 +54,7 @@ test('Delete test', async () => {
 });
 
 test('Get error if tries to delete a test inexistent', async () => {
-  await expect(deleteTest(INEXISTENT_INDEX)).rejects.toThrowError(TEST_NOT_FOUND);
+  await expect(deleteTest(INEXISTENT_INDEX)).rejects.toThrowError(
+    TEST_NOT_FOUND,
+  );
 });

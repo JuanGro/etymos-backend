@@ -2,7 +2,7 @@ import { InputType, Field } from 'type-graphql';
 import { NULLABLE } from '../config/constants';
 
 @InputType()
-export default class UpdateCategoryInput {
+export class UpdateCategoryInput {
   @Field(NULLABLE)
   name?: string;
 

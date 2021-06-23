@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export default class ChangeLengthForCategoryName1610660228016
+export class ChangeLengthForCategoryName1610660228016
 implements MigrationInterface {
   name = 'ChangeLengthForCategoryName1610660228016';
 
