@@ -1,6 +1,6 @@
 import { Test } from "../../models/Test";
 import { TestResolver } from ".";
-import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, TEST_NOT_FOUND } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, TEST_NOT_FOUND } from "../../config/constants";
 
 const { getTests, getTest, createTest, updateTest, deleteTest } =
   new TestResolver();

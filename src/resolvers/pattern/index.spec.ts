@@ -1,6 +1,6 @@
 import { Pattern } from "../../models/Pattern";
 import { PatternResolver } from ".";
-import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_XL, PATTERN_NOT_FOUND, DUMMY_TEXT2_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_XL, PATTERN_NOT_FOUND, DUMMY_TEXT2_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH } from "../../config/constants";
 
 const { getPatterns, getPattern, createPattern, updatePattern, deletePattern } =
   new PatternResolver();

@@ -1,6 +1,6 @@
 import { Word } from "../../models/Word";
 import { WordResolver } from ".";
-import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_L, WORD_NOT_FOUND, DUMMY_TEXT_S, DUMMY_IMAGE_URL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, DUMMY_TEXT2_XS } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_L, WORD_NOT_FOUND, DUMMY_TEXT_S, DUMMY_IMAGE_URL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, DUMMY_TEXT2_XS } from "../../config/constants";
 
 const { getWords, getWord, createWord, updateWord, deleteWord } =
   new WordResolver();

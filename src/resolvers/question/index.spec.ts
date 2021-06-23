@@ -1,6 +1,6 @@
 import { Question } from "../../models/Question";
 import { QuestionResolver } from ".";
-import { DUMMY_TEXT2_XS, DUMMY_TEXT_M, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, QUESTION_NOT_FOUND } from "../../config/constants";
+import { DUMMY_TEXT2_XS, DUMMY_TEXT_M, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, QUESTION_NOT_FOUND } from "../../config/constants";
 
 const {
   getQuestions,

@@ -1,6 +1,6 @@
 import { User } from "../../models/User";
 import { UserResolver } from ".";
-import { DUMMY_EMAIL, DUMMY_EMAIL2, DUMMY_TEXT_S, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, USER_NOT_FOUND } from "../../config/constants";
+import { DUMMY_EMAIL, DUMMY_EMAIL2, DUMMY_TEXT_S, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, USER_NOT_FOUND } from "../../config/constants";
 
 const { getUsers, getUser, createUser, updateUser, deleteUser } =
   new UserResolver();

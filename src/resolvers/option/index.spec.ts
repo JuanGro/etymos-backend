@@ -1,6 +1,6 @@
 import { Option } from "../../models/Option";
 import { OptionResolver } from ".";
-import { FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, ERROR_MAX_LENGTH, ERROR_DUPLICATE_KEY, DUMMY_TEXT2_XS, OPTION_NOT_FOUND, DUMMY_TEXT_XL } from "../../config/constants";
+import { FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, DUMMY_TEXT_XS, ERROR_MAX_LENGTH, ERROR_DUPLICATE_KEY, DUMMY_TEXT2_XS, OPTION_NOT_FOUND, DUMMY_TEXT_XL } from "../../config/constants";
 
 const { getOptions, getOption, createOption, updateOption, deleteOption } =
   new OptionResolver();

@@ -1,6 +1,6 @@
 import { Category } from "../../models/Category";
 import { CategoryResolver } from ".";
-import { CATEGORY_NOT_FOUND, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, FIRST_INDEX, INEXISTENT_INDEX } from "../../config/constants";
+import { CATEGORY_NOT_FOUND, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX } from "../../config/constants";
 
 const {
   getCategories,
