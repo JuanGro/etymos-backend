@@ -1,4 +1,4 @@
-import { Types } from '../interfaces/types';
+import { Types } from '../../interfaces/types';
 
 const {
   NOT_FOUND,
