@@ -8,15 +8,17 @@ import {
   OneToMany,
   ManyToMany,
   JoinTable,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { Test } from "./Test";
-import { Word } from "./Word";
-import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXL, VARCHAR_XXL_UNIQUE } from "../config/constants";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { Test } from './Test';
+import { Word } from './Word';
+import {
+  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXL, VARCHAR_XXL_UNIQUE,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
-export class User extends BaseEntity {
+export default class User extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

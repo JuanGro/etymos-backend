@@ -6,14 +6,16 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { Etymology } from "./Etymology";
-import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_S_UNIQUE, VARCHAR_XL } from "../config/constants";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { Etymology } from './Etymology';
+import {
+  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_S_UNIQUE, VARCHAR_XL,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
-export class EtymologyType extends BaseEntity {
+export default class EtymologyType extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

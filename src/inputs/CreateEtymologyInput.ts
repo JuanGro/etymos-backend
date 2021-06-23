@@ -1,7 +1,7 @@
-import { InputType, Field } from "type-graphql";
+import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export class CreateEtymologyInput {
+export default class CreateEtymologyInput {
   @Field()
   graecoLatinEtymology!: string;
 

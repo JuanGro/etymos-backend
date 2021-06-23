@@ -7,15 +7,15 @@ import {
   JoinColumn,
   ManyToOne,
   Column,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { User } from "./User";
-import { Question } from "./Question";
-import { BOOLEAN_DEFAULT_FALSE, BOOLEAN_DEFAULT_TRUE, TIMESTAMP } from "../config/constants";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { User } from './User';
+import { Question } from './Question';
+import { BOOLEAN_DEFAULT_FALSE, BOOLEAN_DEFAULT_TRUE, TIMESTAMP } from '../config/constants';
 
 @Entity()
 @ObjectType()
-export class Test extends BaseEntity {
+export default class Test extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

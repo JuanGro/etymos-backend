@@ -6,14 +6,16 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { Question } from "./Question";
-import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXL, VARCHAR_XXL_UNIQUE, VARCHAR_XXS } from "./../config/constants"
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { Question } from './Question';
+import {
+  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXL, VARCHAR_XXL_UNIQUE, VARCHAR_XXS,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
-export class Reference extends BaseEntity {
+export default class Reference extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

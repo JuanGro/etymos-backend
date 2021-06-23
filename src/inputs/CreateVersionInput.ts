@@ -1,7 +1,7 @@
-import { InputType, Field } from "type-graphql";
+import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export class CreateVersionInput {
+export default class CreateVersionInput {
   @Field()
   version!: string;
 

@@ -1,29 +1,30 @@
-import * as Sentry from "@sentry/node";
-import { ApolloError } from "apollo-server";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import * as Sentry from '@sentry/node';
+import { ApolloError } from 'apollo-server';
 
 function addFailingOperation(scope: any, ctx: any) {
   // Annotate whether failing operation was query/mutation/subscription
   if (ctx.operation) {
-    scope.setTag("kind", ctx.operation.operation);
+    scope.setTag('kind', ctx.operation.operation);
   }
 }
 
 function addQuery(scope: any, ctx: any) {
   // Log query and variables as extras (make sure to strip out sensitive data!)
-  scope.setExtra("query", ctx.request.query);
+  scope.setExtra('query', ctx.request.query);
 }
 
 function addVariables(scope: any, ctx: any) {
   // Log query and variables as extras (make sure to strip out sensitive data!)
-  scope.setExtra("variables", ctx.request.variables);
+  scope.setExtra('variables', ctx.request.variables);
 }
 
 function addPath(scope: any, err: any, sentry: any) {
   if (err.path) {
     // We can also add the path as breadcrumb
     scope.addBreadcrumb({
-      category: "query-path",
-      message: err.path.join(" > "),
+      category: 'query-path',
+      message: err.path.join(' > '),
       level: sentry.Severity.Debug,
     });
   }
@@ -31,7 +32,7 @@ function addPath(scope: any, err: any, sentry: any) {
 
 function setRequest(scope: any, ctx: any) {
   if (ctx.request.http) {
-    const transactionId = ctx.request.http.headers.get("x-transaction-id");
+    const transactionId = ctx.request.http.headers.get('x-transaction-id');
     if (transactionId) {
       scope.setTransaction(transactionId);
     }
@@ -50,7 +51,7 @@ function addReportDetails(err: any, ctx: any) {
   });
 }
 
-export const sentryConfiguration = {
+const sentryConfiguration = {
   requestDidStart(_: any) {
     /* Within this returned object, define functions that respond
            to request-specific lifecycle events. */
@@ -69,3 +70,5 @@ export const sentryConfiguration = {
     };
   },
 };
+
+export default sentryConfiguration;

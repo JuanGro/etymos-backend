@@ -7,14 +7,16 @@ import {
   UpdateDateColumn,
   ManyToMany,
   JoinTable,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { Question } from "./Question";
-import { BOOLEAN_DEFAULT_FALSE, BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE } from "../config/constants";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { Question } from './Question';
+import {
+  BOOLEAN_DEFAULT_FALSE, BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
-export class Option extends BaseEntity {
+export default class Option extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

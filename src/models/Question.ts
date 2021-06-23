@@ -9,16 +9,18 @@ import {
   ManyToOne,
   ManyToMany,
   OneToMany,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { Reference } from "./Reference";
-import { Option } from "./Option";
-import { Test } from "./Test";
-import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXXXL_UNIQUE } from "../config/constants";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { Reference } from './Reference';
+import { Option } from './Option';
+import { Test } from './Test';
+import {
+  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_XXXXL_UNIQUE,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
-export class Question extends BaseEntity {
+export default class Question extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

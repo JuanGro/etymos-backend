@@ -1,16 +1,18 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateReferenceInput } from "../../inputs/CreateReferenceInput";
-import { UpdateReferenceInput } from "../../inputs/UpdateReferenceInput";
-import { Reference } from "../../models/Reference";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreateReferenceInput } from '../../inputs/CreateReferenceInput';
+import { UpdateReferenceInput } from '../../inputs/UpdateReferenceInput';
+import { Reference } from '../../models/Reference';
 import {
   ID_PARAM,
   DATA_PARAM,
   REFERENCE_NOT_FOUND,
-} from "../../config/constants";
+} from '../../config/constants';
 
 @Resolver()
-export class ReferenceResolver {
+export default class ReferenceResolver {
   @Query(() => [Reference])
   async getReferences(): Promise<Reference[]> {
     return Reference.find();
@@ -28,7 +30,7 @@ export class ReferenceResolver {
 
   @Mutation(() => Reference)
   async createReference(
-    @Arg(DATA_PARAM) data: CreateReferenceInput
+    @Arg(DATA_PARAM) data: CreateReferenceInput,
   ): Promise<Reference> {
     const reference = Reference.create(data);
     await reference.save();
@@ -38,7 +40,7 @@ export class ReferenceResolver {
   @Mutation(() => Reference)
   async updateReference(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateReferenceInput
+    @Arg(DATA_PARAM) data: UpdateReferenceInput,
   ): Promise<Reference> {
     const reference = await Reference.findOne({ where: { id } });
     if (!reference) {

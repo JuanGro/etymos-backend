@@ -1,7 +1,7 @@
-import { InputType, Field } from "type-graphql";
+import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export class CreateWordInput {
+export default class CreateWordInput {
   @Field()
   word!: string;
 

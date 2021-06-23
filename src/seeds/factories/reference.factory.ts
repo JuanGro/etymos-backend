@@ -1,6 +1,8 @@
-import { define } from "typeorm-seeding";
-import { FAKER_ELEMENTS_NUMBER_L, FAKER_ELEMENTS_NUMBER_M, FAKER_ELEMENTS_NUMBER_S, FAKER_ELEMENTS_NUMBER_XXL } from "../../config/constants";
-import { Reference } from "../../models/Reference";
+import { define } from 'typeorm-seeding';
+import {
+  FAKER_ELEMENTS_NUMBER_L, FAKER_ELEMENTS_NUMBER_M, FAKER_ELEMENTS_NUMBER_S, FAKER_ELEMENTS_NUMBER_XXL,
+} from '../../config/constants';
+import { Reference } from '../../models/Reference';
 
 define(Reference, (faker: Faker.FakerStatic) => {
   const reference = new Reference();

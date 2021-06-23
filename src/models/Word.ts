@@ -9,16 +9,18 @@ import {
   JoinTable,
   ManyToOne,
   JoinColumn,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { User } from "./User";
-import { Etymology } from "./Etymology";
-import { Category } from "./Category";
-import { BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE, VARCHAR_XXL, VARCHAR_XXXXL } from "../config/constants";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { User } from './User';
+import { Etymology } from './Etymology';
+import { Category } from './Category';
+import {
+  BOOLEAN_DEFAULT_TRUE, NULLABLE, TIMESTAMP, VARCHAR_L_UNIQUE, VARCHAR_XXL, VARCHAR_XXXXL,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
-export class Word extends BaseEntity {
+export default class Word extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn()
   id!: number;

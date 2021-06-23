@@ -1,12 +1,14 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateTestInput } from "../../inputs/CreateTestInput";
-import { UpdateTestInput } from "../../inputs/UpdateTestInput";
-import { Test } from "../../models/Test";
-import { ID_PARAM, DATA_PARAM, TEST_NOT_FOUND } from "../../config/constants";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreateTestInput } from '../../inputs/CreateTestInput';
+import { UpdateTestInput } from '../../inputs/UpdateTestInput';
+import { Test } from '../../models/Test';
+import { ID_PARAM, DATA_PARAM, TEST_NOT_FOUND } from '../../config/constants';
 
 @Resolver()
-export class TestResolver {
+export default class TestResolver {
   @Query(() => [Test])
   async getTests(): Promise<Test[]> {
     return Test.find();
@@ -32,7 +34,7 @@ export class TestResolver {
   @Mutation(() => Test)
   async updateTest(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateTestInput
+    @Arg(DATA_PARAM) data: UpdateTestInput,
   ): Promise<Test> {
     const test = await Test.findOne({ where: { id } });
     if (!test) {

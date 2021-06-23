@@ -1,7 +1,7 @@
-import { InputType, Field } from "type-graphql";
+import { InputType, Field } from 'type-graphql';
 
 @InputType()
-export class CreateReferenceInput {
+export default class CreateReferenceInput {
   @Field()
   author!: string;
 

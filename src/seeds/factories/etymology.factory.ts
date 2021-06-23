@@ -1,6 +1,6 @@
-import { define } from "typeorm-seeding";
-import { FAKER_ELEMENTS_NUMBER_L } from "../../config/constants";
-import { Etymology } from "../../models/Etymology";
+import { define } from 'typeorm-seeding';
+import { FAKER_ELEMENTS_NUMBER_L } from '../../config/constants';
+import { Etymology } from '../../models/Etymology';
 
 define(Etymology, (faker: Faker.FakerStatic) => {
   const etymology = new Etymology();

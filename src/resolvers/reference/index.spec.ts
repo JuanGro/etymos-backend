@@ -1,6 +1,8 @@
-import { Reference } from "../../models/Reference";
-import { ReferenceResolver } from ".";
-import { FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, REFERENCE_NOT_FOUND, DUMMY_TEXT_XL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_YEAR_STRING } from "../../config/constants";
+import { Reference } from '../../models/Reference';
+import { ReferenceResolver } from '.';
+import {
+  FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, REFERENCE_NOT_FOUND, DUMMY_TEXT_XL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_YEAR_STRING,
+} from '../../config/constants';
 
 const {
   getReferences,
@@ -10,25 +12,25 @@ const {
   deleteReference,
 } = new ReferenceResolver();
 
-test("Get all references", async () => {
+test('Get all references', async () => {
   await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get reference", async () => {
+test('Get reference', async () => {
   const [references] = await getReferences();
   const { id } = references;
   await expect(getReference(id)).resolves.toBeInstanceOf(
-    Reference
+    Reference,
   );
 });
 
-test("Get error if reference does not exist", async () => {
+test('Get error if reference does not exist', async () => {
   await expect(getReference(INEXISTENT_INDEX)).rejects.toThrowError(
-    REFERENCE_NOT_FOUND
+    REFERENCE_NOT_FOUND,
   );
 });
 
-test("Create reference", async () => {
+test('Create reference', async () => {
   await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createReference({
     author: DUMMY_TEXT_S,
@@ -39,12 +41,12 @@ test("Create reference", async () => {
     active: true,
   });
   await expect(getReference(id)).resolves.toBeInstanceOf(
-    Reference
+    Reference,
   );
   await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
-test("Get error if tries to create a reference with incorrect author length", async () => {
+test('Get error if tries to create a reference with incorrect author length', async () => {
   await expect(
     createReference({
       author: DUMMY_TEXT_XL,
@@ -53,11 +55,11 @@ test("Get error if tries to create a reference with incorrect author length", as
       publicationPlace: DUMMY_TEXT_S,
       publishingCompany: DUMMY_TEXT_S,
       active: true,
-    })
+    }),
   ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
-test("Get error if tries to create a reference with duplicate title", async () => {
+test('Get error if tries to create a reference with duplicate title', async () => {
   await expect(
     createReference({
       author: DUMMY_TEXT_S,
@@ -66,11 +68,11 @@ test("Get error if tries to create a reference with duplicate title", async () =
       publicationPlace: DUMMY_TEXT_S,
       publishingCompany: DUMMY_TEXT_S,
       active: true,
-    })
+    }),
   ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
-test("Update reference", async () => {
+test('Update reference', async () => {
   const { id } = await updateReference(1, {
     author: DUMMY_TEXT_S,
     title: DUMMY_TEXT2_XS,
@@ -80,35 +82,35 @@ test("Update reference", async () => {
     active: false,
   });
   await expect(getReference(id)).resolves.toBeInstanceOf(
-    Reference
+    Reference,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
-    "active",
-    false
+    'active',
+    false,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
-    "title",
-    DUMMY_TEXT2_XS
+    'title',
+    DUMMY_TEXT2_XS,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
-    "author",
-    DUMMY_TEXT_S
+    'author',
+    DUMMY_TEXT_S,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
-    "publicationYear",
-    DUMMY_YEAR_STRING
+    'publicationYear',
+    DUMMY_YEAR_STRING,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
-    "publicationPlace",
-    DUMMY_TEXT_S
+    'publicationPlace',
+    DUMMY_TEXT_S,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
-    "publishingCompany",
-    DUMMY_TEXT_S
+    'publishingCompany',
+    DUMMY_TEXT_S,
   );
 });
 
-test("Delete reference", async () => {
+test('Delete reference', async () => {
   await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const references = await getReferences();
   const { id } = references[references.length - 1];
@@ -116,8 +118,8 @@ test("Delete reference", async () => {
   await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get error if tries to delete a reference inexistent", async () => {
+test('Get error if tries to delete a reference inexistent', async () => {
   await expect(deleteReference(INEXISTENT_INDEX)).rejects.toThrowError(
-    REFERENCE_NOT_FOUND
+    REFERENCE_NOT_FOUND,
   );
 });

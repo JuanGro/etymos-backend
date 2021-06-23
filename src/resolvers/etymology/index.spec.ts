@@ -1,6 +1,8 @@
-import { Etymology } from "../../models/Etymology";
-import { EtymologyResolver } from ".";
-import { DUMMY_IMAGE_URL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, ETYMOLOGY_NOT_FOUND, FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX } from "../../config/constants";
+import { Etymology } from '../../models/Etymology';
+import { EtymologyResolver } from '.';
+import {
+  DUMMY_IMAGE_URL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_TEXT_XL, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, ETYMOLOGY_NOT_FOUND, FAKER_ELEMENTS_NUMBER_L, INEXISTENT_INDEX,
+} from '../../config/constants';
 
 const {
   getEtymologies,
@@ -10,25 +12,25 @@ const {
   deleteEtymology,
 } = new EtymologyResolver();
 
-test("Get all etymologies", async () => {
+test('Get all etymologies', async () => {
   await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get etymology", async () => {
+test('Get etymology', async () => {
   const [etymologies] = await getEtymologies();
   const { id } = etymologies;
   await expect(getEtymology(id)).resolves.toBeInstanceOf(
-    Etymology
+    Etymology,
   );
 });
 
-test("Get error if etymology does not exist", async () => {
+test('Get error if etymology does not exist', async () => {
   await expect(getEtymology(INEXISTENT_INDEX)).rejects.toThrowError(
-    ETYMOLOGY_NOT_FOUND
+    ETYMOLOGY_NOT_FOUND,
   );
 });
 
-test("Create etymology", async () => {
+test('Create etymology', async () => {
   await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
   const { id } = await createEtymology({
     graecoLatinEtymology: DUMMY_TEXT_XS,
@@ -40,12 +42,12 @@ test("Create etymology", async () => {
     active: true,
   });
   await expect(getEtymology(id)).resolves.toBeInstanceOf(
-    Etymology
+    Etymology,
   );
   await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
-test("Get error if tries to create an etymology with incorrect graecoLatinEtymology length", async () => {
+test('Get error if tries to create an etymology with incorrect graecoLatinEtymology length', async () => {
   await expect(
     createEtymology({
       graecoLatinEtymology:
@@ -56,11 +58,11 @@ test("Get error if tries to create an etymology with incorrect graecoLatinEtymol
       etymologyTypeId: 1,
       languageId: 1,
       active: true,
-    })
+    }),
   ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
-test("Get error if tries to create an etymology with duplicate graecoLatinEtymology", async () => {
+test('Get error if tries to create an etymology with duplicate graecoLatinEtymology', async () => {
   await expect(
     createEtymology({
       graecoLatinEtymology: DUMMY_TEXT_XS,
@@ -70,11 +72,11 @@ test("Get error if tries to create an etymology with duplicate graecoLatinEtymol
       etymologyTypeId: 1,
       languageId: 1,
       active: true,
-    })
+    }),
   ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
-test("Update etymology", async () => {
+test('Update etymology', async () => {
   const { id } = await updateEtymology(1, {
     graecoLatinEtymology: DUMMY_TEXT2_XS,
     meaning: DUMMY_TEXT_S,
@@ -85,27 +87,27 @@ test("Update etymology", async () => {
     active: false,
   });
   await expect(getEtymology(id)).resolves.toBeInstanceOf(
-    Etymology
+    Etymology,
   );
   await expect(getEtymology(id)).resolves.toHaveProperty(
-    "active",
-    false
+    'active',
+    false,
   );
   await expect(getEtymology(id)).resolves.toHaveProperty(
-    "graecoLatinEtymology",
-    DUMMY_TEXT2_XS
+    'graecoLatinEtymology',
+    DUMMY_TEXT2_XS,
   );
   await expect(getEtymology(id)).resolves.toHaveProperty(
-    "meaning",
-    DUMMY_TEXT_S
+    'meaning',
+    DUMMY_TEXT_S,
   );
   await expect(getEtymology(id)).resolves.toHaveProperty(
-    "imageUrl",
-    DUMMY_IMAGE_URL
+    'imageUrl',
+    DUMMY_IMAGE_URL,
   );
 });
 
-test("Delete etymology", async () => {
+test('Delete etymology', async () => {
   await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const etymologies = await getEtymologies();
   const { id } = etymologies[etymologies.length - 1];
@@ -113,8 +115,8 @@ test("Delete etymology", async () => {
   await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get error if tries to delete an etymology inexistent", async () => {
+test('Get error if tries to delete an etymology inexistent', async () => {
   await expect(deleteEtymology(INEXISTENT_INDEX)).rejects.toThrowError(
-    ETYMOLOGY_NOT_FOUND
+    ETYMOLOGY_NOT_FOUND,
   );
 });

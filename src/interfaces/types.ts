@@ -1,5 +1,5 @@
 interface Type {
-    type: "varchar" | "boolean" | "timestamp",
+    type: 'varchar' | 'boolean' | 'timestamp',
 }
 
 export interface Types {

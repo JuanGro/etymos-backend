@@ -1,5 +1,5 @@
-import { define } from "typeorm-seeding";
-import { Test } from "../../models/Test";
+import { define } from 'typeorm-seeding';
+import { Test } from '../../models/Test';
 
 define(Test, (faker: Faker.FakerStatic) => {
   const test = new Test();

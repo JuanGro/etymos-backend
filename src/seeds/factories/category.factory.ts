@@ -1,6 +1,6 @@
-import { define } from "typeorm-seeding";
-import { FAKER_ELEMENTS_NUMBER_L } from "../../config/constants";
-import { Category } from "../../models/Category";
+import { define } from 'typeorm-seeding';
+import { FAKER_ELEMENTS_NUMBER_L } from '../../config/constants';
+import { Category } from '../../models/Category';
 
 define(Category, (faker: Faker.FakerStatic) => {
   const category = new Category();
