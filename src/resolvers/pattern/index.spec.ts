@@ -1,76 +1,91 @@
-import { Pattern } from "../../models/Pattern";
-import { PatternResolver } from ".";
+import { Pattern } from '../../models/Pattern';
+import { PatternResolver } from '.';
+import {
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  DUMMY_TEXT_XS,
+  DUMMY_TEXT_XL,
+  PATTERN_NOT_FOUND,
+  DUMMY_TEXT2_XS,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+} from '../../config/constants';
 
-const { getPatterns, getPattern, createPattern, updatePattern, deletePattern } =
-  new PatternResolver();
+const {
+  getPatterns, getPattern, createPattern, updatePattern, deletePattern,
+} = new PatternResolver();
 
-test("Get all patterns", async () => {
-  await expect(getPatterns()).resolves.toHaveLength(10);
+test('Get all patterns', async () => {
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get pattern", async () => {
-  const patterns = await getPatterns();
-  const firstPattern = patterns[0];
-  await expect(getPattern(firstPattern.id)).resolves.toBeInstanceOf(Pattern);
+test('Get pattern', async () => {
+  const [patterns] = await getPatterns();
+  const { id } = patterns;
+  await expect(getPattern(id)).resolves.toBeInstanceOf(Pattern);
 });
 
-test("Get error if pattern does not exist", async () => {
-  await expect(getPattern(10000)).rejects.toThrowError("Pattern not found!");
+test('Get error if pattern does not exist', async () => {
+  await expect(getPattern(INEXISTENT_INDEX)).rejects.toThrowError(
+    PATTERN_NOT_FOUND,
+  );
 });
 
-test("Create pattern", async () => {
-  await expect(getPatterns()).resolves.toHaveLength(10);
-  const patternCreated = await createPattern({
-    pattern: "lorem",
+test('Create pattern', async () => {
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
+  const { id } = await createPattern({
+    pattern: DUMMY_TEXT_XS,
     active: true,
   });
-  await expect(getPattern(patternCreated.id)).resolves.toBeInstanceOf(Pattern);
-  await expect(getPatterns()).resolves.toHaveLength(11);
+  await expect(getPattern(id)).resolves.toBeInstanceOf(Pattern);
+  await expect(getPatterns()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
 });
 
-test("Get error if tries to create a pattern with incorrect pattern length", async () => {
+test('Get error if tries to create a pattern with incorrect pattern length', async () => {
   await expect(
     createPattern({
-      pattern:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
+      pattern: DUMMY_TEXT_XL,
       active: true,
-    })
-  ).rejects.toThrowError("value too long for type character varying");
+    }),
+  ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
-test("Get error if tries to create a pattern with duplicate pattern", async () => {
+test('Get error if tries to create a pattern with duplicate pattern', async () => {
   await expect(
     createPattern({
-      pattern: "lorem",
+      pattern: DUMMY_TEXT_XS,
       active: true,
-    })
-  ).rejects.toThrowError("duplicate key value violates unique constraint");
+    }),
+  ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
-test("Update pattern", async () => {
-  const patternUpdated = await updatePattern(1, {
-    pattern: "hipo",
+test('Update pattern', async () => {
+  const { id } = await updatePattern(1, {
+    pattern: DUMMY_TEXT2_XS,
     active: false,
   });
-  await expect(getPattern(patternUpdated.id)).resolves.toBeInstanceOf(Pattern);
-  await expect(getPattern(patternUpdated.id)).resolves.toHaveProperty(
-    "active",
-    false
-  );
-  await expect(getPattern(patternUpdated.id)).resolves.toHaveProperty(
-    "pattern",
-    "hipo"
+  await expect(getPattern(id)).resolves.toBeInstanceOf(Pattern);
+  await expect(getPattern(id)).resolves.toHaveProperty('active', false);
+  await expect(getPattern(id)).resolves.toHaveProperty(
+    'pattern',
+    DUMMY_TEXT2_XS,
   );
 });
 
-test("Delete pattern", async () => {
-  await expect(getPatterns()).resolves.toHaveLength(11);
+test('Delete pattern', async () => {
+  await expect(getPatterns()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
   const patterns = await getPatterns();
-  const lastPattern = patterns[patterns.length - 1];
-  await expect(deletePattern(lastPattern.id)).resolves.toEqual(true);
-  await expect(getPatterns()).resolves.toHaveLength(10);
+  const { id } = patterns[patterns.length - 1];
+  await expect(deletePattern(id)).resolves.toEqual(true);
+  await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get error if tries to delete a pattern inexistent", async () => {
-  await expect(deletePattern(10000)).rejects.toThrowError("Pattern not found!");
+test('Get error if tries to delete a pattern inexistent', async () => {
+  await expect(deletePattern(INEXISTENT_INDEX)).rejects.toThrowError(
+    PATTERN_NOT_FOUND,
+  );
 });

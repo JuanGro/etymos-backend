@@ -1,9 +1,11 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateOptionInput } from "../../inputs/CreateOptionInput";
-import { UpdateOptionInput } from "../../inputs/UpdateOptionInput";
-import { Option } from "../../models/Option";
-import { ID_PARAM, DATA_PARAM, OPTION_NOT_FOUND } from "../../config/messages";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreateOptionInput } from '../../inputs/CreateOptionInput';
+import { UpdateOptionInput } from '../../inputs/UpdateOptionInput';
+import { Option } from '../../models/Option';
+import { ID_PARAM, DATA_PARAM, OPTION_NOT_FOUND } from '../../config/constants';
 
 @Resolver()
 export class OptionResolver {
@@ -24,7 +26,7 @@ export class OptionResolver {
 
   @Mutation(() => Option)
   async createOption(
-    @Arg(DATA_PARAM) data: CreateOptionInput
+    @Arg(DATA_PARAM) data: CreateOptionInput,
   ): Promise<Option> {
     const option = Option.create(data);
     await option.save();
@@ -34,7 +36,7 @@ export class OptionResolver {
   @Mutation(() => Option)
   async updateOption(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateOptionInput
+    @Arg(DATA_PARAM) data: UpdateOptionInput,
   ): Promise<Option> {
     const option = await Option.findOne({ where: { id } });
     if (!option) {

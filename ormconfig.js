@@ -8,7 +8,7 @@ const {
 } = process.env;
 
 module.exports = {
-  name: "default",
+  name: 'default',
   type: DATABASE_TYPE,
   host: DATABASE_HOST,
   port: DATABASE_PORT,
@@ -17,12 +17,12 @@ module.exports = {
   database: DATABASE_NAME,
   synchronize: false,
   logging: false,
-  entities: ["./src/models/*.ts"],
-  migrations: ["./src/migrations/*.ts"],
-  seeds: ["./src/seeds/config/**/*{.ts,.js}"],
-  factories: ["./src/seeds/factories/**/*{.ts,.js}"],
+  entities: ['./src/models/*.ts'],
+  migrations: ['./src/migrations/*.ts'],
+  seeds: ['./src/seeds/config/**/*{.ts,.js}'],
+  factories: ['./src/seeds/factories/**/*{.ts,.js}'],
   cli: {
-    entitiesDir: "./src/models",
-    migrationsDir: "./src/migrations",
+    entitiesDir: './src/models',
+    migrationsDir: './src/migrations',
   },
 };

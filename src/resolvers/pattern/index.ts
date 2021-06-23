@@ -1,9 +1,15 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreatePatternInput } from "../../inputs/CreatePatternInput";
-import { UpdatePatternInput } from "../../inputs/UpdatePatternInput";
-import { Pattern } from "../../models/Pattern";
-import { ID_PARAM, DATA_PARAM, PATTERN_NOT_FOUND } from "../../config/messages";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreatePatternInput } from '../../inputs/CreatePatternInput';
+import { UpdatePatternInput } from '../../inputs/UpdatePatternInput';
+import { Pattern } from '../../models/Pattern';
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  PATTERN_NOT_FOUND,
+} from '../../config/constants';
 
 @Resolver()
 export class PatternResolver {
@@ -24,7 +30,7 @@ export class PatternResolver {
 
   @Mutation(() => Pattern)
   async createPattern(
-    @Arg(DATA_PARAM) data: CreatePatternInput
+    @Arg(DATA_PARAM) data: CreatePatternInput,
   ): Promise<Pattern> {
     const pattern = Pattern.create(data);
     await pattern.save();
@@ -34,7 +40,7 @@ export class PatternResolver {
   @Mutation(() => Pattern)
   async updatePattern(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdatePatternInput
+    @Arg(DATA_PARAM) data: UpdatePatternInput,
   ): Promise<Pattern> {
     const pattern = await Pattern.findOne({ where: { id } });
     if (!pattern) {

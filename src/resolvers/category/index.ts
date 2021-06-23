@@ -1,13 +1,15 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateCategoryInput } from "../../inputs/CreateCategoryInput";
-import { UpdateCategoryInput } from "../../inputs/UpdateCategoryInput";
-import { Category } from "../../models/Category";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreateCategoryInput } from '../../inputs/CreateCategoryInput';
+import { UpdateCategoryInput } from '../../inputs/UpdateCategoryInput';
+import { Category } from '../../models/Category';
 import {
   ID_PARAM,
   DATA_PARAM,
   CATEGORY_NOT_FOUND,
-} from "../../config/messages";
+} from '../../config/constants';
 
 @Resolver()
 export class CategoryResolver {
@@ -28,7 +30,7 @@ export class CategoryResolver {
 
   @Mutation(() => Category)
   async createCategory(
-    @Arg(DATA_PARAM) data: CreateCategoryInput
+    @Arg(DATA_PARAM) data: CreateCategoryInput,
   ): Promise<Category> {
     const category = Category.create(data);
     await category.save();
@@ -38,7 +40,7 @@ export class CategoryResolver {
   @Mutation(() => Category)
   async updateCategory(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateCategoryInput
+    @Arg(DATA_PARAM) data: UpdateCategoryInput,
   ): Promise<Category> {
     const category = await Category.findOne({ where: { id } });
     if (!category) {

@@ -1,84 +1,89 @@
-import { Option } from "../../models/Option";
-import { OptionResolver } from ".";
+import { Option } from '../../models/Option';
+import { OptionResolver } from '.';
+import {
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  DUMMY_TEXT_XS,
+  ERROR_MAX_LENGTH,
+  ERROR_DUPLICATE_KEY,
+  DUMMY_TEXT2_XS,
+  OPTION_NOT_FOUND,
+  DUMMY_TEXT_XL,
+} from '../../config/constants';
 
-const { getOptions, getOption, createOption, updateOption, deleteOption } =
-  new OptionResolver();
+const {
+  getOptions, getOption, createOption, updateOption, deleteOption,
+} = new OptionResolver();
 
-test("Get all options", async () => {
-  await expect(getOptions()).resolves.toHaveLength(10);
+test('Get all options', async () => {
+  await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get option", async () => {
-  const options = await getOptions();
-  const firstOption = options[0];
-  await expect(getOption(firstOption.id)).resolves.toBeInstanceOf(Option);
+test('Get option', async () => {
+  const [options] = await getOptions();
+  const { id } = options;
+  await expect(getOption(id)).resolves.toBeInstanceOf(Option);
 });
 
-test("Get error if option does not exist", async () => {
-  await expect(getOption(10000)).rejects.toThrowError("Option not found!");
+test('Get error if option does not exist', async () => {
+  await expect(getOption(INEXISTENT_INDEX)).rejects.toThrowError(
+    OPTION_NOT_FOUND,
+  );
 });
 
-test("Create option", async () => {
-  await expect(getOptions()).resolves.toHaveLength(10);
-  const optionCreated = await createOption({
-    option: "lorem",
+test('Create option', async () => {
+  await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
+  const { id } = await createOption({
+    option: DUMMY_TEXT_XS,
     correct: true,
     active: true,
   });
-  await expect(getOption(optionCreated.id)).resolves.toBeInstanceOf(Option);
-  await expect(getOptions()).resolves.toHaveLength(11);
+  await expect(getOption(id)).resolves.toBeInstanceOf(Option);
+  await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
-test("Get error if tries to create an option with incorrect option length", async () => {
+test('Get error if tries to create an option with incorrect option length', async () => {
   await expect(
     createOption({
-      option:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
+      option: DUMMY_TEXT_XL,
       correct: false,
       active: true,
-    })
-  ).rejects.toThrowError("value too long for type character varying");
+    }),
+  ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
-test("Get error if tries to create an option with duplicate option", async () => {
+test('Get error if tries to create an option with duplicate option', async () => {
   await expect(
     createOption({
-      option: "lorem",
+      option: DUMMY_TEXT_XS,
       correct: false,
       active: true,
-    })
-  ).rejects.toThrowError("duplicate key value violates unique constraint");
+    }),
+  ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
-test("Update option", async () => {
-  const optionUpdated = await updateOption(1, {
-    option: "lorem ipsum",
+test('Update option', async () => {
+  const { id } = await updateOption(1, {
+    option: DUMMY_TEXT2_XS,
     correct: true,
     active: false,
   });
-  await expect(getOption(optionUpdated.id)).resolves.toBeInstanceOf(Option);
-  await expect(getOption(optionUpdated.id)).resolves.toHaveProperty(
-    "active",
-    false
-  );
-  await expect(getOption(optionUpdated.id)).resolves.toHaveProperty(
-    "correct",
-    true
-  );
-  await expect(getOption(optionUpdated.id)).resolves.toHaveProperty(
-    "option",
-    "lorem ipsum"
-  );
+  await expect(getOption(id)).resolves.toBeInstanceOf(Option);
+  await expect(getOption(id)).resolves.toHaveProperty('active', false);
+  await expect(getOption(id)).resolves.toHaveProperty('correct', true);
+  await expect(getOption(id)).resolves.toHaveProperty('option', DUMMY_TEXT2_XS);
 });
 
-test("Delete option", async () => {
-  await expect(getOptions()).resolves.toHaveLength(11);
+test('Delete option', async () => {
+  await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const options = await getOptions();
-  const lastOption: Option = options[options.length - 1];
-  await expect(deleteOption(lastOption.id)).resolves.toEqual(true);
-  await expect(getOptions()).resolves.toHaveLength(10);
+  const { id } = options[options.length - 1];
+  await expect(deleteOption(id)).resolves.toEqual(true);
+  await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get error if tries to delete an option inexistent", async () => {
-  await expect(deleteOption(10000)).rejects.toThrowError("Option not found!");
+test('Get error if tries to delete an option inexistent', async () => {
+  await expect(deleteOption(INEXISTENT_INDEX)).rejects.toThrowError(
+    OPTION_NOT_FOUND,
+  );
 });

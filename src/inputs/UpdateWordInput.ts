@@ -1,19 +1,20 @@
-import { InputType, Field } from "type-graphql";
+import { InputType, Field } from 'type-graphql';
+import { NULLABLE } from '../config/constants';
 
 @InputType()
 export class UpdateWordInput {
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   word?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   meaning?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   imageUrl?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   categoryId?: number;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   active?: boolean;
 }

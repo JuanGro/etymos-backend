@@ -1,5 +1,17 @@
-import { Etymology } from "../../models/Etymology";
-import { EtymologyResolver } from ".";
+import { Etymology } from '../../models/Etymology';
+import { EtymologyResolver } from '.';
+import {
+  DUMMY_IMAGE_URL,
+  DUMMY_TEXT2_XS,
+  DUMMY_TEXT_S,
+  DUMMY_TEXT_XL,
+  DUMMY_TEXT_XS,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+  ETYMOLOGY_NOT_FOUND,
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+} from '../../config/constants';
 
 const {
   getEtymologies,
@@ -9,111 +21,101 @@ const {
   deleteEtymology,
 } = new EtymologyResolver();
 
-test("Get all etymologies", async () => {
-  await expect(getEtymologies()).resolves.toHaveLength(10);
+test('Get all etymologies', async () => {
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get etymology", async () => {
-  const etymologies = await getEtymologies();
-  const firstEtymology = etymologies[0];
-  await expect(getEtymology(firstEtymology.id)).resolves.toBeInstanceOf(
-    Etymology
+test('Get etymology', async () => {
+  const [etymologies] = await getEtymologies();
+  const { id } = etymologies;
+  await expect(getEtymology(id)).resolves.toBeInstanceOf(Etymology);
+});
+
+test('Get error if etymology does not exist', async () => {
+  await expect(getEtymology(INEXISTENT_INDEX)).rejects.toThrowError(
+    ETYMOLOGY_NOT_FOUND,
   );
 });
 
-test("Get error if etymology does not exist", async () => {
-  await expect(getEtymology(10000)).rejects.toThrowError(
-    "Etymology not found!"
-  );
-});
-
-test("Create etymology", async () => {
-  await expect(getEtymologies()).resolves.toHaveLength(10);
-  const etymologyCreated = await createEtymology({
-    graecoLatinEtymology: "ἐτυμος",
-    meaning: "etymos",
-    imageUrl:
-      "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+test('Create etymology', async () => {
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
+  const { id } = await createEtymology({
+    graecoLatinEtymology: DUMMY_TEXT_XS,
+    meaning: DUMMY_TEXT_S,
+    imageUrl: DUMMY_IMAGE_URL,
     etymologyTypeId: 1,
     languageId: 1,
     active: true,
   });
-  await expect(getEtymology(etymologyCreated.id)).resolves.toBeInstanceOf(
-    Etymology
+  await expect(getEtymology(id)).resolves.toBeInstanceOf(Etymology);
+  await expect(getEtymologies()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
   );
-  await expect(getEtymologies()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create an etymology with incorrect graecoLatinEtymology length", async () => {
+test('Get error if tries to create an etymology with incorrect graecoLatinEtymology length', async () => {
   await expect(
     createEtymology({
-      graecoLatinEtymology:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-      meaning: "etymos",
-      imageUrl:
-        "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+      graecoLatinEtymology: DUMMY_TEXT_XL,
+      meaning: DUMMY_TEXT_S,
+      imageUrl: DUMMY_IMAGE_URL,
       etymologyTypeId: 1,
       languageId: 1,
       active: true,
-    })
-  ).rejects.toThrowError("value too long for type character varying");
+    }),
+  ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
-test("Get error if tries to create an etymology with duplicate graecoLatinEtymology", async () => {
+test('Get error if tries to create an etymology with duplicate graecoLatinEtymology', async () => {
   await expect(
     createEtymology({
-      graecoLatinEtymology: "ἐτυμος",
-      meaning: "etymos",
-      imageUrl:
-        "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+      graecoLatinEtymology: DUMMY_TEXT_XS,
+      meaning: DUMMY_TEXT_S,
+      imageUrl: DUMMY_IMAGE_URL,
       etymologyTypeId: 1,
       languageId: 1,
       active: true,
-    })
-  ).rejects.toThrowError("duplicate key value violates unique constraint");
+    }),
+  ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
-test("Update etymology", async () => {
-  const etymologyUpdated = await updateEtymology(1, {
-    graecoLatinEtymology: "lorem",
-    meaning: "lorem",
-    imageUrl:
-      "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+test('Update etymology', async () => {
+  const { id } = await updateEtymology(1, {
+    graecoLatinEtymology: DUMMY_TEXT2_XS,
+    meaning: DUMMY_TEXT_S,
+    imageUrl: DUMMY_IMAGE_URL,
     etymologyTypeId: 1,
     languageId: 1,
     active: false,
   });
-  await expect(getEtymology(etymologyUpdated.id)).resolves.toBeInstanceOf(
-    Etymology
+  await expect(getEtymology(id)).resolves.toBeInstanceOf(Etymology);
+  await expect(getEtymology(id)).resolves.toHaveProperty('active', false);
+  await expect(getEtymology(id)).resolves.toHaveProperty(
+    'graecoLatinEtymology',
+    DUMMY_TEXT2_XS,
   );
-  await expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty(
-    "active",
-    false
+  await expect(getEtymology(id)).resolves.toHaveProperty(
+    'meaning',
+    DUMMY_TEXT_S,
   );
-  await expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty(
-    "graecoLatinEtymology",
-    "lorem"
-  );
-  await expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty(
-    "meaning",
-    "lorem"
-  );
-  await expect(getEtymology(etymologyUpdated.id)).resolves.toHaveProperty(
-    "imageUrl",
-    "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg"
+  await expect(getEtymology(id)).resolves.toHaveProperty(
+    'imageUrl',
+    DUMMY_IMAGE_URL,
   );
 });
 
-test("Delete etymology", async () => {
-  await expect(getEtymologies()).resolves.toHaveLength(11);
+test('Delete etymology', async () => {
+  await expect(getEtymologies()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
   const etymologies = await getEtymologies();
-  const lastEtymology = etymologies[etymologies.length - 1];
-  await expect(deleteEtymology(lastEtymology.id)).resolves.toEqual(true);
-  await expect(getEtymologies()).resolves.toHaveLength(10);
+  const { id } = etymologies[etymologies.length - 1];
+  await expect(deleteEtymology(id)).resolves.toEqual(true);
+  await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get error if tries to delete an etymology inexistent", async () => {
-  await expect(deleteEtymology(10000)).rejects.toThrowError(
-    "Etymology not found!"
+test('Get error if tries to delete an etymology inexistent', async () => {
+  await expect(deleteEtymology(INEXISTENT_INDEX)).rejects.toThrowError(
+    ETYMOLOGY_NOT_FOUND,
   );
 });

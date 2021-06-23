@@ -1,5 +1,16 @@
-import { Category } from "../../models/Category";
-import { CategoryResolver } from ".";
+import { Category } from '../../models/Category';
+import { CategoryResolver } from '.';
+import {
+  CATEGORY_NOT_FOUND,
+  DUMMY_TEXT2_XS,
+  DUMMY_TEXT_S,
+  DUMMY_TEXT_XL,
+  DUMMY_TEXT_XS,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+} from '../../config/constants';
 
 const {
   getCategories,
@@ -9,86 +20,82 @@ const {
   deleteCategory,
 } = new CategoryResolver();
 
-test("Get all categories", async () => {
-  await expect(getCategories()).resolves.toHaveLength(10);
+test('Get all categories', async () => {
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get category", async () => {
-  const categories = await getCategories();
-  const firstCategory = categories[0];
-  await expect(getCategory(firstCategory.id)).resolves.toBeInstanceOf(Category);
+test('Get category', async () => {
+  const [categories] = await getCategories();
+  const { id } = categories;
+  await expect(getCategory(id)).resolves.toBeInstanceOf(Category);
 });
 
-test("Get error if category does not exist", async () => {
-  await expect(getCategory(10000)).rejects.toThrowError("Category not found!");
+test('Get error if category does not exist', async () => {
+  await expect(getCategory(INEXISTENT_INDEX)).rejects.toThrowError(
+    CATEGORY_NOT_FOUND,
+  );
 });
 
-test("Create category", async () => {
-  await expect(getCategories()).resolves.toHaveLength(10);
-  const categoryCreated = await createCategory({
-    name: "animal",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+test('Create category', async () => {
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
+  const { id } = await createCategory({
+    name: DUMMY_TEXT_XS,
+    description: DUMMY_TEXT_S,
     active: true,
   });
-  await expect(getCategory(categoryCreated.id)).resolves.toBeInstanceOf(
-    Category
+  await expect(getCategory(id)).resolves.toBeInstanceOf(Category);
+  await expect(getCategories()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
   );
-  await expect(getCategories()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a category with incorrect name length", async () => {
+test('Get error if tries to create a category with incorrect name length', async () => {
   await expect(
     createCategory({
-      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      name: DUMMY_TEXT_XL,
+      description: DUMMY_TEXT_S,
       active: false,
-    })
-  ).rejects.toThrowError("value too long for type character varying");
+    }),
+  ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
-test("Get error if tries to create a category with duplicate name", async () => {
+test('Get error if tries to create a category with duplicate name', async () => {
   await expect(
     createCategory({
-      name: "animal",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      name: DUMMY_TEXT_XS,
+      description: DUMMY_TEXT_S,
       active: false,
-    })
-  ).rejects.toThrowError("duplicate key value violates unique constraint");
+    }),
+  ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
-test("Update category", async () => {
-  const categoryUpdated = await updateCategory(1, {
-    name: "automobile",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+test('Update category', async () => {
+  const { id } = await updateCategory(1, {
+    name: DUMMY_TEXT2_XS,
+    description: DUMMY_TEXT_S,
     active: false,
   });
-  await expect(getCategory(categoryUpdated.id)).resolves.toBeInstanceOf(
-    Category
-  );
-  await expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty(
-    "active",
-    false
-  );
-  await expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty(
-    "name",
-    "automobile"
-  );
-  await expect(getCategory(categoryUpdated.id)).resolves.toHaveProperty(
-    "description",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  await expect(getCategory(id)).resolves.toBeInstanceOf(Category);
+  await expect(getCategory(id)).resolves.toHaveProperty('active', false);
+  await expect(getCategory(id)).resolves.toHaveProperty('name', DUMMY_TEXT2_XS);
+  await expect(getCategory(id)).resolves.toHaveProperty(
+    'description',
+    DUMMY_TEXT_S,
   );
 });
 
-test("Delete category", async () => {
-  await expect(getCategories()).resolves.toHaveLength(11);
+test('Delete category', async () => {
+  await expect(getCategories()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
   const categories = await getCategories();
-  const lastCategory = categories[categories.length - 1];
-  await expect(deleteCategory(lastCategory.id)).resolves.toBeTruthy();
-  await expect(getCategories()).resolves.toHaveLength(10);
+  const { id } = categories[categories.length - 1];
+  await expect(deleteCategory(id)).resolves.toBeTruthy();
+  await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get error if tries to delete a category inexistent", async () => {
-  await expect(deleteCategory(10000)).rejects.toThrowError(
-    "Category not found!"
+test('Get error if tries to delete a category inexistent', async () => {
+  await expect(deleteCategory(INEXISTENT_INDEX)).rejects.toThrowError(
+    CATEGORY_NOT_FOUND,
   );
 });

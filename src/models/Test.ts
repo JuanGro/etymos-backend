@@ -7,10 +7,15 @@ import {
   JoinColumn,
   ManyToOne,
   Column,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { User } from "./User";
-import { Question } from "./Question";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { User } from './User';
+import { Question } from './Question';
+import {
+  BOOLEAN_DEFAULT_FALSE,
+  BOOLEAN_DEFAULT_TRUE,
+  TIMESTAMP,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
@@ -20,19 +25,19 @@ export class Test extends BaseEntity {
   id!: number;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: false })
+  @Column(BOOLEAN_DEFAULT_FALSE)
   correct!: boolean;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: true })
+  @Column(BOOLEAN_DEFAULT_TRUE)
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn(TIMESTAMP)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
   @Field(() => User)

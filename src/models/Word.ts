@@ -9,11 +9,19 @@ import {
   JoinTable,
   ManyToOne,
   JoinColumn,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
-import { User } from "./User";
-import { Etymology } from "./Etymology";
-import { Category } from "./Category";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import { User } from './User';
+import { Etymology } from './Etymology';
+import { Category } from './Category';
+import {
+  BOOLEAN_DEFAULT_TRUE,
+  NULLABLE,
+  TIMESTAMP,
+  VARCHAR_L_UNIQUE,
+  VARCHAR_XXL,
+  VARCHAR_XXXXL,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
@@ -23,40 +31,40 @@ export class Word extends BaseEntity {
   id!: number;
 
   @Field(() => String)
-  @Column({ unique: true, type: "varchar", length: 64 })
+  @Column(VARCHAR_L_UNIQUE)
   word!: string;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 256 })
+  @Column(VARCHAR_XXL)
   meaning!: string;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 2048 })
+  @Column(VARCHAR_XXXXL)
   imageUrl!: string;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: true })
+  @Column(BOOLEAN_DEFAULT_TRUE)
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn(TIMESTAMP)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 
-  @Field(() => Category, { nullable: true })
+  @Field(() => Category, NULLABLE)
   @ManyToOne(() => Category, (category) => category.words)
   @JoinColumn()
   category!: Category;
 
-  @Field(() => [Etymology], { nullable: true })
+  @Field(() => [Etymology], NULLABLE)
   @ManyToMany(() => Etymology, (etymology) => etymology.words)
   @JoinTable()
   etymologies?: Etymology[];
 
-  @Field(() => [User], { nullable: true })
+  @Field(() => [User], NULLABLE)
   @ManyToMany(() => User, (user) => user.words)
   users?: User[];
 }

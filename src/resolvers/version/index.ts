@@ -1,9 +1,15 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { CreateVersionInput } from "../../inputs/CreateVersionInput";
-import { UpdateVersionInput } from "../../inputs/UpdateVersionInput";
-import { Version } from "../../models/Version";
-import { ID_PARAM, DATA_PARAM, VERSION_NOT_FOUND } from "../../config/messages";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { CreateVersionInput } from '../../inputs/CreateVersionInput';
+import { UpdateVersionInput } from '../../inputs/UpdateVersionInput';
+import { Version } from '../../models/Version';
+import {
+  ID_PARAM,
+  DATA_PARAM,
+  VERSION_NOT_FOUND,
+} from '../../config/constants';
 
 @Resolver()
 export class VersionResolver {
@@ -24,7 +30,7 @@ export class VersionResolver {
 
   @Mutation(() => Version)
   async createVersion(
-    @Arg(DATA_PARAM) data: CreateVersionInput
+    @Arg(DATA_PARAM) data: CreateVersionInput,
   ): Promise<Version> {
     const version = Version.create(data);
     await version.save();
@@ -34,7 +40,7 @@ export class VersionResolver {
   @Mutation(() => Version)
   async updateVersion(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateVersionInput
+    @Arg(DATA_PARAM) data: UpdateVersionInput,
   ): Promise<Version> {
     const version = await Version.findOne({ where: { id } });
     if (!version) {

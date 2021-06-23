@@ -1,10 +1,12 @@
-import { ApolloError } from "apollo-server";
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
-import { getConnection } from "typeorm";
-import { CreateUserInput } from "../../inputs/CreateUserInput";
-import { UpdateUserInput } from "../../inputs/UpdateUserInput";
-import { User } from "../../models/User";
-import { ID_PARAM, DATA_PARAM, USER_NOT_FOUND } from "../../config/messages";
+import { ApolloError } from 'apollo-server';
+import {
+  Arg, Mutation, Query, Resolver,
+} from 'type-graphql';
+import { getConnection } from 'typeorm';
+import { CreateUserInput } from '../../inputs/CreateUserInput';
+import { UpdateUserInput } from '../../inputs/UpdateUserInput';
+import { User } from '../../models/User';
+import { ID_PARAM, DATA_PARAM, USER_NOT_FOUND } from '../../config/constants';
 
 @Resolver()
 export class UserResolver {
@@ -17,11 +19,11 @@ export class UserResolver {
   async getUser(@Arg(ID_PARAM) id: number): Promise<User> {
     const user = await getConnection()
       .createQueryBuilder()
-      .select("user")
-      .from(User, "user")
-      .leftJoinAndSelect("user.tests", "test")
-      .leftJoinAndSelect("user.words", "word")
-      .where("user.id = :id", { id })
+      .select('user')
+      .from(User, 'user')
+      .leftJoinAndSelect('user.tests', 'test')
+      .leftJoinAndSelect('user.words', 'word')
+      .where('user.id = :id', { id })
       .getOne();
     if (!user) {
       throw new ApolloError(USER_NOT_FOUND);
@@ -40,7 +42,7 @@ export class UserResolver {
   @Mutation(() => User)
   async updateUser(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateUserInput
+    @Arg(DATA_PARAM) data: UpdateUserInput,
   ): Promise<User> {
     const user = await User.findOne({ where: { id } });
     if (!user) {

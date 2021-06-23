@@ -1,10 +1,12 @@
-import { define } from "typeorm-seeding";
-import { Category } from "../../models/Category";
+import { define } from 'typeorm-seeding';
+import { FAKER_ELEMENTS_NUMBER_L } from '../../config/constants';
+import { Category } from '../../models/Category';
 
-define(Category, (faker: Faker.FakerStatic) => {
+define(Category, (faker) => {
   const category = new Category();
-  category.name = faker.random.alphaNumeric(10);
-  category.description = faker.random.alphaNumeric(10);
+  // Same...
+  category.name = faker.random.alphaNumeric(FAKER_ELEMENTS_NUMBER_L);
+  category.description = faker.random.alphaNumeric(FAKER_ELEMENTS_NUMBER_L);
   category.active = faker.random.boolean();
   return category;
 });

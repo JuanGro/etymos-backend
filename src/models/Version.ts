@@ -5,8 +5,15 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-} from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
+} from 'typeorm';
+import { ObjectType, Field, ID } from 'type-graphql';
+import {
+  BOOLEAN_DEFAULT_FALSE,
+  BOOLEAN_DEFAULT_TRUE,
+  TIMESTAMP,
+  VARCHAR_S_UNIQUE,
+  VARCHAR_XXXXL,
+} from '../config/constants';
 
 @Entity()
 @ObjectType()
@@ -16,26 +23,26 @@ export class Version extends BaseEntity {
   id!: number;
 
   @Field(() => String)
-  @Column({ unique: true, type: "varchar", length: 16 })
+  @Column(VARCHAR_S_UNIQUE)
   version!: string;
 
   @Field(() => String)
-  @Column({ type: "varchar", length: 1024 })
+  @Column(VARCHAR_XXXXL)
   description!: string;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: false })
+  @Column(BOOLEAN_DEFAULT_FALSE)
   maintenance!: boolean;
 
   @Field(() => Boolean)
-  @Column({ type: "boolean", default: true })
+  @Column(BOOLEAN_DEFAULT_TRUE)
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn({ type: "timestamp" })
+  @CreateDateColumn(TIMESTAMP)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn({ type: "timestamp" })
+  @UpdateDateColumn(TIMESTAMP)
   updateDate!: Date;
 }

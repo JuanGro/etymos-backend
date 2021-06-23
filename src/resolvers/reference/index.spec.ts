@@ -1,5 +1,16 @@
-import { Reference } from "../../models/Reference";
-import { ReferenceResolver } from ".";
+import { Reference } from '../../models/Reference';
+import { ReferenceResolver } from '.';
+import {
+  FAKER_ELEMENTS_NUMBER_L,
+  INEXISTENT_INDEX,
+  ERROR_DUPLICATE_KEY,
+  ERROR_MAX_LENGTH,
+  REFERENCE_NOT_FOUND,
+  DUMMY_TEXT_XL,
+  DUMMY_TEXT2_XS,
+  DUMMY_TEXT_S,
+  DUMMY_YEAR_STRING,
+} from '../../config/constants';
 
 const {
   getReferences,
@@ -9,115 +20,109 @@ const {
   deleteReference,
 } = new ReferenceResolver();
 
-test("Get all references", async () => {
-  await expect(getReferences()).resolves.toHaveLength(10);
+test('Get all references', async () => {
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get reference", async () => {
-  const references = await getReferences();
-  const firstReference = references[0];
-  await expect(getReference(firstReference.id)).resolves.toBeInstanceOf(
-    Reference
+test('Get reference', async () => {
+  const [references] = await getReferences();
+  const { id } = references;
+  await expect(getReference(id)).resolves.toBeInstanceOf(Reference);
+});
+
+test('Get error if reference does not exist', async () => {
+  await expect(getReference(INEXISTENT_INDEX)).rejects.toThrowError(
+    REFERENCE_NOT_FOUND,
   );
 });
 
-test("Get error if reference does not exist", async () => {
-  await expect(getReference(10000)).rejects.toThrowError(
-    "Reference not found!"
-  );
-});
-
-test("Create reference", async () => {
-  await expect(getReferences()).resolves.toHaveLength(10);
-  const referenceCreated = await createReference({
-    author: "Miguel de Cervantes Saavedra",
-    title: "Don Quijote de la Mancha",
-    publicationYear: "1990",
-    publicationPlace: "Barcelona, España",
-    publishingCompany: "Trillas Editorial",
+test('Create reference', async () => {
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
+  const { id } = await createReference({
+    author: DUMMY_TEXT_S,
+    title: DUMMY_TEXT_S,
+    publicationYear: DUMMY_YEAR_STRING,
+    publicationPlace: DUMMY_TEXT_S,
+    publishingCompany: DUMMY_TEXT_S,
     active: true,
   });
-  await expect(getReference(referenceCreated.id)).resolves.toBeInstanceOf(
-    Reference
+  await expect(getReference(id)).resolves.toBeInstanceOf(Reference);
+  await expect(getReferences()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
   );
-  await expect(getReferences()).resolves.toHaveLength(11);
 });
 
-test("Get error if tries to create a reference with incorrect author length", async () => {
+test('Get error if tries to create a reference with incorrect author length', async () => {
   await expect(
     createReference({
-      author:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      title: "Lorem",
-      publicationYear: "1990",
-      publicationPlace: "Barcelona, España",
-      publishingCompany: "Trillas Editorial",
+      author: DUMMY_TEXT_XL,
+      title: DUMMY_TEXT_S,
+      publicationYear: DUMMY_YEAR_STRING,
+      publicationPlace: DUMMY_TEXT_S,
+      publishingCompany: DUMMY_TEXT_S,
       active: true,
-    })
-  ).rejects.toThrowError("value too long for type character varying");
+    }),
+  ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
-test("Get error if tries to create a reference with duplicate title", async () => {
+test('Get error if tries to create a reference with duplicate title', async () => {
   await expect(
     createReference({
-      author: "Miguel de Cervantes Saavedra",
-      title: "Don Quijote de la Mancha",
-      publicationYear: "1990",
-      publicationPlace: "Barcelona, España",
-      publishingCompany: "Trillas Editorial",
+      author: DUMMY_TEXT_S,
+      title: DUMMY_TEXT_S,
+      publicationYear: DUMMY_YEAR_STRING,
+      publicationPlace: DUMMY_TEXT_S,
+      publishingCompany: DUMMY_TEXT_S,
       active: true,
-    })
-  ).rejects.toThrowError("duplicate key value violates unique constraint");
+    }),
+  ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
-test("Update reference", async () => {
-  const referenceUpdated = await updateReference(1, {
-    author: "Miguel de Cervantes Saavedra",
-    title: "Lorem ipsum",
-    publicationYear: "1990",
-    publicationPlace: "Barcelona, España",
-    publishingCompany: "Trillas Editorial",
+test('Update reference', async () => {
+  const { id } = await updateReference(1, {
+    author: DUMMY_TEXT_S,
+    title: DUMMY_TEXT2_XS,
+    publicationYear: DUMMY_YEAR_STRING,
+    publicationPlace: DUMMY_TEXT_S,
+    publishingCompany: DUMMY_TEXT_S,
     active: false,
   });
-  await expect(getReference(referenceUpdated.id)).resolves.toBeInstanceOf(
-    Reference
+  await expect(getReference(id)).resolves.toBeInstanceOf(Reference);
+  await expect(getReference(id)).resolves.toHaveProperty('active', false);
+  await expect(getReference(id)).resolves.toHaveProperty(
+    'title',
+    DUMMY_TEXT2_XS,
   );
-  await expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
-    "active",
-    false
+  await expect(getReference(id)).resolves.toHaveProperty(
+    'author',
+    DUMMY_TEXT_S,
   );
-  await expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
-    "title",
-    "Lorem ipsum"
+  await expect(getReference(id)).resolves.toHaveProperty(
+    'publicationYear',
+    DUMMY_YEAR_STRING,
   );
-  await expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
-    "author",
-    "Miguel de Cervantes Saavedra"
+  await expect(getReference(id)).resolves.toHaveProperty(
+    'publicationPlace',
+    DUMMY_TEXT_S,
   );
-  await expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
-    "publicationYear",
-    "1990"
-  );
-  await expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
-    "publicationPlace",
-    "Barcelona, España"
-  );
-  await expect(getReference(referenceUpdated.id)).resolves.toHaveProperty(
-    "publishingCompany",
-    "Trillas Editorial"
+  await expect(getReference(id)).resolves.toHaveProperty(
+    'publishingCompany',
+    DUMMY_TEXT_S,
   );
 });
 
-test("Delete reference", async () => {
-  await expect(getReferences()).resolves.toHaveLength(11);
+test('Delete reference', async () => {
+  await expect(getReferences()).resolves.toHaveLength(
+    FAKER_ELEMENTS_NUMBER_L + 1,
+  );
   const references = await getReferences();
-  const lastReference = references[references.length - 1];
-  await expect(deleteReference(lastReference.id)).resolves.toEqual(true);
-  await expect(getReferences()).resolves.toHaveLength(10);
+  const { id } = references[references.length - 1];
+  await expect(deleteReference(id)).resolves.toEqual(true);
+  await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
-test("Get error if tries to delete a reference inexistent", async () => {
-  await expect(deleteReference(10000)).rejects.toThrowError(
-    "Reference not found!"
+test('Get error if tries to delete a reference inexistent', async () => {
+  await expect(deleteReference(INEXISTENT_INDEX)).rejects.toThrowError(
+    REFERENCE_NOT_FOUND,
   );
 });

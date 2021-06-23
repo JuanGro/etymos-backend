@@ -1,22 +1,23 @@
-import { InputType, Field } from "type-graphql";
+import { InputType, Field } from 'type-graphql';
+import { NULLABLE } from '../config/constants';
 
 @InputType()
 export class UpdateReferenceInput {
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   author?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   title?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   publicationYear?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   publicationPlace?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   publishingCompany?: string;
 
-  @Field({ nullable: true })
+  @Field(NULLABLE)
   active?: boolean;
 }
