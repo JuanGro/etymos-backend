@@ -9,8 +9,9 @@ import { TestResolver } from "./resolvers/test";
 import { UserResolver } from "./resolvers/user";
 import { WordResolver } from "./resolvers/word";
 import { CategoryResolver } from "./resolvers/category";
+import { GraphQLSchema } from "graphql";
 
-async function Schema() {
+async function Schema(): Promise<GraphQLSchema> {
   return buildSchema({
     resolvers: [
       CategoryResolver,
