@@ -1,83 +1,84 @@
 import { User } from "../../models/User";
 import { UserResolver } from ".";
+import { DUMMY_EMAIL, DUMMY_EMAIL2, DUMMY_TEXT_S, DUMMY_TEXT_XL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, USER_NOT_FOUND } from "../../config/constants";
 
 const { getUsers, getUser, createUser, updateUser, deleteUser } =
   new UserResolver();
 
 test("Get all users", async () => {
-  await expect(getUsers()).resolves.toHaveLength(10);
+  await expect(getUsers()).resolves.toHaveLength(FAKER_ELEMENTS);
 });
 
 test("Get user", async () => {
   const users = await getUsers();
-  const firstUser = users[0];
-  await expect(getUser(firstUser.id)).resolves.toBeInstanceOf(User);
+  const { id } = users[FIRST_INDEX];
+  await expect(getUser(id)).resolves.toBeInstanceOf(User);
 });
 
 test("Get error if user does not exist", async () => {
-  await expect(getUser(10000)).rejects.toThrowError("User not found!");
+  await expect(getUser(INEXISTENT_INDEX)).rejects.toThrowError(USER_NOT_FOUND);
 });
 
 test("Create user", async () => {
-  await expect(getUsers()).resolves.toHaveLength(10);
-  const userCreated = await createUser({
-    name: "Javier Fernando González Montalvo",
-    email: "test@mail.com",
+  await expect(getUsers()).resolves.toHaveLength(FAKER_ELEMENTS);
+  const { id } = await createUser({
+    name: DUMMY_TEXT_S,
+    email: DUMMY_EMAIL,
     active: true,
   });
-  await expect(getUser(userCreated.id)).resolves.toBeInstanceOf(User);
-  await expect(getUsers()).resolves.toHaveLength(11);
+  await expect(getUser(id)).resolves.toBeInstanceOf(User);
+  await expect(getUsers()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
 });
 
 test("Get error if tries to create a user with incorrect name length", async () => {
   await expect(
     createUser({
-      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      email: "lorem@mail.com",
+      name: DUMMY_TEXT_XL,
+      email: DUMMY_EMAIL,
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying");
+  ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
 test("Get error if tries to create a user with duplicate email", async () => {
   await expect(
     createUser({
-      name: "Javier Fernando González Montalvo",
-      email: "test@mail.com",
+      name: DUMMY_TEXT_S,
+      email: DUMMY_EMAIL,
       active: true,
     })
-  ).rejects.toThrowError("duplicate key value violates unique constraint");
+  ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
 test("Update user", async () => {
-  const userUpdated = await updateUser(1, {
-    name: "Javier Fernando González Montalvo",
-    email: "lorem@mail.com",
+  const { id } = await updateUser(1, {
+    name: DUMMY_TEXT_S,
+    email: DUMMY_EMAIL2,
     active: false,
   });
-  await expect(getUser(userUpdated.id)).resolves.toBeInstanceOf(User);
-  await expect(getUser(userUpdated.id)).resolves.toHaveProperty(
+  await expect(getUser(id)).resolves.toBeInstanceOf(User);
+  await expect(getUser(id)).resolves.toHaveProperty(
     "active",
     false
   );
-  await expect(getUser(userUpdated.id)).resolves.toHaveProperty(
+  await expect(getUser(id)).resolves.toHaveProperty(
     "name",
-    "Javier Fernando González Montalvo"
+    DUMMY_TEXT_S
   );
-  await expect(getUser(userUpdated.id)).resolves.toHaveProperty(
+  await expect(getUser(id)).resolves.toHaveProperty(
     "email",
-    "lorem@mail.com"
+    DUMMY_EMAIL2
   );
 });
 
 test("Delete user", async () => {
-  await expect(getUsers()).resolves.toHaveLength(11);
+  await expect(getUsers()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
   const users = await getUsers();
-  const lastUser = users[users.length - 1];
-  await expect(deleteUser(lastUser.id)).resolves.toEqual(true);
-  await expect(getUsers()).resolves.toHaveLength(10);
+  const { id } = users[users.length - 1];
+  await expect(deleteUser(id)).resolves.toEqual(true);
+  await expect(getUsers()).resolves.toHaveLength(FAKER_ELEMENTS);
 });
 
 test("Get error if tries to delete a user inexistent", async () => {
-  await expect(deleteUser(10000)).rejects.toThrowError("User not found!");
+  await expect(deleteUser(INEXISTENT_INDEX)).rejects.toThrowError(USER_NOT_FOUND);
 });

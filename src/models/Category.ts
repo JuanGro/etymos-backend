@@ -19,7 +19,6 @@ export class Category extends BaseEntity {
   id!: number;
 
   @Field(() => String)
-  // You can set these default values as constants an replicated in all models, it would be cleaner
   @Column(VARCHAR_L_UNIQUE)
   name!: string;
 

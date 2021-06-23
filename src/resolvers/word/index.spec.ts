@@ -1,99 +1,100 @@
 import { Word } from "../../models/Word";
 import { WordResolver } from ".";
+import { FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, DUMMY_TEXT_L, WORD_NOT_FOUND, DUMMY_TEXT_S, DUMMY_IMAGE_URL, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, DUMMY_TEXT2_XS } from "../../config/constants";
 
 const { getWords, getWord, createWord, updateWord, deleteWord } =
   new WordResolver();
 
 test("Get all words", async () => {
-  await expect(getWords()).resolves.toHaveLength(10);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS);
 });
 
 test("Get word", async () => {
   const words = await getWords();
-  const firstWord = words[0];
-  await expect(getWord(firstWord.id)).resolves.toBeInstanceOf(Word);
+  const { id } = words[FIRST_INDEX];
+  await expect(getWord(id)).resolves.toBeInstanceOf(Word);
 });
 
 test("Get error if word does not exist", async () => {
-  await expect(getWord(10000)).rejects.toThrowError("Word not found!");
+  await expect(getWord(INEXISTENT_INDEX)).rejects.toThrowError(WORD_NOT_FOUND);
 });
 
 test("Create word", async () => {
-  await expect(getWords()).resolves.toHaveLength(10);
-  const wordCreated = await createWord({
-    word: "Lorem",
-    meaning: "Lorem ipsum dolor sit amet",
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS);
+  const { id } = await createWord({
+    word: DUMMY_TEXT_XS,
+    meaning: DUMMY_TEXT_S,
     imageUrl:
-      "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+      DUMMY_IMAGE_URL,
     categoryId: 1,
     active: true,
   });
-  await expect(getWord(wordCreated.id)).resolves.toBeInstanceOf(Word);
-  await expect(getWords()).resolves.toHaveLength(11);
+  await expect(getWord(id)).resolves.toBeInstanceOf(Word);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
 });
 
 test("Get error if tries to create a word with incorrect word length", async () => {
   await expect(
     createWord({
-      word: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempor sem et finibus ultricies.",
-      meaning: "Lorem ipsum dolor sit amet",
+      word: DUMMY_TEXT_L,
+      meaning: DUMMY_TEXT_S,
       imageUrl:
-        "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+        DUMMY_IMAGE_URL,
       categoryId: 1,
       active: true,
     })
-  ).rejects.toThrowError("value too long for type character varying");
+  ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
 test("Get error if tries to create a word with duplicate word", async () => {
   await expect(
     createWord({
-      word: "Lorem",
-      meaning: "Lorem ipsum dolor sit amet",
+      word: DUMMY_TEXT_XS,
+      meaning: DUMMY_TEXT_S,
       imageUrl:
-        "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+        DUMMY_IMAGE_URL,
       categoryId: 1,
       active: true,
     })
-  ).rejects.toThrowError("duplicate key value violates unique constraint");
+  ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
 test("Update word", async () => {
-  const wordUpdated = await updateWord(1, {
-    word: "Lorems",
-    meaning: "Lorem ipsum dolor sit amet",
+  const { id } = await updateWord(1, {
+    word: DUMMY_TEXT2_XS,
+    meaning: DUMMY_TEXT_S,
     imageUrl:
-      "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg",
+      DUMMY_IMAGE_URL,
     categoryId: 1,
     active: false,
   });
-  await expect(getWord(wordUpdated.id)).resolves.toBeInstanceOf(Word);
-  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+  await expect(getWord(id)).resolves.toBeInstanceOf(Word);
+  await expect(getWord(id)).resolves.toHaveProperty(
     "active",
     false
   );
-  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+  await expect(getWord(id)).resolves.toHaveProperty(
     "word",
-    "Lorems"
+    DUMMY_TEXT2_XS
   );
-  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+  await expect(getWord(id)).resolves.toHaveProperty(
     "meaning",
-    "Lorem ipsum dolor sit amet"
+    DUMMY_TEXT_S
   );
-  await expect(getWord(wordUpdated.id)).resolves.toHaveProperty(
+  await expect(getWord(id)).resolves.toHaveProperty(
     "imageUrl",
-    "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/d2/88/6d/d2886d3d-f03c-d0fa-1277-540ee369a194/source/512x512bb.jpg"
+    DUMMY_IMAGE_URL
   );
 });
 
 test("Delete word", async () => {
-  await expect(getWords()).resolves.toHaveLength(11);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS + 1);
   const words = await getWords();
-  const lastWord = words[words.length - 1];
-  await expect(deleteWord(lastWord.id)).resolves.toEqual(true);
-  await expect(getWords()).resolves.toHaveLength(10);
+  const { id } = words[words.length - 1];
+  await expect(deleteWord(id)).resolves.toEqual(true);
+  await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS);
 });
 
 test("Get error if tries to delete a word inexistent", async () => {
-  await expect(deleteWord(10000)).rejects.toThrowError("Word not found!");
+  await expect(deleteWord(INEXISTENT_INDEX)).rejects.toThrowError(WORD_NOT_FOUND);
 });
