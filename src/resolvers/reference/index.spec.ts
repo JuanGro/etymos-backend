@@ -1,6 +1,6 @@
 import { Reference } from "../../models/Reference";
 import { ReferenceResolver } from ".";
-import { FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, REFERENCE_NOT_FOUND, DUMMY_TEXT_XL, DUMMY_TEXT2_XS, DUMMY_TEXT_S } from "../../config/constants";
+import { FAKER_ELEMENTS, FIRST_INDEX, INEXISTENT_INDEX, DUMMY_TEXT_XS, ERROR_DUPLICATE_KEY, ERROR_MAX_LENGTH, REFERENCE_NOT_FOUND, DUMMY_TEXT_XL, DUMMY_TEXT2_XS, DUMMY_TEXT_S, DUMMY_YEAR_STRING } from "../../config/constants";
 
 const {
   getReferences,
@@ -33,7 +33,7 @@ test("Create reference", async () => {
   const { id } = await createReference({
     author: DUMMY_TEXT_S,
     title: DUMMY_TEXT_S,
-    publicationYear: DUMMY_TEXT_XS,
+    publicationYear: DUMMY_YEAR_STRING,
     publicationPlace: DUMMY_TEXT_S,
     publishingCompany: DUMMY_TEXT_S,
     active: true,
@@ -49,7 +49,7 @@ test("Get error if tries to create a reference with incorrect author length", as
     createReference({
       author: DUMMY_TEXT_XL,
       title: DUMMY_TEXT_S,
-      publicationYear: DUMMY_TEXT_S,
+      publicationYear: DUMMY_YEAR_STRING,
       publicationPlace: DUMMY_TEXT_S,
       publishingCompany: DUMMY_TEXT_S,
       active: true,
@@ -62,7 +62,7 @@ test("Get error if tries to create a reference with duplicate title", async () =
     createReference({
       author: DUMMY_TEXT_S,
       title: DUMMY_TEXT_S,
-      publicationYear: DUMMY_TEXT_S,
+      publicationYear: DUMMY_YEAR_STRING,
       publicationPlace: DUMMY_TEXT_S,
       publishingCompany: DUMMY_TEXT_S,
       active: true,
@@ -74,7 +74,7 @@ test("Update reference", async () => {
   const { id } = await updateReference(1, {
     author: DUMMY_TEXT_S,
     title: DUMMY_TEXT2_XS,
-    publicationYear: DUMMY_TEXT_S,
+    publicationYear: DUMMY_YEAR_STRING,
     publicationPlace: DUMMY_TEXT_S,
     publishingCompany: DUMMY_TEXT_S,
     active: false,
@@ -96,7 +96,7 @@ test("Update reference", async () => {
   );
   await expect(getReference(id)).resolves.toHaveProperty(
     "publicationYear",
-    DUMMY_TEXT_S
+    DUMMY_YEAR_STRING
   );
   await expect(getReference(id)).resolves.toHaveProperty(
     "publicationPlace",
