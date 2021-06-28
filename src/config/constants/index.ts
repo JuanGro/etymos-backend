@@ -32,6 +32,7 @@ const PARAMS = {
 };
 
 const { VARCHAR_TYPE, BOOLEAN_TYPE, TIMESTAMP_TYPE }: Types = {
+  // I think to have type in the name with a key named type of and object of types could be redundant maybe VARCHAR = 'varchar'
   VARCHAR_TYPE: { type: 'varchar' },
   BOOLEAN_TYPE: { type: 'boolean' },
   TIMESTAMP_TYPE: { type: 'timestamp' },

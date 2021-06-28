@@ -24,6 +24,7 @@ export class CategoryResolver {
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
     } else {
+      // there's no need to have an else here if !throws immediately return it
       return category;
     }
   }
@@ -33,6 +34,7 @@ export class CategoryResolver {
     @Arg(DATA_PARAM) data: CreateCategoryInput,
   ): Promise<Category> {
     const category = Category.create(data);
+    // you can return here retun cat...
     await category.save();
     return category;
   }
@@ -46,6 +48,7 @@ export class CategoryResolver {
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
     } else {
+      // same, if not throws you can continue the flow
       Object.assign(category, data);
       await category.save();
       return category;
@@ -58,8 +61,10 @@ export class CategoryResolver {
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
     } else {
+      // same
       await category.remove();
       return true;
     }
   }
+  //please apply comments in all your resolvers
 }

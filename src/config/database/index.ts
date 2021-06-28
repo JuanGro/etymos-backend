@@ -1,5 +1,5 @@
 import { ApolloError } from 'apollo-server';
-// Import conventions, this could be the first line
+// Import conventions, this could be the first line // once you have addressed the changes please delete the comment lines
 import 'reflect-metadata';
 import { createConnection, getConnection } from 'typeorm';
 

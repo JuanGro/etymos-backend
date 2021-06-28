@@ -9,6 +9,7 @@ import { Reference } from '../../../models/reference';
 
 define(Reference, (faker) => {
   const reference = new Reference();
+  // as a good practice to concatenate string use string templates instead of +
   reference.author = faker.name.firstName() + faker.name.lastName();
   reference.title = faker.random.words(FAKER_ELEMENTS_NUMBER_M);
   reference.publicationYear = faker.random
