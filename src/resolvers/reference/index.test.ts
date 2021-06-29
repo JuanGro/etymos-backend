@@ -6,10 +6,12 @@ import {
   ERROR_DUPLICATE_KEY,
   ERROR_MAX_LENGTH,
   REFERENCE_NOT_FOUND,
-  DUMMY_TEXT_XL,
   DUMMY_TEXT2_XS,
-  DUMMY_TEXT_S,
   DUMMY_YEAR_STRING,
+  DUMMY_REFERENCE2,
+  DUMMY_REFERENCE,
+  DUMMY_REFERENCE_INCORRECT,
+  DUMMY_TEXT_M,
 } from '../../config/constants';
 
 const {
@@ -38,14 +40,7 @@ test('Get error if reference does not exist', async () => {
 
 test('Create reference', async () => {
   await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
-  const { id } = await createReference({
-    author: DUMMY_TEXT_S,
-    title: DUMMY_TEXT_S,
-    publicationYear: DUMMY_YEAR_STRING,
-    publicationPlace: DUMMY_TEXT_S,
-    publishingCompany: DUMMY_TEXT_S,
-    active: true,
-  });
+  const { id } = await createReference(DUMMY_REFERENCE);
   await expect(getReference(id)).resolves.toBeInstanceOf(Reference);
   await expect(getReferences()).resolves.toHaveLength(
     FAKER_ELEMENTS_NUMBER_L + 1,
@@ -54,39 +49,18 @@ test('Create reference', async () => {
 
 test('Get error if tries to create a reference with incorrect author length', async () => {
   await expect(
-    createReference({
-      author: DUMMY_TEXT_XL,
-      title: DUMMY_TEXT_S,
-      publicationYear: DUMMY_YEAR_STRING,
-      publicationPlace: DUMMY_TEXT_S,
-      publishingCompany: DUMMY_TEXT_S,
-      active: true,
-    }),
+    createReference(DUMMY_REFERENCE_INCORRECT),
   ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
 test('Get error if tries to create a reference with duplicate title', async () => {
   await expect(
-    createReference({
-      author: DUMMY_TEXT_S,
-      title: DUMMY_TEXT_S,
-      publicationYear: DUMMY_YEAR_STRING,
-      publicationPlace: DUMMY_TEXT_S,
-      publishingCompany: DUMMY_TEXT_S,
-      active: true,
-    }),
+    createReference(DUMMY_REFERENCE),
   ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
 test('Update reference', async () => {
-  const { id } = await updateReference(1, {
-    author: DUMMY_TEXT_S,
-    title: DUMMY_TEXT2_XS,
-    publicationYear: DUMMY_YEAR_STRING,
-    publicationPlace: DUMMY_TEXT_S,
-    publishingCompany: DUMMY_TEXT_S,
-    active: false,
-  });
+  const { id } = await updateReference(1, DUMMY_REFERENCE2);
   await expect(getReference(id)).resolves.toBeInstanceOf(Reference);
   await expect(getReference(id)).resolves.toHaveProperty('active', false);
   await expect(getReference(id)).resolves.toHaveProperty(
@@ -95,7 +69,7 @@ test('Update reference', async () => {
   );
   await expect(getReference(id)).resolves.toHaveProperty(
     'author',
-    DUMMY_TEXT_S,
+    DUMMY_TEXT_M,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
     'publicationYear',
@@ -103,11 +77,11 @@ test('Update reference', async () => {
   );
   await expect(getReference(id)).resolves.toHaveProperty(
     'publicationPlace',
-    DUMMY_TEXT_S,
+    DUMMY_TEXT_M,
   );
   await expect(getReference(id)).resolves.toHaveProperty(
     'publishingCompany',
-    DUMMY_TEXT_S,
+    DUMMY_TEXT_M,
   );
 });
 

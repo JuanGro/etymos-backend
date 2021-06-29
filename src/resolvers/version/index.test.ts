@@ -4,12 +4,13 @@ import {
   FAKER_ELEMENTS_NUMBER_L,
   INEXISTENT_INDEX,
   DUMMY_TEXT_M,
-  DUMMY_TEXT_L,
   DUMMY_VERSION,
   DUMMY_VERSION2,
   ERROR_DUPLICATE_KEY,
   ERROR_MAX_LENGTH,
   VERSION_NOT_FOUND,
+  DUMMY_VERSION_INCORRECT,
+  DUMMY_VERSION2_STRING,
 } from '../../config/constants';
 
 const {
@@ -34,12 +35,7 @@ test('Get error if version does not exist', async () => {
 
 test('Create version', async () => {
   await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
-  const { id } = await createVersion({
-    version: DUMMY_VERSION,
-    description: DUMMY_TEXT_M,
-    maintenance: false,
-    active: true,
-  });
+  const { id } = await createVersion(DUMMY_VERSION);
   await expect(getVersion(id)).resolves.toBeInstanceOf(Version);
   await expect(getVersions()).resolves.toHaveLength(
     FAKER_ELEMENTS_NUMBER_L + 1,
@@ -48,39 +44,24 @@ test('Create version', async () => {
 
 test('Get error if tries to create a version with incorrect version length', async () => {
   await expect(
-    createVersion({
-      version: DUMMY_TEXT_L,
-      description: DUMMY_TEXT_M,
-      maintenance: true,
-      active: true,
-    }),
+    createVersion(DUMMY_VERSION_INCORRECT),
   ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
 test('Get error if tries to create a version with duplicate version', async () => {
   await expect(
-    createVersion({
-      version: DUMMY_VERSION,
-      description: DUMMY_TEXT_M,
-      maintenance: true,
-      active: true,
-    }),
+    createVersion(DUMMY_VERSION),
   ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
 test('Update version', async () => {
-  const { id } = await updateVersion(1, {
-    version: DUMMY_VERSION2,
-    description: DUMMY_TEXT_M,
-    maintenance: false,
-    active: false,
-  });
+  const { id } = await updateVersion(1, DUMMY_VERSION2);
   await expect(getVersion(id)).resolves.toBeInstanceOf(Version);
-  await expect(getVersion(id)).resolves.toHaveProperty('active', false);
+  await expect(getVersion(id)).resolves.toHaveProperty('active', true);
   await expect(getVersion(id)).resolves.toHaveProperty('maintenance', false);
   await expect(getVersion(id)).resolves.toHaveProperty(
     'version',
-    DUMMY_VERSION2,
+    DUMMY_VERSION2_STRING,
   );
   await expect(getVersion(id)).resolves.toHaveProperty(
     'description',

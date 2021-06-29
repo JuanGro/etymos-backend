@@ -2,10 +2,11 @@ import { Category } from '../../models/category';
 import { CategoryResolver } from '.';
 import {
   CATEGORY_NOT_FOUND,
+  DUMMY_CATEGORY,
+  DUMMY_CATEGORY2,
+  DUMMY_CATEGORY_INCORRECT,
   DUMMY_TEXT2_XS,
-  DUMMY_TEXT_S,
-  DUMMY_TEXT_XL,
-  DUMMY_TEXT_XS,
+  DUMMY_TEXT_M,
   ERROR_DUPLICATE_KEY,
   ERROR_MAX_LENGTH,
   FAKER_ELEMENTS_NUMBER_L,
@@ -38,11 +39,7 @@ test('Get error if category does not exist', async () => {
 
 test('Create category', async () => {
   await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
-  const { id } = await createCategory({
-    name: DUMMY_TEXT_XS,
-    description: DUMMY_TEXT_S,
-    active: true,
-  });
+  const { id } = await createCategory(DUMMY_CATEGORY);
   await expect(getCategory(id)).resolves.toBeInstanceOf(Category);
   await expect(getCategories()).resolves.toHaveLength(
     FAKER_ELEMENTS_NUMBER_L + 1,
@@ -51,36 +48,24 @@ test('Create category', async () => {
 
 test('Get error if tries to create a category with incorrect name length', async () => {
   await expect(
-    createCategory({
-      name: DUMMY_TEXT_XL,
-      description: DUMMY_TEXT_S,
-      active: false,
-    }),
+    createCategory(DUMMY_CATEGORY_INCORRECT),
   ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
 test('Get error if tries to create a category with duplicate name', async () => {
   await expect(
-    createCategory({
-      name: DUMMY_TEXT_XS,
-      description: DUMMY_TEXT_S,
-      active: false,
-    }),
+    createCategory(DUMMY_CATEGORY),
   ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
 test('Update category', async () => {
-  const { id } = await updateCategory(1, {
-    name: DUMMY_TEXT2_XS,
-    description: DUMMY_TEXT_S,
-    active: false,
-  });
+  const { id } = await updateCategory(1, DUMMY_CATEGORY2);
   await expect(getCategory(id)).resolves.toBeInstanceOf(Category);
-  await expect(getCategory(id)).resolves.toHaveProperty('active', false);
+  await expect(getCategory(id)).resolves.toHaveProperty('active', true);
   await expect(getCategory(id)).resolves.toHaveProperty('name', DUMMY_TEXT2_XS);
   await expect(getCategory(id)).resolves.toHaveProperty(
     'description',
-    DUMMY_TEXT_S,
+    DUMMY_TEXT_M,
   );
 });
 

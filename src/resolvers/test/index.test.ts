@@ -1,6 +1,8 @@
 import { Test } from '../../models/test';
 import { TestResolver } from '.';
 import {
+  DUMMY_TEST,
+  DUMMY_TEST2,
   FAKER_ELEMENTS_NUMBER_L,
   INEXISTENT_INDEX,
   TEST_NOT_FOUND,
@@ -26,21 +28,13 @@ test('Get error if test does not exist', async () => {
 
 test('Create test', async () => {
   await expect(getTests()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
-  const { id } = await createTest({
-    userId: 1,
-    questionId: 1,
-    active: true,
-  });
+  const { id } = await createTest(DUMMY_TEST);
   await expect(getTest(id)).resolves.toBeInstanceOf(Test);
   await expect(getTests()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test('Update test', async () => {
-  const { id } = await updateTest(1, {
-    userId: 1,
-    questionId: 1,
-    active: false,
-  });
+  const { id } = await updateTest(1, DUMMY_TEST2);
   await expect(getTest(id)).resolves.toBeInstanceOf(Test);
   await expect(getTest(id)).resolves.toHaveProperty('active', false);
 });

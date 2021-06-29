@@ -54,6 +54,6 @@ export class CategoryResolver {
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
     }
-      return category.remove();
+    return category.remove();
   }
 }

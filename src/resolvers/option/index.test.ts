@@ -3,12 +3,13 @@ import { OptionResolver } from '.';
 import {
   FAKER_ELEMENTS_NUMBER_L,
   INEXISTENT_INDEX,
-  DUMMY_TEXT_XS,
   ERROR_MAX_LENGTH,
   ERROR_DUPLICATE_KEY,
   DUMMY_TEXT2_XS,
   OPTION_NOT_FOUND,
-  DUMMY_TEXT_XL,
+  DUMMY_OPTION,
+  DUMMY_OPTION2,
+  DUMMY_OPTION_INCORRECT,
 } from '../../config/constants';
 
 const {
@@ -33,43 +34,27 @@ test('Get error if option does not exist', async () => {
 
 test('Create option', async () => {
   await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
-  const { id } = await createOption({
-    option: DUMMY_TEXT_XS,
-    correct: true,
-    active: true,
-  });
+  const { id } = await createOption(DUMMY_OPTION);
   await expect(getOption(id)).resolves.toBeInstanceOf(Option);
   await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
 });
 
 test('Get error if tries to create an option with incorrect option length', async () => {
   await expect(
-    createOption({
-      option: DUMMY_TEXT_XL,
-      correct: false,
-      active: true,
-    }),
+    createOption(DUMMY_OPTION_INCORRECT),
   ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
 test('Get error if tries to create an option with duplicate option', async () => {
   await expect(
-    createOption({
-      option: DUMMY_TEXT_XS,
-      correct: false,
-      active: true,
-    }),
+    createOption(DUMMY_OPTION),
   ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
 test('Update option', async () => {
-  const { id } = await updateOption(1, {
-    option: DUMMY_TEXT2_XS,
-    correct: true,
-    active: false,
-  });
+  const { id } = await updateOption(1, DUMMY_OPTION2);
   await expect(getOption(id)).resolves.toBeInstanceOf(Option);
-  await expect(getOption(id)).resolves.toHaveProperty('active', false);
+  await expect(getOption(id)).resolves.toHaveProperty('active', true);
   await expect(getOption(id)).resolves.toHaveProperty('correct', true);
   await expect(getOption(id)).resolves.toHaveProperty('option', DUMMY_TEXT2_XS);
 });
