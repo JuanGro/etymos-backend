@@ -49,7 +49,7 @@ test('Delete test', async () => {
   await expect(getTests()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const tests = await getTests();
   const { id } = tests[tests.length - 1];
-  await expect(deleteTest(id)).resolves.toEqual(true);
+  await expect(deleteTest(id)).resolves.toBeInstanceOf(Test);
   await expect(getTests()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

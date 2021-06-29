@@ -117,7 +117,7 @@ test('Delete reference', async () => {
   );
   const references = await getReferences();
   const { id } = references[references.length - 1];
-  await expect(deleteReference(id)).resolves.toEqual(true);
+  await expect(deleteReference(id)).resolves.toBeInstanceOf(Reference);
   await expect(getReferences()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

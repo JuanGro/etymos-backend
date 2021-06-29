@@ -27,16 +27,14 @@ export class WordResolver {
 
     if (!word) {
       throw new ApolloError(WORD_NOT_FOUND);
-    } else {
-      return word;
     }
+    return word;
   }
 
   @Mutation(() => Word)
   async createWord(@Arg(DATA_PARAM) data: CreateWordInput): Promise<Word> {
     const word = Word.create(data);
-    await word.save();
-    return word;
+    return word.save();
   }
 
   @Mutation(() => Word)
@@ -47,21 +45,17 @@ export class WordResolver {
     const word = await Word.findOne({ where: { id } });
     if (!word) {
       throw new ApolloError(WORD_NOT_FOUND);
-    } else {
-      Object.assign(word, data);
-      await word.save();
-      return word;
     }
+    Object.assign(word, data);
+    return word.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteWord(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Word)
+  async deleteWord(@Arg(ID_PARAM) id: number): Promise<Word> {
     const word = await Word.findOne({ where: { id } });
     if (!word) {
       throw new ApolloError(WORD_NOT_FOUND);
-    } else {
-      await word.remove();
-      return true;
     }
+    return word.remove();
   }
 }

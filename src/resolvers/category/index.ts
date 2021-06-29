@@ -23,10 +23,8 @@ export class CategoryResolver {
     const category = await Category.findOne({ where: { id } });
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
-    } else {
-      // there's no need to have an else here if !throws immediately return it
-      return category;
     }
+    return category;
   }
 
   @Mutation(() => Category)
@@ -34,9 +32,7 @@ export class CategoryResolver {
     @Arg(DATA_PARAM) data: CreateCategoryInput,
   ): Promise<Category> {
     const category = Category.create(data);
-    // you can return here retun cat...
-    await category.save();
-    return category;
+    return category.save();
   }
 
   @Mutation(() => Category)
@@ -47,24 +43,17 @@ export class CategoryResolver {
     const category = await Category.findOne({ where: { id } });
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
-    } else {
-      // same, if not throws you can continue the flow
-      Object.assign(category, data);
-      await category.save();
-      return category;
     }
+    Object.assign(category, data);
+    return category.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteCategory(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Category)
+  async deleteCategory(@Arg(ID_PARAM) id: number): Promise<Category> {
     const category = await Category.findOne({ where: { id } });
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
-    } else {
-      // same
-      await category.remove();
-      return true;
     }
+      return category.remove();
   }
-  // please apply comments in all your resolvers
 }

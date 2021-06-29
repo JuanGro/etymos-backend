@@ -90,7 +90,7 @@ test('Delete word', async () => {
   await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const words = await getWords();
   const { id } = words[words.length - 1];
-  await expect(deleteWord(id)).resolves.toEqual(true);
+  await expect(deleteWord(id)).resolves.toBeInstanceOf(Word);
   await expect(getWords()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

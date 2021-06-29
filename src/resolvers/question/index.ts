@@ -23,9 +23,8 @@ export class QuestionResolver {
     const question = await Question.findOne({ where: { id } });
     if (!question) {
       throw new ApolloError(QUESTION_NOT_FOUND);
-    } else {
-      return question;
     }
+    return question;
   }
 
   @Mutation(() => Question)
@@ -33,8 +32,7 @@ export class QuestionResolver {
     @Arg(DATA_PARAM) data: CreateQuestionInput,
   ): Promise<Question> {
     const question = Question.create(data);
-    await question.save();
-    return question;
+    return question.save();
   }
 
   @Mutation(() => Question)
@@ -45,21 +43,17 @@ export class QuestionResolver {
     const question = await Question.findOne({ where: { id } });
     if (!question) {
       throw new ApolloError(QUESTION_NOT_FOUND);
-    } else {
-      Object.assign(question, data);
-      await question.save();
-      return question;
     }
+    Object.assign(question, data);
+    return question.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteQuestion(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Question)
+  async deleteQuestion(@Arg(ID_PARAM) id: number): Promise<Question> {
     const question = await Question.findOne({ where: { id } });
     if (!question) {
       throw new ApolloError(QUESTION_NOT_FOUND);
-    } else {
-      await question.remove();
-      return true;
     }
+    return question.remove();
   }
 }

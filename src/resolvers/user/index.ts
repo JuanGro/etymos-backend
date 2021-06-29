@@ -27,16 +27,14 @@ export class UserResolver {
       .getOne();
     if (!user) {
       throw new ApolloError(USER_NOT_FOUND);
-    } else {
-      return user;
     }
+    return user;
   }
 
   @Mutation(() => User)
   async createUser(@Arg(DATA_PARAM) data: CreateUserInput): Promise<User> {
     const user = User.create(data);
-    await user.save();
-    return user;
+    return user.save();
   }
 
   @Mutation(() => User)
@@ -47,21 +45,17 @@ export class UserResolver {
     const user = await User.findOne({ where: { id } });
     if (!user) {
       throw new ApolloError(USER_NOT_FOUND);
-    } else {
-      Object.assign(user, data);
-      await user.save();
-      return user;
     }
+    Object.assign(user, data);
+    return user.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteUser(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => User)
+  async deleteUser(@Arg(ID_PARAM) id: number): Promise<User> {
     const user = await User.findOne({ where: { id } });
     if (!user) {
       throw new ApolloError(USER_NOT_FOUND);
-    } else {
-      await user.remove();
-      return true;
     }
+    return user.remove();
   }
 }

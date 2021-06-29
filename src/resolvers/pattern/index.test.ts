@@ -80,7 +80,7 @@ test('Delete pattern', async () => {
   );
   const patterns = await getPatterns();
   const { id } = patterns[patterns.length - 1];
-  await expect(deletePattern(id)).resolves.toEqual(true);
+  await expect(deletePattern(id)).resolves.toBeInstanceOf(Pattern);
   await expect(getPatterns()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

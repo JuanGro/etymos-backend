@@ -88,7 +88,7 @@ test('Delete question', async () => {
   );
   const questions = await getQuestions();
   const { id } = questions[questions.length - 1];
-  await expect(deleteQuestion(id)).resolves.toEqual(true);
+  await expect(deleteQuestion(id)).resolves.toBeInstanceOf(Question);
   await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

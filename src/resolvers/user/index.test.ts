@@ -77,7 +77,7 @@ test('Delete user', async () => {
   await expect(getUsers()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const users = await getUsers();
   const { id } = users[users.length - 1];
-  await expect(deleteUser(id)).resolves.toEqual(true);
+  await expect(deleteUser(id)).resolves.toBeInstanceOf(User);
   await expect(getUsers()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

@@ -78,7 +78,7 @@ test('Delete option', async () => {
   await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L + 1);
   const options = await getOptions();
   const { id } = options[options.length - 1];
-  await expect(deleteOption(id)).resolves.toEqual(true);
+  await expect(deleteOption(id)).resolves.toBeInstanceOf(Option);
   await expect(getOptions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

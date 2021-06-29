@@ -112,7 +112,7 @@ test('Delete etymology', async () => {
   );
   const etymologies = await getEtymologies();
   const { id } = etymologies[etymologies.length - 1];
-  await expect(deleteEtymology(id)).resolves.toEqual(true);
+  await expect(deleteEtymology(id)).resolves.toBeInstanceOf(Etymology);
   await expect(getEtymologies()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

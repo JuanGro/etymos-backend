@@ -90,7 +90,7 @@ test('Delete category', async () => {
   );
   const categories = await getCategories();
   const { id } = categories[categories.length - 1];
-  await expect(deleteCategory(id)).resolves.toBeTruthy();
+  await expect(deleteCategory(id)).resolves.toBeInstanceOf(Category);
   await expect(getCategories()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

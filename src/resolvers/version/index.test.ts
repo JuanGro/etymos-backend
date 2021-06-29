@@ -94,7 +94,7 @@ test('Delete version', async () => {
   );
   const versions = await getVersions();
   const { id } = versions[versions.length - 1];
-  await expect(deleteVersion(id)).resolves.toEqual(true);
+  await expect(deleteVersion(id)).resolves.toBeInstanceOf(Version);
   await expect(getVersions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 
