@@ -66,5 +66,5 @@ export class CategoryResolver {
       return true;
     }
   }
-  //please apply comments in all your resolvers
+  // please apply comments in all your resolvers
 }

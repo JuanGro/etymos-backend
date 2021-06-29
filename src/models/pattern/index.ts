@@ -12,7 +12,7 @@ import { Etymology } from '../etymology';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
-  TIMESTAMP,
+  TIMESTAMP_DEFAULT,
   VARCHAR_S_UNIQUE,
 } from '../../config/constants';
 
@@ -32,11 +32,11 @@ export class Pattern extends BaseEntity {
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn(TIMESTAMP)
+  @CreateDateColumn(TIMESTAMP_DEFAULT)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn(TIMESTAMP)
+  @UpdateDateColumn(TIMESTAMP_DEFAULT)
   updateDate!: Date;
 
   @Field(() => [Etymology], NULLABLE)

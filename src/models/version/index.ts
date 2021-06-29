@@ -10,7 +10,7 @@ import { ObjectType, Field, ID } from 'type-graphql';
 import {
   BOOLEAN_DEFAULT_FALSE,
   BOOLEAN_DEFAULT_TRUE,
-  TIMESTAMP,
+  TIMESTAMP_DEFAULT,
   VARCHAR_S_UNIQUE,
   VARCHAR_XXXXL,
 } from '../../config/constants';
@@ -39,10 +39,10 @@ export class Version extends BaseEntity {
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn(TIMESTAMP)
+  @CreateDateColumn(TIMESTAMP_DEFAULT)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn(TIMESTAMP)
+  @UpdateDateColumn(TIMESTAMP_DEFAULT)
   updateDate!: Date;
 }

@@ -12,7 +12,7 @@ import { Word } from '../word';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
-  TIMESTAMP,
+  TIMESTAMP_DEFAULT,
   VARCHAR_L_UNIQUE,
   VARCHAR_XL,
 } from '../../config/constants';
@@ -37,11 +37,11 @@ export class Category extends BaseEntity {
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn(TIMESTAMP)
+  @CreateDateColumn(TIMESTAMP_DEFAULT)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn(TIMESTAMP)
+  @UpdateDateColumn(TIMESTAMP_DEFAULT)
   updateDate!: Date;
 
   @Field(() => [Word], NULLABLE)

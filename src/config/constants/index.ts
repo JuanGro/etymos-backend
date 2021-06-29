@@ -31,11 +31,12 @@ const PARAMS = {
   DATA_PARAM: 'data',
 };
 
-const { VARCHAR_TYPE, BOOLEAN_TYPE, TIMESTAMP_TYPE }: Types = {
-  // I think to have type in the name with a key named type of and object of types could be redundant maybe VARCHAR = 'varchar'
-  VARCHAR_TYPE: { type: 'varchar' },
-  BOOLEAN_TYPE: { type: 'boolean' },
-  TIMESTAMP_TYPE: { type: 'timestamp' },
+const { VARCHAR, BOOLEAN, TIMESTAMP }: Types = {
+  // I think to have type in the name with a key named
+  // type of and object of types could be redundant maybe VARCHAR = 'varchar'
+  VARCHAR: { type: 'varchar' },
+  BOOLEAN: { type: 'boolean' },
+  TIMESTAMP: { type: 'timestamp' },
 };
 
 const {
@@ -52,21 +53,21 @@ const {
 };
 
 const DATABASE_CONFIG = {
-  BOOLEAN_DEFAULT_TRUE: { ...BOOLEAN_TYPE, default: true },
-  BOOLEAN_DEFAULT_FALSE: { ...BOOLEAN_TYPE, default: false },
-  VARCHAR_XXS: { ...VARCHAR_TYPE, length: XXS },
-  VARCHAR_XS: { ...VARCHAR_TYPE, length: XS },
-  VARCHAR_S: { ...VARCHAR_TYPE, length: S },
-  VARCHAR_M: { ...VARCHAR_TYPE, length: M },
-  VARCHAR_L: { ...VARCHAR_TYPE, length: L },
-  VARCHAR_XL: { ...VARCHAR_TYPE, length: XL },
-  VARCHAR_XXL: { ...VARCHAR_TYPE, length: XXL },
-  VARCHAR_XXXXL: { ...VARCHAR_TYPE, length: XXXXL },
-  VARCHAR_S_UNIQUE: { ...VARCHAR_TYPE, length: S, unique: true },
-  VARCHAR_L_UNIQUE: { ...VARCHAR_TYPE, length: L, unique: true },
-  VARCHAR_XXL_UNIQUE: { ...VARCHAR_TYPE, length: XXL, unique: true },
-  VARCHAR_XXXXL_UNIQUE: { ...VARCHAR_TYPE, length: XXXXL, unique: true },
-  TIMESTAMP: TIMESTAMP_TYPE,
+  BOOLEAN_DEFAULT_TRUE: { ...BOOLEAN, default: true },
+  BOOLEAN_DEFAULT_FALSE: { ...BOOLEAN, default: false },
+  VARCHAR_XXS: { ...VARCHAR, length: XXS },
+  VARCHAR_XS: { ...VARCHAR, length: XS },
+  VARCHAR_S: { ...VARCHAR, length: S },
+  VARCHAR_M: { ...VARCHAR, length: M },
+  VARCHAR_L: { ...VARCHAR, length: L },
+  VARCHAR_XL: { ...VARCHAR, length: XL },
+  VARCHAR_XXL: { ...VARCHAR, length: XXL },
+  VARCHAR_XXXXL: { ...VARCHAR, length: XXXXL },
+  VARCHAR_S_UNIQUE: { ...VARCHAR, length: S, unique: true },
+  VARCHAR_L_UNIQUE: { ...VARCHAR, length: L, unique: true },
+  VARCHAR_XXL_UNIQUE: { ...VARCHAR, length: XXL, unique: true },
+  VARCHAR_XXXXL_UNIQUE: { ...VARCHAR, length: XXXXL, unique: true },
+  TIMESTAMP_DEFAULT: TIMESTAMP,
   NULLABLE: { nullable: true },
 };
 
@@ -137,7 +138,7 @@ export const {
   VARCHAR_L_UNIQUE,
   VARCHAR_XXL_UNIQUE,
   VARCHAR_XXXXL_UNIQUE,
-  TIMESTAMP,
+  TIMESTAMP_DEFAULT,
   NULLABLE,
   FAKER_ELEMENTS_NUMBER_S,
   FAKER_ELEMENTS_NUMBER_M,

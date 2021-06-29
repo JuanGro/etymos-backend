@@ -49,7 +49,6 @@ test('Create etymology', async () => {
   });
   await expect(getEtymology(id)).resolves.toBeInstanceOf(Etymology);
   await expect(getEtymologies()).resolves.toHaveLength(
-    // why + 1? magic numbers
     FAKER_ELEMENTS_NUMBER_L + 1,
   );
 });
@@ -60,7 +59,8 @@ test('Get error if tries to create an etymology with incorrect graecoLatinEtymol
       graecoLatinEtymology: DUMMY_TEXT_XL,
       meaning: DUMMY_TEXT_S,
       imageUrl: DUMMY_IMAGE_URL,
-      // if these three values are repeted twice or more, use a const and the spread operator to copy into another one
+      // if these three values are repeted twice or more,
+      // use a const and the spread operator to copy into another one
       etymologyTypeId: 1,
       languageId: 1,
       active: true,
