@@ -18,15 +18,15 @@ async function main() {
     NODE_PORT,
     PRODUCTION_ENV,
     SENTRY_DSN,
-    npm_package_name,
-    npm_package_version,
+    APP_NAME,
+    VERSION,
   } = process.env;
 
   if (NODE_ENV === PRODUCTION_ENV) {
     // Configure Sentry
     Sentry.init({
       dsn: SENTRY_DSN,
-      release: `${npm_package_name}@${npm_package_version}`,
+      release: `${APP_NAME}@${VERSION}`,
       environment: NODE_ENV,
     });
   }

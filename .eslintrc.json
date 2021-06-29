@@ -14,16 +14,12 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb-typescript",
-    "airbnb-base"
+    "airbnb-typescript"
   ],
   "rules": {
-    "import/no-unresolved": "off",
-    "import/extensions": "off",
     "import/prefer-default-export": "off",
-    "class-methods-use-this": "off",
     "import/no-cycle": "off",
-    "@typescript-eslint/naming-convention": "off"
+    "class-methods-use-this": "off"
   },
   "overrides": [
     {
