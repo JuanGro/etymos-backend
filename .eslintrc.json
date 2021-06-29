@@ -11,10 +11,10 @@
     "project": "./tsconfig.json"
   }, 
   "extends": [
+    "airbnb-typescript",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb-typescript"
+    "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
     "import/prefer-default-export": "off",
