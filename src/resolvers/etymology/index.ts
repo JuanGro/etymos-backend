@@ -38,7 +38,7 @@ export class EtymologyResolver {
   @Mutation(() => Etymology)
   async updateEtymology(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateEtymologyInput,
+      @Arg(DATA_PARAM) data: UpdateEtymologyInput,
   ): Promise<Etymology> {
     const etymology = await Etymology.findOne({ where: { id } });
     if (!etymology) {

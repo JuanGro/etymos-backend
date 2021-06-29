@@ -32,7 +32,7 @@ export class TestResolver {
   @Mutation(() => Test)
   async updateTest(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateTestInput,
+      @Arg(DATA_PARAM) data: UpdateTestInput,
   ): Promise<Test> {
     const test = await Test.findOne({ where: { id } });
     if (!test) {

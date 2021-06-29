@@ -38,7 +38,7 @@ export class VersionResolver {
   @Mutation(() => Version)
   async updateVersion(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateVersionInput,
+      @Arg(DATA_PARAM) data: UpdateVersionInput,
   ): Promise<Version> {
     const version = await Version.findOne({ where: { id } });
     if (!version) {

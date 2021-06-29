@@ -40,7 +40,7 @@ export class UserResolver {
   @Mutation(() => User)
   async updateUser(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateUserInput,
+      @Arg(DATA_PARAM) data: UpdateUserInput,
   ): Promise<User> {
     const user = await User.findOne({ where: { id } });
     if (!user) {

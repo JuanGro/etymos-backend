@@ -34,7 +34,7 @@ export class OptionResolver {
   @Mutation(() => Option)
   async updateOption(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateOptionInput,
+      @Arg(DATA_PARAM) data: UpdateOptionInput,
   ): Promise<Option> {
     const option = await Option.findOne({ where: { id } });
     if (!option) {

@@ -40,7 +40,7 @@ export class WordResolver {
   @Mutation(() => Word)
   async updateWord(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateWordInput,
+      @Arg(DATA_PARAM) data: UpdateWordInput,
   ): Promise<Word> {
     const word = await Word.findOne({ where: { id } });
     if (!word) {

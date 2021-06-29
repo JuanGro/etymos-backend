@@ -38,7 +38,7 @@ export class ReferenceResolver {
   @Mutation(() => Reference)
   async updateReference(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateReferenceInput,
+      @Arg(DATA_PARAM) data: UpdateReferenceInput,
   ): Promise<Reference> {
     const reference = await Reference.findOne({ where: { id } });
     if (!reference) {

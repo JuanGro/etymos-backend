@@ -38,7 +38,7 @@ export class CategoryResolver {
   @Mutation(() => Category)
   async updateCategory(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateCategoryInput,
+      @Arg(DATA_PARAM) data: UpdateCategoryInput,
   ): Promise<Category> {
     const category = await Category.findOne({ where: { id } });
     if (!category) {

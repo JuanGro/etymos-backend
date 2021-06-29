@@ -38,7 +38,7 @@ export class PatternResolver {
   @Mutation(() => Pattern)
   async updatePattern(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdatePatternInput,
+      @Arg(DATA_PARAM) data: UpdatePatternInput,
   ): Promise<Pattern> {
     const pattern = await Pattern.findOne({ where: { id } });
     if (!pattern) {

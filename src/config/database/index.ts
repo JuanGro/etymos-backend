@@ -3,7 +3,6 @@ import { createConnection, getConnection } from 'typeorm';
 
 import 'reflect-metadata';
 
-
 beforeAll(async () => {
   try {
     await createConnection();

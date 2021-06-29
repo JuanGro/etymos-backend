@@ -38,7 +38,7 @@ export class QuestionResolver {
   @Mutation(() => Question)
   async updateQuestion(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateQuestionInput,
+      @Arg(DATA_PARAM) data: UpdateQuestionInput,
   ): Promise<Question> {
     const question = await Question.findOne({ where: { id } });
     if (!question) {
