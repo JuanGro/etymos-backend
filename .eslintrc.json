@@ -32,5 +32,10 @@
             "*.js"
         ]
     }
-  ]
+  ],
+  "settings": {
+    "react": {
+        "version": "latest"
+    }
+  }
 }
