@@ -3,6 +3,9 @@
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/JuanGro/etymos-backend/coverage.svg)](https://codecov.io/gh/JuanGro/etymos-backend/)
 [![Known Vulnerabilities](https://snyk.io/test/github/JuanGro/etymos-backend/badge.svg)](https://snyk.io/test/github/JuanGro/etymos-backend)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)](https://mx.linkedin.com/in/juan-manuel-guerrero-hernandez)
+[![GitHub top language](https://img.shields.io/github/languages/top/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
+[![GitHub languages](https://img.shields.io/github/languages/count/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
+[![GitHub activity](https://img.shields.io/github/last-commit/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
 [![GitHub followers](https://img.shields.io/github/followers/JuanGro.svg?style=social&label=Follow)](https://github.com/JuanGro?tab=followers)
 
 # Etymos backend
