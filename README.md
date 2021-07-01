@@ -10,7 +10,7 @@
 
 # Etymos backend
 
-Etymos is a platform to improve the spelling through etymologies.
+_Etymos is a platform to improve the spelling through etymologies._
 
 ## Tech stack
 
@@ -24,11 +24,64 @@ Etymos is a platform to improve the spelling through etymologies.
 
 ## Usage
 
-To execute this [Graphql](https://graphql.org) API, you can use [Docker compose](https://docs.docker.com/compose/).
+To execute this [Node](https://nodejs.org) API, you have two alternatives, use [Docker compose](https://docs.docker.com/compose/) or run the code manually.
+
+In both cases you must create a file called `.env` to define all the variables needed to run the app. You can see an example of this file in `.env.example`.
 
 ```bash
-docker-compose up
+NODE_ENV=**Define here the environment you want to use e.g. development**
+NODE_PORT=**Define here the port you want to use e.g. 3000**
+PRODUCTION_ENV=**Use the same that is in the .env.example file**
+DATABASE_TYPE=**Define here the database type you want to use e.g. postgres**
+DATABASE_HOST=**Define here the database host you want to use**
+DATABASE_PORT=**Define here the database port you want to use**
+DATABASE_NAME=**Define here the database name you want to use**
+DATABASE_USER=**Define here the database user you want to use**
+DATABASE_PASSWORD=**Define here the database password you want to use**
+SENTRY_DSN=**Define here the DSN that you Sentry account provides**
 ```
+
+### [Docker-compose](https://docs.docker.com/compose/)
+
+To run the container, you must have installed [docker](https://www.docker.com) in your machine. Only execute:
+
+```bash
+docker-compose up --build
+```
+
+### Manual
+
+**First, you must have installed [Node](https://nodejs.org/es/) version `15`.**
+
+Then, install the dependencies using:
+
+```bash
+npm install
+```
+
+Also, run the migrations for your database:
+
+```bash
+npm run migrate
+```
+
+Finally, use this command to run the app:
+
+```bash
+npm start
+```
+
+## Tests
+
+To run the tests locally follow the above [manual usage](#manual) and then execute:
+
+```bash
+npm test
+```
+
+## Deployment
+
+Still working on this section...
 
 ## Contributing
 
