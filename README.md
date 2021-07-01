@@ -1,3 +1,5 @@
+# Etymos backend
+
 [![GitHub activity](https://img.shields.io/github/last-commit/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
 [![Github issues](https://img.shields.io/github/issues/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/issues)
 [![GitHub languages](https://img.shields.io/github/languages/count/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
@@ -8,11 +10,20 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?logo=linkedin&logoColor=white)](https://mx.linkedin.com/in/juan-manuel-guerrero-hernandez)
 [![GitHub followers](https://img.shields.io/github/followers/JuanGro.svg?style=social&label=Follow)](https://github.com/JuanGro?tab=followers)
 
-# Etymos backend
-
 _Etymos is a platform to improve the spelling through etymologies._
 
-## Tech stack
+## Index
+
+* [Technologies](#technologies)
+* [Usage](#usage)
+    * [Docker-compose](#docker-compose)
+    * [Manual](#manual)
+* [Tests](#tests)
+* [Deployment](#deployment)
+* [Contributing](#contributing)
+* [License](#license)
+
+## Technologies
 
 [![Typescript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Apollo GraphQL](https://img.shields.io/badge/-ApolloGraphQL-311C87?logo=apollo-graphql)](https://www.apollographql.com)
