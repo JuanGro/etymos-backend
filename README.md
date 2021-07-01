@@ -1,6 +1,6 @@
 [![GitHub activity](https://img.shields.io/github/last-commit/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
-[![GitHub top language](https://img.shields.io/github/languages/top/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
 [![GitHub languages](https://img.shields.io/github/languages/count/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
+[![GitHub top language](https://img.shields.io/github/languages/top/JuanGro/etymos-backend)](https://github.com/JuanGro/etymos-backend)
 [![Build Status](https://travis-ci.com/JuanGro/etymos-backend.svg?branch=master)](https://travis-ci.com/JuanGro/etymos-backend)
 [![Github issues](https://img.shields.io/github/issues/JuanGro/etymos-backend.svg)](https://github.com/JuanGro/etymos-backend/issues)
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/JuanGro/etymos-backend/coverage.svg)](https://codecov.io/gh/JuanGro/etymos-backend/)
