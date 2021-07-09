@@ -31,10 +31,10 @@ const PARAMS = {
   DATA_PARAM: 'data',
 };
 
-const { VARCHAR_TYPE, BOOLEAN_TYPE, TIMESTAMP_TYPE }: Types = {
-  VARCHAR_TYPE: { type: 'varchar' },
-  BOOLEAN_TYPE: { type: 'boolean' },
-  TIMESTAMP_TYPE: { type: 'timestamp' },
+const { VARCHAR, BOOLEAN, TIMESTAMP }: Types = {
+  VARCHAR: { type: 'varchar' },
+  BOOLEAN: { type: 'boolean' },
+  TIMESTAMP: { type: 'timestamp' },
 };
 
 const {
@@ -51,21 +51,21 @@ const {
 };
 
 const DATABASE_CONFIG = {
-  BOOLEAN_DEFAULT_TRUE: { ...BOOLEAN_TYPE, default: true },
-  BOOLEAN_DEFAULT_FALSE: { ...BOOLEAN_TYPE, default: false },
-  VARCHAR_XXS: { ...VARCHAR_TYPE, length: XXS },
-  VARCHAR_XS: { ...VARCHAR_TYPE, length: XS },
-  VARCHAR_S: { ...VARCHAR_TYPE, length: S },
-  VARCHAR_M: { ...VARCHAR_TYPE, length: M },
-  VARCHAR_L: { ...VARCHAR_TYPE, length: L },
-  VARCHAR_XL: { ...VARCHAR_TYPE, length: XL },
-  VARCHAR_XXL: { ...VARCHAR_TYPE, length: XXL },
-  VARCHAR_XXXXL: { ...VARCHAR_TYPE, length: XXXXL },
-  VARCHAR_S_UNIQUE: { ...VARCHAR_TYPE, length: S, unique: true },
-  VARCHAR_L_UNIQUE: { ...VARCHAR_TYPE, length: L, unique: true },
-  VARCHAR_XXL_UNIQUE: { ...VARCHAR_TYPE, length: XXL, unique: true },
-  VARCHAR_XXXXL_UNIQUE: { ...VARCHAR_TYPE, length: XXXXL, unique: true },
-  TIMESTAMP: TIMESTAMP_TYPE,
+  BOOLEAN_DEFAULT_TRUE: { ...BOOLEAN, default: true },
+  BOOLEAN_DEFAULT_FALSE: { ...BOOLEAN, default: false },
+  VARCHAR_XXS: { ...VARCHAR, length: XXS },
+  VARCHAR_XS: { ...VARCHAR, length: XS },
+  VARCHAR_S: { ...VARCHAR, length: S },
+  VARCHAR_M: { ...VARCHAR, length: M },
+  VARCHAR_L: { ...VARCHAR, length: L },
+  VARCHAR_XL: { ...VARCHAR, length: XL },
+  VARCHAR_XXL: { ...VARCHAR, length: XXL },
+  VARCHAR_XXXXL: { ...VARCHAR, length: XXXXL },
+  VARCHAR_S_UNIQUE: { ...VARCHAR, length: S, unique: true },
+  VARCHAR_L_UNIQUE: { ...VARCHAR, length: L, unique: true },
+  VARCHAR_XXL_UNIQUE: { ...VARCHAR, length: XXL, unique: true },
+  VARCHAR_XXXXL_UNIQUE: { ...VARCHAR, length: XXXXL, unique: true },
+  TIMESTAMP_DEFAULT: TIMESTAMP,
   NULLABLE: { nullable: true },
 };
 
@@ -78,7 +78,7 @@ const TESTS_NUMBERS = {
   INEXISTENT_INDEX: 1452902144,
 };
 
-const TESTS_TEXT = {
+const TEST_OPTIONS = {
   DUMMY_TEXT_XS: 'Lorem',
   DUMMY_TEXT2_XS: 'Lorems',
   DUMMY_TEXT_S: 'Lorem ipsum dolor sit amet',
@@ -92,8 +92,181 @@ const TESTS_TEXT = {
   DUMMY_EMAIL: 'test@mail.com',
   DUMMY_EMAIL2: 'test2@mail.com',
   DUMMY_YEAR_STRING: '1999',
-  DUMMY_VERSION: '1.1.9',
-  DUMMY_VERSION2: '2.3.7',
+  DUMMY_VERSION_STRING: '1.1.9',
+  DUMMY_VERSION2_STRING: '2.3.7',
+};
+
+const TEST_OBJECTS = {
+  ...TEST_OPTIONS,
+  DUMMY_CATEGORY: {
+    name: TEST_OPTIONS.DUMMY_TEXT_XS,
+    description: TEST_OPTIONS.DUMMY_TEXT_M,
+    active: true,
+  },
+  DUMMY_CATEGORY2: {
+    name: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    description: TEST_OPTIONS.DUMMY_TEXT_M,
+    active: true,
+  },
+  DUMMY_CATEGORY_INCORRECT: {
+    name: TEST_OPTIONS.DUMMY_TEXT_XL,
+    description: TEST_OPTIONS.DUMMY_TEXT_M,
+    active: true,
+  },
+  DUMMY_ETYMOLOGY: {
+    graecoLatinEtymology: TEST_OPTIONS.DUMMY_TEXT_XS,
+    meaning: TEST_OPTIONS.DUMMY_TEXT_M,
+    imageUrl: TEST_OPTIONS.DUMMY_IMAGE_URL,
+    etymologyTypeId: 1,
+    languageId: 1,
+    active: true,
+  },
+  DUMMY_ETYMOLOGY2: {
+    graecoLatinEtymology: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    meaning: TEST_OPTIONS.DUMMY_TEXT_M,
+    imageUrl: TEST_OPTIONS.DUMMY_IMAGE_URL,
+    etymologyTypeId: 1,
+    languageId: 1,
+    active: true,
+  },
+  DUMMY_ETYMOLOGY_INCORRECT: {
+    graecoLatinEtymology: TEST_OPTIONS.DUMMY_TEXT_XL,
+    meaning: TEST_OPTIONS.DUMMY_TEXT_M,
+    imageUrl: TEST_OPTIONS.DUMMY_IMAGE_URL,
+    etymologyTypeId: 1,
+    languageId: 1,
+    active: true,
+  },
+  DUMMY_OPTION: {
+    option: TEST_OPTIONS.DUMMY_TEXT_XS,
+    correct: true,
+    active: true,
+  },
+  DUMMY_OPTION2: {
+    option: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    correct: true,
+    active: true,
+  },
+  DUMMY_OPTION_INCORRECT: {
+    option: TEST_OPTIONS.DUMMY_TEXT_XL,
+    correct: true,
+    active: true,
+  },
+  DUMMY_PATTERN: {
+    pattern: TEST_OPTIONS.DUMMY_TEXT_XS,
+    active: true,
+  },
+  DUMMY_PATTERN2: {
+    pattern: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    active: true,
+  },
+  DUMMY_PATTERN_INCORRECT: {
+    pattern: TEST_OPTIONS.DUMMY_TEXT_XL,
+    active: true,
+  },
+  DUMMY_QUESTION: {
+    sentence: TEST_OPTIONS.DUMMY_TEXT_L,
+    active: false,
+    referenceId: 1,
+  },
+  DUMMY_QUESTION2: {
+    sentence: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    active: false,
+    referenceId: 1,
+  },
+  DUMMY_QUESTION_INCORRECT: {
+    sentence: TEST_OPTIONS.DUMMY_TEXT_XL,
+    active: false,
+    referenceId: 1,
+  },
+  DUMMY_REFERENCE: {
+    author: TEST_OPTIONS.DUMMY_TEXT_M,
+    title: TEST_OPTIONS.DUMMY_TEXT_M,
+    publicationYear: TEST_OPTIONS.DUMMY_YEAR_STRING,
+    publicationPlace: TEST_OPTIONS.DUMMY_TEXT_M,
+    publishingCompany: TEST_OPTIONS.DUMMY_TEXT_M,
+    active: false,
+  },
+  DUMMY_REFERENCE2: {
+    author: TEST_OPTIONS.DUMMY_TEXT_M,
+    title: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    publicationYear: TEST_OPTIONS.DUMMY_YEAR_STRING,
+    publicationPlace: TEST_OPTIONS.DUMMY_TEXT_M,
+    publishingCompany: TEST_OPTIONS.DUMMY_TEXT_M,
+    active: false,
+  },
+  DUMMY_REFERENCE_INCORRECT: {
+    author: TEST_OPTIONS.DUMMY_TEXT_M,
+    title: TEST_OPTIONS.DUMMY_TEXT_XL,
+    publicationYear: TEST_OPTIONS.DUMMY_YEAR_STRING,
+    publicationPlace: TEST_OPTIONS.DUMMY_TEXT_M,
+    publishingCompany: TEST_OPTIONS.DUMMY_TEXT_M,
+    active: false,
+  },
+  DUMMY_TEST: {
+    userId: 1,
+    questionId: 1,
+    active: true,
+  },
+  DUMMY_TEST2: {
+    userId: 1,
+    questionId: 1,
+    active: false,
+  },
+  DUMMY_USER: {
+    name: TEST_OPTIONS.DUMMY_TEXT_M,
+    email: TEST_OPTIONS.DUMMY_EMAIL,
+    active: true,
+  },
+  DUMMY_USER2: {
+    name: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    email: TEST_OPTIONS.DUMMY_EMAIL2,
+    active: true,
+  },
+  DUMMY_USER_INCORRECT: {
+    name: TEST_OPTIONS.DUMMY_TEXT_XL,
+    email: TEST_OPTIONS.DUMMY_EMAIL,
+    active: true,
+  },
+  DUMMY_VERSION: {
+    version: TEST_OPTIONS.DUMMY_VERSION_STRING,
+    description: TEST_OPTIONS.DUMMY_TEXT_M,
+    maintenance: false,
+    active: true,
+  },
+  DUMMY_VERSION2: {
+    version: TEST_OPTIONS.DUMMY_VERSION2_STRING,
+    description: TEST_OPTIONS.DUMMY_TEXT_M,
+    maintenance: false,
+    active: true,
+  },
+  DUMMY_VERSION_INCORRECT: {
+    version: TEST_OPTIONS.DUMMY_TEXT_XL,
+    description: TEST_OPTIONS.DUMMY_TEXT_M,
+    maintenance: false,
+    active: true,
+  },
+  DUMMY_WORD: {
+    word: TEST_OPTIONS.DUMMY_TEXT_XS,
+    meaning: TEST_OPTIONS.DUMMY_TEXT_M,
+    imageUrl: TEST_OPTIONS.DUMMY_IMAGE_URL,
+    categoryId: 1,
+    active: true,
+  },
+  DUMMY_WORD2: {
+    word: TEST_OPTIONS.DUMMY_TEXT2_XS,
+    meaning: TEST_OPTIONS.DUMMY_TEXT_M,
+    imageUrl: TEST_OPTIONS.DUMMY_IMAGE_URL,
+    categoryId: 1,
+    active: true,
+  },
+  DUMMY_WORD_INCORRECT: {
+    word: TEST_OPTIONS.DUMMY_TEXT_XL,
+    meaning: TEST_OPTIONS.DUMMY_TEXT_M,
+    imageUrl: TEST_OPTIONS.DUMMY_IMAGE_URL,
+    categoryId: 1,
+    active: true,
+  },
 };
 
 const MESSAGES = {
@@ -115,7 +288,7 @@ const CONSTANTS = {
   ...PARAMS,
   ...DATABASE_CONFIG,
   ...TESTS_NUMBERS,
-  ...TESTS_TEXT,
+  ...TEST_OBJECTS,
   ...MESSAGES,
 };
 
@@ -136,7 +309,7 @@ export const {
   VARCHAR_L_UNIQUE,
   VARCHAR_XXL_UNIQUE,
   VARCHAR_XXXXL_UNIQUE,
-  TIMESTAMP,
+  TIMESTAMP_DEFAULT,
   NULLABLE,
   FAKER_ELEMENTS_NUMBER_S,
   FAKER_ELEMENTS_NUMBER_M,
@@ -154,8 +327,37 @@ export const {
   DUMMY_EMAIL,
   DUMMY_EMAIL2,
   DUMMY_YEAR_STRING,
+  DUMMY_VERSION_STRING,
+  DUMMY_VERSION2_STRING,
+  DUMMY_CATEGORY,
+  DUMMY_CATEGORY2,
+  DUMMY_CATEGORY_INCORRECT,
+  DUMMY_ETYMOLOGY,
+  DUMMY_ETYMOLOGY2,
+  DUMMY_ETYMOLOGY_INCORRECT,
+  DUMMY_OPTION,
+  DUMMY_OPTION2,
+  DUMMY_OPTION_INCORRECT,
+  DUMMY_PATTERN,
+  DUMMY_PATTERN2,
+  DUMMY_PATTERN_INCORRECT,
+  DUMMY_QUESTION,
+  DUMMY_QUESTION2,
+  DUMMY_QUESTION_INCORRECT,
+  DUMMY_REFERENCE,
+  DUMMY_REFERENCE2,
+  DUMMY_REFERENCE_INCORRECT,
+  DUMMY_TEST,
+  DUMMY_TEST2,
+  DUMMY_USER,
+  DUMMY_USER2,
+  DUMMY_USER_INCORRECT,
   DUMMY_VERSION,
   DUMMY_VERSION2,
+  DUMMY_VERSION_INCORRECT,
+  DUMMY_WORD,
+  DUMMY_WORD2,
+  DUMMY_WORD_INCORRECT,
   CATEGORY_NOT_FOUND,
   ETYMOLOGY_NOT_FOUND,
   OPTION_NOT_FOUND,

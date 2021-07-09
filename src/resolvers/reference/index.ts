@@ -23,9 +23,8 @@ export class ReferenceResolver {
     const reference = await Reference.findOne({ where: { id } });
     if (!reference) {
       throw new ApolloError(REFERENCE_NOT_FOUND);
-    } else {
-      return reference;
     }
+    return reference;
   }
 
   @Mutation(() => Reference)
@@ -33,33 +32,28 @@ export class ReferenceResolver {
     @Arg(DATA_PARAM) data: CreateReferenceInput,
   ): Promise<Reference> {
     const reference = Reference.create(data);
-    await reference.save();
-    return reference;
+    return reference.save();
   }
 
   @Mutation(() => Reference)
   async updateReference(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateReferenceInput,
+      @Arg(DATA_PARAM) data: UpdateReferenceInput,
   ): Promise<Reference> {
     const reference = await Reference.findOne({ where: { id } });
     if (!reference) {
       throw new ApolloError(REFERENCE_NOT_FOUND);
-    } else {
-      Object.assign(reference, data);
-      await reference.save();
-      return reference;
     }
+    Object.assign(reference, data);
+    return reference.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteReference(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Reference)
+  async deleteReference(@Arg(ID_PARAM) id: number): Promise<Reference> {
     const reference = await Reference.findOne({ where: { id } });
     if (!reference) {
       throw new ApolloError(REFERENCE_NOT_FOUND);
-    } else {
-      await reference.remove();
-      return true;
     }
+    return reference.remove();
   }
 }

@@ -23,9 +23,8 @@ export class PatternResolver {
     const pattern = await Pattern.findOne({ where: { id } });
     if (!pattern) {
       throw new ApolloError(PATTERN_NOT_FOUND);
-    } else {
-      return pattern;
     }
+    return pattern;
   }
 
   @Mutation(() => Pattern)
@@ -33,33 +32,28 @@ export class PatternResolver {
     @Arg(DATA_PARAM) data: CreatePatternInput,
   ): Promise<Pattern> {
     const pattern = Pattern.create(data);
-    await pattern.save();
-    return pattern;
+    return pattern.save();
   }
 
   @Mutation(() => Pattern)
   async updatePattern(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdatePatternInput,
+      @Arg(DATA_PARAM) data: UpdatePatternInput,
   ): Promise<Pattern> {
     const pattern = await Pattern.findOne({ where: { id } });
     if (!pattern) {
       throw new ApolloError(PATTERN_NOT_FOUND);
-    } else {
-      Object.assign(pattern, data);
-      await pattern.save();
-      return pattern;
     }
+    Object.assign(pattern, data);
+    return pattern.save();
   }
 
-  @Mutation(() => Boolean)
-  async deletePattern(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Pattern)
+  async deletePattern(@Arg(ID_PARAM) id: number): Promise<Pattern> {
     const pattern = await Pattern.findOne({ where: { id } });
     if (!pattern) {
       throw new ApolloError(PATTERN_NOT_FOUND);
-    } else {
-      await pattern.remove();
-      return true;
     }
+    return pattern.remove();
   }
 }

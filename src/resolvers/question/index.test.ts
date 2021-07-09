@@ -1,9 +1,10 @@
 import { Question } from '../../models/question';
 import { QuestionResolver } from '.';
 import {
+  DUMMY_QUESTION,
+  DUMMY_QUESTION2,
+  DUMMY_QUESTION_INCORRECT,
   DUMMY_TEXT2_XS,
-  DUMMY_TEXT_M,
-  DUMMY_TEXT_XL,
   ERROR_DUPLICATE_KEY,
   ERROR_MAX_LENGTH,
   FAKER_ELEMENTS_NUMBER_L,
@@ -37,11 +38,7 @@ test('Get error if question does not exist', async () => {
 
 test('Create question', async () => {
   await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
-  const { id } = await createQuestion({
-    sentence: DUMMY_TEXT_M,
-    active: true,
-    referenceId: 1,
-  });
+  const { id } = await createQuestion(DUMMY_QUESTION);
   await expect(getQuestion(id)).resolves.toBeInstanceOf(Question);
   await expect(getQuestions()).resolves.toHaveLength(
     FAKER_ELEMENTS_NUMBER_L + 1,
@@ -50,30 +47,18 @@ test('Create question', async () => {
 
 test('Get error if tries to create a question with incorrect sentence length', async () => {
   await expect(
-    createQuestion({
-      sentence: DUMMY_TEXT_XL,
-      active: true,
-      referenceId: 1,
-    }),
+    createQuestion(DUMMY_QUESTION_INCORRECT),
   ).rejects.toThrowError(ERROR_MAX_LENGTH);
 });
 
 test('Get error if tries to create a question with duplicate sentence', async () => {
   await expect(
-    createQuestion({
-      sentence: DUMMY_TEXT_M,
-      active: true,
-      referenceId: 1,
-    }),
+    createQuestion(DUMMY_QUESTION),
   ).rejects.toThrowError(ERROR_DUPLICATE_KEY);
 });
 
 test('Update question', async () => {
-  const { id } = await updateQuestion(1, {
-    sentence: DUMMY_TEXT2_XS,
-    active: false,
-    referenceId: 1,
-  });
+  const { id } = await updateQuestion(1, DUMMY_QUESTION2);
   await expect(getQuestion(id)).resolves.toBeInstanceOf(Question);
   await expect(getQuestion(id)).resolves.toHaveProperty('active', false);
   await expect(getQuestion(id)).resolves.toHaveProperty(
@@ -88,7 +73,7 @@ test('Delete question', async () => {
   );
   const questions = await getQuestions();
   const { id } = questions[questions.length - 1];
-  await expect(deleteQuestion(id)).resolves.toEqual(true);
+  await expect(deleteQuestion(id)).resolves.toBeInstanceOf(Question);
   await expect(getQuestions()).resolves.toHaveLength(FAKER_ELEMENTS_NUMBER_L);
 });
 

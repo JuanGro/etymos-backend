@@ -18,7 +18,7 @@ import { EtymologyType } from '../etymology-type';
 import {
   BOOLEAN_DEFAULT_TRUE,
   NULLABLE,
-  TIMESTAMP,
+  TIMESTAMP_DEFAULT,
   VARCHAR_L_UNIQUE,
   VARCHAR_XXL,
   VARCHAR_XXXXL,
@@ -48,11 +48,11 @@ export class Etymology extends BaseEntity {
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn(TIMESTAMP)
+  @CreateDateColumn(TIMESTAMP_DEFAULT)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn(TIMESTAMP)
+  @UpdateDateColumn(TIMESTAMP_DEFAULT)
   updateDate!: Date;
 
   @Field(() => EtymologyType)

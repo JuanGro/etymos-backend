@@ -3,7 +3,7 @@ interface Type {
 }
 
 export interface Types {
-  VARCHAR_TYPE: Type;
-  BOOLEAN_TYPE: Type;
-  TIMESTAMP_TYPE: Type;
+  VARCHAR: Type;
+  BOOLEAN: Type;
+  TIMESTAMP: Type;
 }

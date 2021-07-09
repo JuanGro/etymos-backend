@@ -23,9 +23,8 @@ export class CategoryResolver {
     const category = await Category.findOne({ where: { id } });
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
-    } else {
-      return category;
     }
+    return category;
   }
 
   @Mutation(() => Category)
@@ -33,33 +32,28 @@ export class CategoryResolver {
     @Arg(DATA_PARAM) data: CreateCategoryInput,
   ): Promise<Category> {
     const category = Category.create(data);
-    await category.save();
-    return category;
+    return category.save();
   }
 
   @Mutation(() => Category)
   async updateCategory(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateCategoryInput,
+      @Arg(DATA_PARAM) data: UpdateCategoryInput,
   ): Promise<Category> {
     const category = await Category.findOne({ where: { id } });
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
-    } else {
-      Object.assign(category, data);
-      await category.save();
-      return category;
     }
+    Object.assign(category, data);
+    return category.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteCategory(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Category)
+  async deleteCategory(@Arg(ID_PARAM) id: number): Promise<Category> {
     const category = await Category.findOne({ where: { id } });
     if (!category) {
       throw new ApolloError(CATEGORY_NOT_FOUND);
-    } else {
-      await category.remove();
-      return true;
     }
+    return category.remove();
   }
 }

@@ -14,7 +14,7 @@ import { Question } from '../question';
 import {
   BOOLEAN_DEFAULT_FALSE,
   BOOLEAN_DEFAULT_TRUE,
-  TIMESTAMP,
+  TIMESTAMP_DEFAULT,
 } from '../../config/constants';
 
 @Entity()
@@ -33,11 +33,11 @@ export class Test extends BaseEntity {
   active!: boolean;
 
   @Field(() => Date)
-  @CreateDateColumn(TIMESTAMP)
+  @CreateDateColumn(TIMESTAMP_DEFAULT)
   creationDate!: Date;
 
   @Field(() => Date)
-  @UpdateDateColumn(TIMESTAMP)
+  @UpdateDateColumn(TIMESTAMP_DEFAULT)
   updateDate!: Date;
 
   @Field(() => User)

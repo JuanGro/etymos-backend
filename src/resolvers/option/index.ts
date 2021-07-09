@@ -19,9 +19,8 @@ export class OptionResolver {
     const option = await Option.findOne({ where: { id } });
     if (!option) {
       throw new ApolloError(OPTION_NOT_FOUND);
-    } else {
-      return option;
     }
+    return option;
   }
 
   @Mutation(() => Option)
@@ -29,33 +28,28 @@ export class OptionResolver {
     @Arg(DATA_PARAM) data: CreateOptionInput,
   ): Promise<Option> {
     const option = Option.create(data);
-    await option.save();
-    return option;
+    return option.save();
   }
 
   @Mutation(() => Option)
   async updateOption(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateOptionInput,
+      @Arg(DATA_PARAM) data: UpdateOptionInput,
   ): Promise<Option> {
     const option = await Option.findOne({ where: { id } });
     if (!option) {
       throw new ApolloError(OPTION_NOT_FOUND);
-    } else {
-      Object.assign(option, data);
-      await option.save();
-      return option;
     }
+    Object.assign(option, data);
+    return option.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteOption(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Option)
+  async deleteOption(@Arg(ID_PARAM) id: number): Promise<Option> {
     const option = await Option.findOne({ where: { id } });
     if (!option) {
       throw new ApolloError(OPTION_NOT_FOUND);
-    } else {
-      await option.remove();
-      return true;
     }
+    return option.remove();
   }
 }

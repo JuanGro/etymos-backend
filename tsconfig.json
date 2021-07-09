@@ -11,6 +11,6 @@
     "strictPropertyInitialization": false,
     "lib": ["es2015"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "./jest.config.ts", "./ormconfig.js"],
   "exclude": ["node_modules", "build"]
 }

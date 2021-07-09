@@ -23,9 +23,8 @@ export class EtymologyResolver {
     const etymology = await Etymology.findOne({ where: { id } });
     if (!etymology) {
       throw new ApolloError(ETYMOLOGY_NOT_FOUND);
-    } else {
-      return etymology;
     }
+    return etymology;
   }
 
   @Mutation(() => Etymology)
@@ -33,33 +32,28 @@ export class EtymologyResolver {
     @Arg(DATA_PARAM) data: CreateEtymologyInput,
   ): Promise<Etymology> {
     const etymology = Etymology.create(data);
-    await etymology.save();
-    return etymology;
+    return etymology.save();
   }
 
   @Mutation(() => Etymology)
   async updateEtymology(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateEtymologyInput,
+      @Arg(DATA_PARAM) data: UpdateEtymologyInput,
   ): Promise<Etymology> {
     const etymology = await Etymology.findOne({ where: { id } });
     if (!etymology) {
       throw new ApolloError(ETYMOLOGY_NOT_FOUND);
-    } else {
-      Object.assign(etymology, data);
-      await etymology.save();
-      return etymology;
     }
+    Object.assign(etymology, data);
+    return etymology.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteEtymology(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Etymology)
+  async deleteEtymology(@Arg(ID_PARAM) id: number): Promise<Etymology> {
     const etymology = await Etymology.findOne({ where: { id } });
     if (!etymology) {
       throw new ApolloError(ETYMOLOGY_NOT_FOUND);
-    } else {
-      await etymology.remove();
-      return true;
     }
+    return etymology.remove();
   }
 }

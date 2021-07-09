@@ -1,7 +1,7 @@
 import { ApolloError } from 'apollo-server';
-// Import conventions, this could be the first line
-import 'reflect-metadata';
 import { createConnection, getConnection } from 'typeorm';
+
+import 'reflect-metadata';
 
 beforeAll(async () => {
   try {

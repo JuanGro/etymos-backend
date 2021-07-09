@@ -23,9 +23,8 @@ export class VersionResolver {
     const version = await Version.findOne({ where: { id } });
     if (!version) {
       throw new ApolloError(VERSION_NOT_FOUND);
-    } else {
-      return version;
     }
+    return version;
   }
 
   @Mutation(() => Version)
@@ -33,33 +32,28 @@ export class VersionResolver {
     @Arg(DATA_PARAM) data: CreateVersionInput,
   ): Promise<Version> {
     const version = Version.create(data);
-    await version.save();
-    return version;
+    return version.save();
   }
 
   @Mutation(() => Version)
   async updateVersion(
     @Arg(ID_PARAM) id: number,
-    @Arg(DATA_PARAM) data: UpdateVersionInput,
+      @Arg(DATA_PARAM) data: UpdateVersionInput,
   ): Promise<Version> {
     const version = await Version.findOne({ where: { id } });
     if (!version) {
       throw new ApolloError(VERSION_NOT_FOUND);
-    } else {
-      Object.assign(version, data);
-      await version.save();
-      return version;
     }
+    Object.assign(version, data);
+    return version.save();
   }
 
-  @Mutation(() => Boolean)
-  async deleteVersion(@Arg(ID_PARAM) id: number): Promise<boolean> {
+  @Mutation(() => Version)
+  async deleteVersion(@Arg(ID_PARAM) id: number): Promise<Version> {
     const version = await Version.findOne({ where: { id } });
     if (!version) {
       throw new ApolloError(VERSION_NOT_FOUND);
-    } else {
-      await version.remove();
-      return true;
     }
+    return version.remove();
   }
 }
